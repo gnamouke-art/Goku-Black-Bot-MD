@@ -22,18 +22,18 @@ global.suittag = ['595992667005']
 global.prems = []
 
 //• ↳ ◜𝑴𝑨𝑹𝑪𝑨𝑺 𝑫𝑬 𝑨𝑮𝑼𝑨◞ • 💌
-global.packsticker = '★彡( Ӿł_₥ł₲ɄɆⱠØ₦77ӾӾ )彡★'
-global.packname = '󠁖󠁖󠁖󠁖󠁖󠁖󠁻󠁻𝐇𝐮ⷡ𝐓ⷪ𝐚ⷮ𝐨-𝐌𝐃󠁂󠀧󠁂🈀'
-global.author = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀'
-global.wm = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀';
-global.titulowm = '★彡( Ӿł_₥ł₲ɄɆⱠØ₦77ӾӾ )彡★';
-global.titulowm2 = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀'
-global.igfg = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀'
-global.botname = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀'
-global.dev = '★彡( Ӿł_₥ł₲ɄɆⱠØ₦77ӾӾ )彡★'
-global.textbot = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀ : ★彡( Ӿł_₥ł₲ɄɆⱠØ₦77ӾӾ )彡★'
-global.gt = '𝐇𝐮ⷡ𝐓ⷪ𝐚ⷮ𝐨-𝐌𝐃󠁂󠀧󠁂🈀';
-global.namechannel = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀'
+global.packsticker = '𝐆𝐎𝐊𝐔-𝐁𝐋𝐀𝐂𝐊-𝐁𝐎𝐓-𝐌𝐃'
+global.packname = '󠁖󠁖󠁖󠁖󠁖󠁖󠁻󠁻𝐆𝐎𝐊𝐔𝐁𝐋𝐀𝐂𝐊-𝐁𝐎𝐓-𝐌𝐃'
+global.author = '𝐺𝑂𝐾𝑈-𝐵𝐿𝐴𝐶𝐾-𝐵𝑂𝑇-𝑀𝐷 ´･ᴗ･`'
+global.wm = 'l ꙰ 𝙶𝙾𝙺𝚄-𝙱𝙻𝙰𝙲𝙺-𝙱𝙾𝚃-𝙼𝙳 l ꙰';
+global.titulowm = '𝘗𝘖𝘞𝘌𝘙 𝘉𝘠 𝘐𝘝𝘈𝘕';
+global.titulowm2 = 'GOKᑌ-ᗷᒪᗩᑕK-ᗷOT-ᗰᗪ'
+global.igfg = 'ɢ૦𝗞Ս-𝗕𐐛𝔸𐊢𝗞-𝗕૦𝚃-ᎷＤ '
+global.botname = '𝐺𝑂𝐾𝑈-𝐵𝐿𝐴𝐶𝐾-𝐵𝑂𝑇-𝑀𝐷 💥'
+global.dev = '𝗚𝗢𝗞𝗨𝗕𝗟𝗔𝗖𝗞 : 𝗕𝗬 𝗜𝗩𝗔𝗡 💫'
+global.textbot = '𝗚𝗢𝗞𝗨𝗕𝗟𝗔𝗖𝗞 𝗣𝗢𝗪𝗘𝗥 𝗕𝗬 𝗜𝗩𝗔𝗡 🌱'
+global.gt = '𝗚𝗢𝗞𝗨𝗕𝗟𝗔𝗖𝗞';
+global.namechannel = '𝗚𝗢𝗞𝗨-𝗕𝗟𝗔𝗖𝗞-𝗕𝗢𝗧-𝗠𝗗 🗻'
 global.vs = 'V2'
 global.vsJB = '5.0'
 
