@@ -51,7 +51,7 @@ global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse()
 global.prefix = new RegExp('^[/.$#!]')
 // global.opts['db'] = process.env['db']
 
-global.db = new Low(/https?:\/\//.test(opts['db'] || '') ? new cloudDBAdapter(opts['db']) : new JSONFile('src/database/database.json'))
+global.db = new Low(/https?:\/\//.test(opts['db'] || '') ? new cloudDBAdapter(opts['db']) : new JSONFile('media/database/database.json'))
 
 global.DATABASE = global.db 
 global.loadDatabase = async function loadDatabase() {
@@ -191,6 +191,8 @@ if (opts['autocleartmp'] && (global.support || {}).find) (tmp = [os.tmpdir(), 't
 
 if (opts['server']) (await import('./server.js')).default(global.conn, PORT);
 
+let ppBot = 'https://telegra.ph/file/24fa902ead26340f3df2c.png'
+
 async function connectionUpdate(update) {
 const {connection, lastDisconnect, isNewLogin} = update;
 global.stopped = connection;
@@ -207,7 +209,8 @@ console.log(chalk.bold.yellow(`\n✅ ESCANEA EL CÓDIGO QR EXPIRA EN 45 SEGUNDOS
 }
 if (connection == 'open') {
 console.log(boxen(chalk.bold(' ¡CONECTADO CON WHATSAPP! '), { borderStyle: 'round', borderColor: 'green', title: chalk.green.bold('● CONEXIÓN ●'), titleAlignment: '', float: '' }))
-await joinChannels(conn)}
+await joinChannels(conn)
+conn.sendMessage("120363371018732371@newsletter", { text: '👋 Hola seguidores!\n🦋 Me he conectado nuevamente!!', contextInfo: { externalAdReply: { title: "❤️‍🔥 HUTAO - PROYECT 🦋", body: '🦋 Megumin Bot conectada nuevamente!', thumbnailUrl: ppBot, sourceUrl: 'https://cafirexos.com', mediaType: 1, showAdAttribution: false, renderLargerThumbnail: false }}}, { quoted: null })}
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
 if (connection === 'close') {
 if (reason === DisconnectReason.badSession) {
