@@ -1,6 +1,3 @@
-import {watchFile, unwatchFile} from 'fs';
-import chalk from 'chalk';
-import {fileURLToPath} from 'url';
 import fs from 'fs'; 
 import cheerio from 'cheerio';
 import fetch from 'node-fetch';
@@ -14,29 +11,35 @@ global.confirmCode = ''
 
 //• ↳𝑺𝑶𝑳𝑶 𝑫𝑬𝑺𝑨𝑹𝑹𝑶𝑳𝑳𝑨𝑫𝑶𝑹𝑬𝑺 𝑨𝑷𝑹𝑶𝑩𝑨𝑫𝑶𝑺
 global.owner = [
-  ['18294868853', '𝐃𝐢𝐨𝐧𝐞𝐢𝐛𝐢', true],
-  ['595972157130', '𝐂𝐫𝐞𝐚𝐝𝐨𝐫', true], 
-  ['593939005387', '𝙅𝙤stin🍊🔧', true]];
-//• ↳𝑺𝑶𝑳𝑶 𝑴𝑶𝑫𝑬𝑹𝑨𝑫𝑶𝑹𝑬𝑺!
-global.mods = ['18294868853', '595972157130', '51950148255', '', '']
+['5218711426787', 'CREADOR', true],
+['5216566753569', '󠁖󠁖󠁖󠁖󠁖󠁖󠁻󠁻𝐇𝐮ⷡ𝐓ⷪ𝐚ⷮ𝐨-𝐌𝐃󠁂󠀧󠁂🈀', true],
+['5351524614'],
+['5217561063371'],
+['573012482597'],
+['5218713339906']
+];
 
-global.suittag = ['595972157130']
+//• ↳𝑺𝑶𝑳𝑶 𝑴𝑶𝑫𝑬𝑹𝑨𝑫𝑶𝑹𝑬𝑺!
+global.mods = ['5351524614', '5218711426787', '', '', '']
+
+global.suittag = ['5218711426787']
 global.prems = []
 
 //• ↳ ◜𝑴𝑨𝑹𝑪𝑨𝑺 𝑫𝑬 𝑨𝑮𝑼𝑨◞ • 💌
-global.packsticker = `♾ ━━━━━━━━\n├ ɓσƭ:\n├ ρяοριєταяιο:\n├ ƒєϲнα ∂є ϲяєαϲιόи:\n├ нοяα:\n♾━━━━━━━━`
-global.packname = `ᘜOKᑌ-ᗷᒪ̀AᑕK-ᗷOT-ᗰᗪ-ᒪITᗴ🪼`
-global.author = `♾━━━━━━━━\n𝐆𝐨𝐤𝐮-𝐁𝐥𝐚𝐜𝐤-𝐁𝐨𝐭-𝐌𝐃-𝐋𝐢𝐭𝐞\n𝑰𝒗𝒂𝒏\n⇝ ${moment.tz('America/Los_Angeles').format('DD/MM/YY')}\n⇝ ${moment.tz('America/Los_Angeles').format('HH:mm:ss')} \n♾━━━━━━━━\n\n\n\nѕτιϲκєя ϐγ: 𝑮𝒐𝒌𝒖-𝑩𝒍𝒂𝒄𝒌-𝑩𝒐𝒕-𝑴𝑫-𝑳𝒊𝒕𝒆`;
-global.wm = '𝗚𝗼𝗸𝘂-𝗕𝗹𝗮𝗰𝗸-𝗕𝗼𝘁-𝗠𝗗-𝗟𝗶𝘁𝗲';
-global.titulowm = '𝖦𝗈𝗄𝗎-𝖡𝗅𝖺𝖼𝗄-𝖡𝗈𝗍-𝖬𝖣-𝖫𝗂𝗍𝖾';
-global.titulowm2 = `ＧＯＫＵ-ＢＬＡＣＫ-ＢＯＴ-ＭＤ-ＬＩＴＥ`
-global.igfg = 'ᥫᩣɢᴏᴋᴜ-ʙʟᴀᴄᴋ-ʙᴏᴛ-ᴍᴅ-ʟɪᴛᴇ🪐'
-global.botname = 'ꍌꄲꀘ꒤-ꃳ꒒ꋬꉔꀘ-ꃳꄲ꓄-ꂵ꒯-꒒꒐꓄ꏂ 🪻'
-global.dev = 'gσкυ-вℓα¢к-вσт-м∂-ℓιтє🐦‍⬛'
-global.textbot = '𝐆𝐎𝐊𝐔-𝐁𝐋𝐀𝐂𝐊-𝐁𝐎𝐓-𝐌𝐃-𝐋𝐈𝐓𝐄'
-global.gt = '𝔾𝕆𝕂𝕌-𝔹𝕃𝔸ℂ𝕂-𝔹𝕆𝕋-𝕄𝔻-𝕃𝕀𝕋𝔼';
-global.namechannel = 'ꍌꄲꀘ꒤-ꃳ꒒ꋬꉔꀘ-ꃳꄲ꓄-ꂵ꒯-꒒꒐꓄ꏂ'
-global.vs = '3.0.1'
+global.packsticker = '★彡( Ӿł_₥ł₲ɄɆⱠØ₦77ӾӾ )彡★'
+global.packname = '󠁖󠁖󠁖󠁖󠁖󠁖󠁻󠁻𝐇𝐮ⷡ𝐓ⷪ𝐚ⷮ𝐨-𝐌𝐃󠁂󠀧󠁂🈀'
+global.author = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀'
+global.wm = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀';
+global.titulowm = '★彡( Ӿł_₥ł₲ɄɆⱠØ₦77ӾӾ )彡★';
+global.titulowm2 = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀'
+global.igfg = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀'
+global.botname = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀'
+global.dev = '★彡( Ӿł_₥ł₲ɄɆⱠØ₦77ӾӾ )彡★'
+global.textbot = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀ : ★彡( Ӿł_₥ł₲ɄɆⱠØ₦77ӾӾ )彡★'
+global.gt = '𝐇𝐮ⷡ𝐓ⷪ𝐚ⷮ𝐨-𝐌𝐃󠁂󠀧󠁂🈀';
+global.namechannel = '❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀'
+global.vs = 'V2'
+global.vsJB = '5.0'
 
 
 //• ↳ ◜𝑰𝑴𝑨́𝑮𝑬𝑵𝑬𝑺◞ • 🌇
@@ -48,7 +51,7 @@ global.imagen5 = fs.readFileSync('./src/+18.jpg');
 global.imagen6 = fs.readFileSync('./Menu3.jpg');
 global.imagen7 = fs.readFileSync('./Menu5.jpg');
 global.imagen8 = fs.readFileSync('./Menu4.jpg')
-global.imagen9 = fs.readFileSync('./src/menu_en.jpg')
+global.imagen9 = fs.readFileSync('./src/menu_en.png')
 global.imagen10 = fs.readFileSync('./src/nuevobot.jpg')
 global.que = fs.readFileSync('./src/ke/que1.jpg')
 global.que2 = fs.readFileSync('./src/ke/que2.jpg')
@@ -61,13 +64,13 @@ global.amor2 = fs.readFileSync('./src/amor/amor2.webp')
 global.amor3 = fs.readFileSync('./src/amor/amor3.webp')
 global.amor4 = fs.readFileSync('./src/amor/amor4.webp')
 global.amor5 = fs.readFileSync('./src/amor/amor5.webp')
-global.miniurl = fs.readFileSync('./src/Grupo.jpg');
+global.miniurl = fs.readFileSync('./src/grupo.jpg');
 global.logo2 = fs.readFileSync('./src/logo2.jpg')
 global.logo3 = fs.readFileSync('./src/logo3.jpg')
 global.catalogo = fs.readFileSync('./src/logo6.png')
 global.logo4 = fs.readFileSync('./src/logo4.jpg')
 global.logo5 = fs.readFileSync('./src/logo5.jpg')
-global.logo7 = fs.readFileSync('./src/Logo7.jpg')
+global.logo7 = fs.readFileSync('./src/Logo7.png')
 global.logo8 = fs.readFileSync('./src/Logo8.jpg')
 global.rule = fs.readFileSync('./src/rule.jpg')
 global.welcome = fs.readFileSync('./media/Welcome.jpg')
@@ -77,36 +80,50 @@ global.stickeramor = [amor, amor2, amor3, amor4, amor5]
 global.sickerque = [que, que2, que3, que4, que5, que6]
 global.photoSity = [imagen8, imagen1, imagen4, imagen6]
 
+global.libreria = 'Baileys'
+global.baileys = 'V 6.7.8'
+global.languaje = 'Español'
+global.nameqr = 'HuTao-Proyect'
+global.sessions = 'seccion-activas'
+global.jadi = 'jadibots'
+global.hutaoJadibts = true
+
+global.ch = {
+ch1: '120363350554513092@newsletter',
+ch2: '120363263466636910@newsletter',
+ch3: '120363307382381547@newsletter',
+ch4: '120363370415738881@newsletter',
+ch5: '120363358338732714@newsletter',
+}
+
 //• ↳ ◜𝑭𝑨𝑲𝑬 𝑬𝑺𝑻𝑰𝑳𝑶◞ • 🪩
-global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: 'BOT EN DESARROLLO', orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
+global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: '󠁖󠁖󠁖󠁖󠁖󠁖󠁻󠁻𝐇𝐮ⷡ𝐓ⷪ𝐚ⷮ𝐨-𝐌𝐃󠁂󠀧󠁂🈀', orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
 
-global.fakegif2 = { key: { participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { videoMessage: { title: 'Black', h: `Black`, seconds: '99999', gifPlayback: true, caption: 'Bienvenido✨', jpegThumbnail: logo5 }}};
+global.fakegif2 = { key: { participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { videoMessage: { title: 'HuTao', h: `Hmm`, seconds: '99999', gifPlayback: true, caption: '♡٨ﮩ٨ﮩﮩ٨ﮩﮩ٨ﮩ ᗷIEᑎᐯEᑎIᗪO ﮩ٨ﮩﮩ٨ﮩﮩ٨ﮩ٨♡', jpegThumbnail: logo5 }}};
 
-global.fakegif3 = { key: { participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { videoMessage: { title: 'Blacl', h: `Black`, seconds: '99999', gifPlayback: true, caption: '✨Tu bot Favorito✨', jpegThumbnail: logo3 }}};
+global.fakegif3 = { key: { participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { videoMessage: { title: 'HuTao-MD', h: `Hmm`, seconds: '99999', gifPlayback: true, caption: '⚘݄𖠵⃕⁖𝐓𝐨𝐧𝐭𝐨 (￣へ ￣ ) ', jpegThumbnail: logo3 }}};
 
-global.fakegif4 = { key: { participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { videoMessage: { title: 'Black', h: `Black`, seconds: '99999', gifPlayback: true, caption: '🪼Sticker🪼', jpegThumbnail: logo5 }}};
+global.fakegif4 = { key: { participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { videoMessage: { title: 'HuTao', h: `Hmm`, seconds: '99999', gifPlayback: true, caption: 'ཫ꙳✱( รՇเςкєгร )✱꙳ཀ', jpegThumbnail: logo5 }}};
 
-global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: 'BLACKLITE', orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
+global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: '󠁖󠁖󠁖󠁖󠁖󠁖󠁻󠁻𝐇𝐮ⷡ𝐓ⷪ𝐚ⷮ𝐨-𝐌𝐃󠁂󠀧󠁂🈀', orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
 
-global.fgif2 = { key: {participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "6289643739077-1613049930@g.us" } : {})},message: {"videoMessage": { "title":`𝙂𝙊𝙆𝙐-𝘽𝙇𝘼𝘾𝙆-𝘽𝙊𝙏-𝙈𝘿-𝙇𝙄𝙏𝙀💥`, "h": `Black`,'seconds': '99999', 'gifPlayback': 'true', 'caption': `𝐆𝐎𝐊𝐔-𝐁𝐋𝐀𝐂𝐊-𝐁𝐎𝐓-𝐌𝐃-𝐋𝐈𝐓𝐄🌦`, 'jpegThumbnail': logo4 }}}
+global.fgif2 = { key: {participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "6289643739077-1613049930@g.us" } : {})},message: {"videoMessage": { "title":`͟͞ ★彡( Ӿł_₥ł₲ɄɆⱠØ₦77ӾӾ )彡★͟͞`, "h": `Hmm`,'seconds': '99999', 'gifPlayback': 'true', 'caption': `❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀\n ★彡( Ӿł_₥ł₲ɄɆⱠØ₦77ӾӾ )彡★͟`, 'jpegThumbnail': logo4 }}}
 
 //• ↳ ◜𝑳𝑰𝑵𝑲𝑺◞ • 🌿
-global.gp4 = 'https://chat.whatsapp.com/GD0al1LF7Ux2dmPF0fDFYZ' //Grupo Oficial De Goku-Black-Bot-MD-Lite
-global.gp1 = 'https://chat.whatsapp.com/GD0al1LF7Ux2dmPF0fDFYZ' //Grupo 
-global.gp2 = 'https://chat.whatsapp.com/LJKcR8QBJgu37bVFWuhRVn'//
-global.comunidad1 = 'https://chat.whatsapp.com/GPEtINYPyIB6a6S55ZJcAO' //Comunidad
-global.channel = 'https://whatsapp.com/channel/0029VaYh3Zm4dTnQKQ3VLT0h' //Canal Oficial
-global.Black = '⪛✰ 𝐆𝐨𝐤𝐮 𝐁𝐥𝐚𝐜𝐤 𝐁𝐨𝐭 - 𝐌𝐃 ✰⪜'
-global.paypal = 'Comunicate conmigo al wa.me/593939005387'
+global.gp4 = 'https://chat.whatsapp.com/LcifaLUrmww6CPT27IuSAa' //Grupo Oficial De Hutao
+global.gp1 = 'https://chat.whatsapp.com/GFyLX1dDDxI0utho5GBmJI' //Grupo 
+global.gp2 = 'GE1wUxAsLleAxfCVvtsp1x' //Grupo
+global.comunidad1 = 'https://chat.whatsapp.com/GPEtINYPyIB6a6S55ZJcAO' //Comunidad Megumin
+global.channel = 'https://whatsapp.com/channel/0029VacDy0R6hENqnTKnG820' //Canal Oficial
 global.yt = 'https://youtube.com/@davidchian4957' //Canal De Youtube
-global.md = 'https://github.com/Ivanmods15/Goku-Black-Bot-MD-Lite' //Github Oficial del bot
-global.correo = 'noisebot@gmail.com'
-global.cn ='https://whatsapp.com/channel/0029VaYh3Zm4dTnQKQ3VLT0h';
+global.md = 'https://github.com/CheirZ' //Github Oficial
+global.correo = 'miguel.doce12000@outlook.com'
+global.cn ='https://whatsapp.com/channel/0029VacDy0R6hENqnTKnG820';
 
 var ase = new Date(); var hour = ase.getHours(); switch(hour){ case 0: hour = 'Linda Mañana'; break; case 1: hour = 'Linda Mañana'; break; case 2: hour = 'Linda Mañana'; break; case 3: hour = 'Linda Mañana'; break; case 4: hour = 'linda mañana'; break; case 5: hour = 'Linda Mañana'; break; case 6: hour = 'Linda Mañana'; break; case 7: hour = 'Linda Mañana'; break; case 8: hour = 'Linda Mañana'; break; case 9: hour = 'Linda Mañana'; break; case 10: hour = 'Lindo Dia'; break; case 11: hour = 'Lindo Dia'; break; case 12: hour = 'Lindo Dia'; break; case 13: hour = 'Lindo Dia'; break; case 14: hour = 'Linda Tarde'; break; case 15: hour = 'Linda Tarde'; break; case 16: hour = 'Linda Tarde'; break; case 17: hour = 'Linda Tarde'; break; case 18: hour = 'Linda Noche'; break; case 19: hour = 'Linda Noche'; break; case 20: hour = 'Linda Noche'; break; case 21: hour = 'Linda Noche'; break; case 22: hour = 'Linda Noche'; break; case 23: hour = 'Linda Noche'; break;}
 global.saludo = '🍭' + hour;
 
-global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: "120363276986902836@newsletter", serverMessageId: 100, newsletterName: namechannel, }, }, }
+global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: "120363307382381547@newsletter", serverMessageId: 100, newsletterName: namechannel, }, }, }
 //• ↳ ◜𝑻𝑰𝑬𝑴𝑷𝑶◞ • 🕒
 global.d = new Date(new Date + 3600000);
 global.locale = 'es';
@@ -116,8 +133,8 @@ global.mes = d.toLocaleDateString('es', {month: 'long'});
 global.año = d.toLocaleDateString('es', {year: 'numeric'});
 global.tiempo = d.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true});
 //* ****************************
-global.wm2 = `${dia} ${fecha}\nGokuBlack - Bot`;
-global.nomorown = '595972157130';
+global.wm2 = `${dia} ${fecha}\nHuTao-Proyecy`;
+global.nomorown = '5218711426787';
 global.pdoc = ['application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.ms-excel', 'application/msword', 'application/pdf', 'text/rtf'];
 global.cmenut = '❖––––––『';
 global.cmenub = '┊✦ ';
@@ -190,356 +207,8 @@ global.APIKeys = {
   'https://api.xyroinee.xyz': 'uwgflzFEh6'
 };
 
-/** ************************/
 global.cheerio = cheerio;
 global.fs = fs;
 global.fetch = fetch;
 global.axios = axios;
 global.moment = moment;
-global.rpg = {
-  emoticon(string) {
-    string = string.toLowerCase();
-    const emot = {
-      level: '🧬 Nivel',
-      estrellas: '🌟 Estrella',
-      exp: '⚡ Experiencia',
-      bank: '🏦 Banco',
-      diamond: '💎 Diamante',
-      health: '❤️ Salud',
-      kyubi: '🌀 Magia',
-      joincount: '💰 Token',
-      emerald: '💚 Esmeralda',
-      stamina: '✨ Energía',
-      role: '💪 Rango',
-      premium: '🎟️ Premium',
-      pointxp: '📧 Puntos Exp',
-      gold: '👑 Oro',
-      trash: '🗑 Basura',
-      crystal: '🔮 Cristal',
-      intelligence: '🧠 Inteligencia',
-      string: '🕸️ Cuerda',
-      keygold: '🔑 Llave de Oro',
-      keyiron: '🗝️ Llave de Hierro',
-      emas: '🪅 Piñata',
-      fishingrod: '🎣 Caña de Pescar',
-      gems: '🍀 Gemas',
-      magicwand: '⚕️ Varita Mágica',
-      mana: '🪄 Hechizo',
-      agility: '🤸‍♂️ Agilidad',
-      darkcrystal: '♠️ Cristal Oscuro',
-      iron: '⛓️ Hierro',
-      rock: '🪨 Roca',
-      potion: '🥤 Poción',
-      superior: '💼 Superior',
-      robo: '🚔 Robo',
-      upgrader: '🧰 Aumentar Mejora',
-      wood: '🪵 Madera',
-      strength: '🦹‍ ♀️ Fuerza',
-      arc: '🏹 Arco',
-      armor: '🥼 Armadura',
-      bow: '🏹 Super Arco',
-      pickaxe: '⛏️ Pico',
-      sword: '⚔️ Espada',
-      common: '📦 Caja Común',
-      uncoommon: '🥡 Caja Poco Común',
-      mythic: '🗳️ Caja Mítico',
-      legendary: '🎁 Caja Legendaria',
-      petFood: '🍖 Alimento para Mascota',
-      pet: '🍱 Caja para Mascota',
-      bibitanggur: '🍇 Semilla de Uva',
-      bibitapel: '🍎 Semilla de Manzana',
-      bibitjeruk: '🍊 Semillas de naranja',
-      bibitmangga: '🥭 Semilla de Mango',
-      bibitpisang: '🍌 Semillas de Plátano',
-      ayam: '🐓 Pollo',
-      babi: '🐖 Puerco',
-      Jabali: '🐗 Jabali',
-      bull: '🐃 Toro',
-      buaya: '🐊 Cocodrilo',
-      cat: '🐈 Gato',
-      centaur: '🐐 Centauro',
-      chicken: '🐓 Pollo',
-      cow: '🐄 Vaca',
-      dog: '🐕 Perro',
-      dragon: '🐉 Dragón',
-      elephant: '🐘 Elefante',
-      fox: '🦊 Zorro',
-      giraffe: '🦒 Jirafa',
-      griffin: '🦅 Ave',
-      horse: '🐎 Caballo',
-      kambing: '🐐 Cabra',
-      kerbau: '🐃 Búfalo',
-      lion: '🦁 León',
-      money: '❤️‍🔥 MeguCoins',
-      monyet: '🐒 Mono',
-      panda: '🐼 Panda',
-      snake: '🐍 Serpiente',
-      phonix: '🕊️ Fénix',
-      rhinoceros: '🦏 Rinoceronte',
-      wolf: '🐺 Lobo',
-      tiger: '🐅 Tigre',
-      cumi: '🦑 Calamar',
-      udang: '🦐 Camarón',
-      ikan: '🐟 Pez',
-      fideos: '🍝 Fideos',
-      ramuan: '🧪 Ingrediente NOVA',
-      knife: '🔪 Cuchillo',
-    };
-    const results = Object.keys(emot).map((v) => [v, new RegExp(v, 'gi')]).filter((v) => v[1].test(string));
-    if (!results.length) return '';
-    else return emot[results[0][0]];
-  }};
-global.rpgg = { // Solo emojis
-  emoticon(string) {
-    string = string.toLowerCase();
-    const emott = {
-      level: '🧬',
-      estrellas: '🌟',
-      exp: '⚡',
-      bank: '🏦',
-      diamond: '💎+',
-      health: '❤️',
-      kyubi: '🌀',
-      joincount: '💰',
-      emerald: '💚',
-      stamina: '✨',
-      role: '💪',
-      premium: '🎟️',
-      pointxp: '📧',
-      gold: '👑',
-      trash: '🗑',
-      crystal: '🔮',
-      intelligence: '🧠',
-      string: '🕸️',
-      keygold: '🔑',
-      keyiron: '🗝️',
-      emas: '🪅',
-      fishingrod: '🎣',
-      gems: '🍀',
-      magicwand: '⚕️',
-      mana: '🪄',
-      agility: '🤸‍♂️',
-      darkcrystal: '♠️',
-      iron: '⛓️',
-      rock: '🪨',
-      potion: '🥤',
-      superior: '💼',
-      robo: '🚔',
-      upgrader: '🧰',
-      wood: '🪵',
-      strength: '🦹‍ ♀️',
-      arc: '🏹',
-      armor: '🥼',
-      bow: '🏹',
-      pickaxe: '⛏️',
-      sword: '⚔️',
-      common: '📦',
-      uncoommon: '🥡',
-      mythic: '🗳️',
-      legendary: '🎁',
-      petFood: '🍖',
-      pet: '🍱',
-      bibitanggur: '🍇',
-      bibitapel: '🍎',
-      bibitjeruk: '🍊',
-      bibitmangga: '🥭',
-      bibitpisang: '🍌',
-      ayam: '🐓',
-      babi: '🐖',
-      Jabali: '🐗',
-      bull: '🐃',
-      buaya: '🐊',
-      cat: '🐈',
-      centaur: '🐐',
-      chicken: '🐓',
-      cow: '🐄',
-      dog: '🐕',
-      dragon: '🐉',
-      elephant: '🐘',
-      fox: '🦊',
-      giraffe: '🦒',
-      griffin: '🦅',
-      horse: '🐎',
-      kambing: '🐐',
-      kerbau: '🐃',
-      lion: '🦁',
-      money: '❤️‍🔥',
-      monyet: '🐒',
-      panda: '🐼',
-      snake: '🐍',
-      phonix: '🕊️',
-      rhinoceros: '🦏',
-      wolf: '🐺',
-      tiger: '🐅',
-      cumi: '🦑',
-      udang: '🦐',
-      ikan: '🐟',
-      fideos: '🍝',
-      ramuan: '🧪',
-      knife: '🔪',
-    };
-    const results = Object.keys(emott).map((v) => [v, new RegExp(v, 'gi')]).filter((v) => v[1].test(string));
-    if (!results.length) return '';
-    else return emott[results[0][0]];
-  }};
-global.rpgshop = { // Tienda
-  emoticon(string) {
-    string = string.toLowerCase();
-    const emottt = {
-      exp: '⚡ Experiencia',
-      estrellas: '🌟 Estrella',
-      diamond: '💎 Diamante',
-      joincount: '💰 Token',
-      emerald: '💚 Esmeralda',
-      berlian: '♦️ Joya',
-      kyubi: '🌀 Magia',
-      gold: '👑 Oro',
-      money: '❤️‍🔥 MeguCoins',
-      tiketcoin: '🎫 Mini Tickers',
-      stamina: '✨ Energía',
-      potion: '🥤 Poción',
-      aqua: '💧 Agua',
-      trash: '🗑 Basura',
-      wood: '🪵 Madera',
-      rock: '🪨 Roca',
-      batu: '🥌 Piedra',
-      string: '🕸️ Cuerda',
-      iron: '⛓️ Hierro',
-      coal: '⚱️ Carbón',
-      botol: '🍶 Botella',
-      kaleng: '🥫 Lata',
-      kardus: '🪧 Cartón',
-      eleksirb: '💡 Electricidad',
-      emasbatang: '〽️ Barra de Oro',
-      emasbiasa: '🧭 Oro Común',
-      rubah: '🦊🌫️ Zorro Grande',
-      sampah: '🗑🌫️ Super Basura',
-      serigala: '🐺🌫️ Super Lobo',
-      kayu: '🛷 Super Madera',
-      sword: '⚔️ Espada',
-      umpan: '🪱 Carnada',
-      healtmonster: '💵 Billetes',
-      emas: '🪅 Piñata',
-      pancingan: '🪝 Gancho',
-      pancing: '🎣 Caña de Pescar',
-      common: '📦 Caja Común',
-      uncoommon: '🥡 Caja Poco Común',
-      mythic: '🗳️ Caja Mítica',
-      pet: '📫 Caja de Mascotas', // ?
-      gardenboxs: '💐 Caja de Jardinería', // ?
-      legendary: '🎁 Caja Legendaria',
-      anggur: '🍇 Uva',
-      apel: '🍎 Manzana',
-      jeruk: '🍊 Naranja',
-      mangga: '🥭 Mango',
-      pisang: '🍌 Platano',
-      bibitanggur: '🌾🍇 Semillas de uva',
-      bibitapel: '🌾🍎 Semillas de manzana',
-      bibitjeruk: '🌾🍊 Semillas de naranja',
-      bibitmangga: '🌾🥭 Semillas de Mango',
-      bibitpisang: '🌾🍌 Semillas de plátano',
-      centaur: '🐐 Centauro',
-      griffin: '🦅 Ave',
-      kucing: '🐈 Gato',
-      naga: '🐉 Dragón',
-      fox: '🦊 Zorro',
-      kuda: '🐎 Caballo',
-      phonix: '🕊️ Fénix',
-      wolf: '🐺 Lobo',
-      anjing: '🐶 Perro',
-      petFood: '🍖 Alimento para Mascota', // ?
-      makanancentaur: '🐐🥩 Comida de Centauro',
-      makanangriffin: '🦅🥩 Comida de Ave',
-      makanankyubi: '🌀🥩 Comida Mágica',
-      makanannaga: '🐉🥩 Comida de Dragón',
-      makananpet: '🍱🥩 Alimentos de mascotas',
-      makananphonix: '🕊️🥩 Comida de Fénix',
-    };
-    const results = Object.keys(emottt).map((v) => [v, new RegExp(v, 'gi')]).filter((v) => v[1].test(string));
-    if (!results.length) return '';
-    else return emottt[results[0][0]];
-  }};
-global.rpgshopp = { // Tienda
-  emoticon(string) {
-    string = string.toLowerCase();
-    const emotttt = {
-      exp: '⚡',
-      estrellas: '🌟',
-      diamond: '💎+',
-      joincount: '💰',
-      emerald: '💚',
-      berlian: '♦️',
-      kyubi: '🌀',
-      gold: '👑',
-      money: '❤️‍🔥',
-      tiketcoin: '🎫',
-      stamina: '✨',
-      potion: '🥤',
-      aqua: '💧',
-      trash: '🗑',
-      wood: '🪵',
-      rock: '🪨',
-      batu: '🥌',
-      string: '🕸️',
-      iron: '⛓️',
-      coal: '⚱️',
-      botol: '🍶',
-      kaleng: '🥫',
-      kardus: '🪧',
-      eleksirb: '💡',
-      emasbatang: '〽️',
-      emasbiasa: '🧭',
-      rubah: '🦊🌫️',
-      sampah: '🗑🌫️',
-      serigala: '🐺🌫️',
-      kayu: '🛷',
-      sword: '⚔️',
-      umpan: '🪱',
-      healtmonster: '💵',
-      emas: '🪅',
-      pancingan: '🪝',
-      pancing: '🎣',
-      common: '📦',
-      uncoommon: '🥡',
-      mythic: '🗳️',
-      pet: '📫', // ?
-      gardenboxs: '💐', // ?
-      legendary: '🎁',
-      anggur: '🍇',
-      apel: '🍎',
-      jeruk: '🍊',
-      mangga: '🥭',
-      pisang: '🍌',
-      bibitanggur: '🌾🍇',
-      bibitapel: '🌾🍎',
-      bibitjeruk: '🌾🍊',
-      bibitmangga: '🌾🥭',
-      bibitpisang: '🌾🍌',
-      centaur: '🐐',
-      griffin: '🦅',
-      kucing: '🐈',
-      naga: '🐉',
-      fox: '🦊',
-      kuda: '🐎',
-      phonix: '🕊️',
-      wolf: '🐺',
-      anjing: '🐶',
-      petFood: '🍖', // ?
-      makanancentaur: '🐐🥩',
-      makanangriffin: '🦅🥩',
-      makanankyubi: '🌀🥩',
-      makanannaga: '🐉🥩',
-      makananpet: '🍱🥩',
-      makananphonix: '🕊️🥩',
-    };
-    const results = Object.keys(emotttt).map((v) => [v, new RegExp(v, 'gi')]).filter((v) => v[1].test(string));
-    if (!results.length) return '';
-    else return emotttt[results[0][0]];
-  }};
-
-const file = fileURLToPath(import.meta.url);
-watchFile(file, () => {
-  unwatchFile(file);
-  console.log(chalk.redBright('Update \'config.js\''));
-  import(`${file}?update=${Date.now()}`);
-});
