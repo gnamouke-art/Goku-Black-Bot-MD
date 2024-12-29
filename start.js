@@ -1,9 +1,7 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1'
-import './config.js'
-import { setupMaster, fork } from 'cluster'
-import { watchFile, unwatchFile } from 'fs'
-import cfonts from 'cfonts'
+import './settings.js'
 import {createRequire} from 'module'
+import path, {join} from 'path'
 import {fileURLToPath, pathToFileURL} from 'url'
 import {platform} from 'process'
 import * as ws from 'ws'
@@ -19,65 +17,18 @@ import boxen from 'boxen'
 import P from 'pino'
 import pino from 'pino'
 import Pino from 'pino'
-import path, { join, dirname } from 'path'
 import {Boom} from '@hapi/boom'
-import {makeWASocket, protoType, serialize} from '../lib/simple.js'
+import {makeWASocket, protoType, serialize} from './lib/simple.js'
 import {Low, JSONFile} from 'lowdb'
-import {mongoDB, mongoDBV2} from '../lib/mongoDB.js'
-import store from '../lib/store.js'
+import {mongoDB, mongoDBV2} from './lib/mongoDB.js'
+import store from './lib/store.js'
 const {proto} = (await import('@whiskeysockets/baileys')).default
 const {DisconnectReason, useMultiFileAuthState, MessageRetryMap, fetchLatestBaileysVersion, makeCacheableSignalKeyStore, jidNormalizedUser, PHONENUMBER_MCC} = await import('@whiskeysockets/baileys')
-import readline, { createInterface } from 'readline'
+import readline from 'readline'
 import NodeCache from 'node-cache'
 const {CONNECTING} = ws
 const {chain} = lodash
 const PORT = process.env.PORT || process.env.SERVER_PORT || 3000
-
-//const megu = dirname(fileURLToPath(import.meta.url))
-//let require = createRequire(megu)
-let { say } = cfonts
-
-console.log(chalk.bold.redBright(`\n💥 Iniciando Megumin Bot - MD\n`))
-
-say('Megumin-Bot', {
-font: 'block',
-align: 'center',
-colors: ['white']
-})
-
-say(`Multi Device`, {
-font: 'chrome',
-align: 'center',
-colors: ['red']
-})
-
-say(`Developed By • David-Chian`, {
-font: 'console',
-align: 'center',
-colors: ['yellow']
-})
-
-/*let p = fork()
-p.on('message', data => {
-switch (data) {
-case 'reset':
-p.process.kill()
-isRunning = false
-start.apply(this, arguments)
-break
-}
-})
-
-p.on('exit', (_, code) => {
-isRunning = false
-console.error('🚩 Error:\n', code)
-process.exit()
-if (code === 0) return
-watchFile(args[0], () => {
-unwatchFile(args[0])
-start(file)
-})
-})*/
 
 protoType()
 serialize()
@@ -97,10 +48,10 @@ global.timestamp = {start: new Date}
 const __dirname = global.__dirname(import.meta.url)
 
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
-global.prefix = new RegExp('^[#!./$]')
+global.prefix = new RegExp('^[/.$#!]')
 // global.opts['db'] = process.env['db']
 
-global.db = new Low(/https?:\/\//.test(opts['db'] || '') ? new cloudDBAdapter(opts['db']) : new JSONFile('database.json'))
+global.db = new Low(/https?:\/\//.test(opts['db'] || '') ? new cloudDBAdapter(opts['db']) : new JSONFile('src/database/database.json'))
 
 global.DATABASE = global.db 
 global.loadDatabase = async function loadDatabase() {
@@ -240,8 +191,6 @@ if (opts['autocleartmp'] && (global.support || {}).find) (tmp = [os.tmpdir(), 't
 
 if (opts['server']) (await import('./server.js')).default(global.conn, PORT);
 
-let ppBot = 'https://telegra.ph/file/24fa902ead26340f3df2c.png'
-
 async function connectionUpdate(update) {
 const {connection, lastDisconnect, isNewLogin} = update;
 global.stopped = connection;
@@ -257,10 +206,8 @@ if (opcion == '1' || methodCodeQR) {
 console.log(chalk.bold.yellow(`\n✅ ESCANEA EL CÓDIGO QR EXPIRA EN 45 SEGUNDOS`))}
 }
 if (connection == 'open') {
-console.log(chalk.bold.green('\n❒⸺⸺⸺⸺【• CONECTADO •】⸺⸺⸺⸺❒\n│\n│ 🟢  Se ha conectado con WhatsApp exitosamente.\n│\n❒⸺⸺⸺⸺【• CONECTADO •】⸺⸺⸺⸺❒'))
-await joinChannels(conn)
-/*conn.sendMessage("120363350554513092@newsletter", { text: '👋 Hola seguidores!\n💥 Me he conectado nuevamente!!', contextInfo: { externalAdReply: { title: "💥 MEGUMIN BOT - MD ❤️‍🔥", body: '💥 Megumin Bot conectada nuevamente!', thumbnailUrl: ppBot, sourceUrl: 'https://cafirexos.com', mediaType: 1, showAdAttribution: false, renderLargerThumbnail: false }}}, { quoted: null })*/
-}
+console.log(boxen(chalk.bold(' ¡CONECTADO CON WHATSAPP! '), { borderStyle: 'round', borderColor: 'green', title: chalk.green.bold('● CONEXIÓN ●'), titleAlignment: '', float: '' }))
+await joinChannels(conn)}
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
 if (connection === 'close') {
 if (reason === DisconnectReason.badSession) {
@@ -332,7 +279,7 @@ isInit = false
 return true
 };
 
-const pluginFolder = global.__dirname(join(__dirname, '../plugins/index'))
+const pluginFolder = global.__dirname(join(__dirname, './plugins/index'))
 const pluginFilter = (filename) => /\.js$/.test(filename)
 global.plugins = {}
 async function filesInit() {
