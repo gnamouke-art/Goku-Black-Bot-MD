@@ -48,7 +48,7 @@ let url_dl = isVideo ? result.data.download.url : result.data
   }
 };
 
-handler.command = handler.help = ['MB', 'MB2', 'MD', 'MB4', 'MB8', 'In', 'in3'];
+handler.command = handler.help = ['play', 'playvid', 'ytv', 'ytmp4', 'yta', 'play2', 'ytmp3'];
 handler.tags = ['dl'];
 handler.diamond = 4;
 
