@@ -57,7 +57,7 @@ let handler = async (m, { conn, text }) => {
   }
 };
 
-handler.help = ['Jota *<url>*'];
-handler.command = ['Jota'];
+handler.help = ['go *<url>*'];
+handler.command = ['go'];
 handler.tags = ['dl'];
 export default handler;
