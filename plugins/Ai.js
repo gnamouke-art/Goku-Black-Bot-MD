@@ -100,12 +100,12 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     await conn.reply(m.chat, infoMessage, m, JT);
 
-    if (command === 'play') {
+    if (command === 'play10') {
         const api = await ddownr.download(url, 'mp3');
         const result = api.downloadUrl;
         await conn.sendMessage(m.chat, { audio: { url: result }, mimetype: "audio/mpeg" }, { quoted: m });
 
-    } else if (command === 'play2' || command === 'ytmp4') {
+    } else if (command === 'play20' || command === 'ytmp40') {
       let sources = [
         `https://api.siputzx.my.id/api/d/ytmp4?url=${url}`,
         `https://api.zenkey.my.id/api/download/ytmp4?apikey=zenkey&url=${url}`,
