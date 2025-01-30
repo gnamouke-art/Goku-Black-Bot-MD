@@ -64,6 +64,6 @@ ID: *${randomCharacter.url || 'No disponible'}*`; // Manejo de ID
 
 handler.help = ['waifu'];
 handler.tags = ['slut'];
-handler.command = ['waifuclaim'];
+handler.command = ['rc'];
 
 export default handler;
