@@ -1,49 +1,69 @@
-import axios from 'axios';
+import { promises as fs } from 'fs';
 
-const handler = async (m, { conn, args }) => {
-  try {
-    const query = args[0];
-    if (!query) return m.reply('🤍 *Ejemplo:* .ytmp3 <URL de YouTube>');
+const charactersFilePath = './src/JSON/characters.json';
 
-    // Notificar al usuario que se está obteniendo el audio
-    await m.reply('🔍 *Obteniendo detalles del audio...*');
+const cooldowns = {};
 
-    // URL de la API para descargar el audio
-    const apiUrl = `https://api.davidcyriltech.my.id/download/ytmp3?url=${encodeURIComponent(query)}`;
-    const response = await axios.get(apiUrl);
+async function loadCharacters() {
+    try {
+        const data = await fs.readFile(charactersFilePath, 'utf-8');
+        return JSON.parse(data);
+    } catch (error) {
+        throw new Error('❀ No se pudo cargar el archivo characters.json.');
+    }
+}
 
-    // Comprobar si los datos de respuesta contienen download_url
-    if (!response.data?.result?.download_url) {
-      return m.reply('🚫 *Error al obtener el audio.* Verifica la URL o intenta nuevamente más tarde.');
+async function saveCharacters(characters) {
+    try {
+        await fs.writeFile(charactersFilePath, JSON.stringify(characters, null, 2), 'utf-8');
+    } catch (error) {
+        throw new Error('❀ No se pudo guardar el archivo characters.json.');
+    }
+}
+
+let handler = async (m, { conn }) => {
+    const userId = m.sender;
+    const now = Date.now();
+
+    // Verificar cooldown
+    if (cooldowns[userId] && now < cooldowns[userId]) {
+        const remainingTime = Math.ceil((cooldowns[userId] - now) / 1000);
+        const minutes = Math.floor(remainingTime / 60);
+        const seconds = remainingTime % 60;
+        return await conn.reply(m.chat, `《✧》Debes esperar *${minutes} minutos y ${seconds} segundos* para usar *#ver* de nuevo.`, m);
     }
 
-    // Extraer detalles del audio
-    const { title, quality, thumbnail, download_url } = response.data.result;
+    try {
+        const characters = await loadCharacters();
+        const randomCharacter = characters[Math.floor(Math.random() * characters.length)];
+        const randomImage = randomCharacter.url; // Asegúrate de que esto esté correcto
 
-    // Preparar el texto para el documento de audio
-    const caption = `🔥 *\`Título:\`* ${title}
-🍁 *\`Calidad:\`* ${quality}
-🤍 *\`Miniatura:\`* ${thumbnail}`;
+        const statusMessage = randomCharacter.user
+            ? `Reclamado por @${randomCharacter.user.split('@')[0]}` 
+            : 'Libre';
 
-    // Enviar el audio como un documento
-    await conn.sendMessage(m.chat, {
-      document: { url: download_url },
-      fileName: `${title}.mp3`,
-      mimetype: 'audio/mpeg',
-      caption: caption,
-    }, { quoted: m });
+        const message = `❀ Nombre » *${randomCharacter.name}*
+⚥ Valor » *${randomCharacter.value}*
+♡ Estado » ${statusMessage}
+ID: *${randomCharacter.url || 'No disponible'}*`; // Manejo de ID
 
-    // Notificar al usuario sobre la finalización exitosa
-    await m.reply('✅ *¡Audio enviado con éxito como documento!*');
+        await conn.sendFile(m.chat, randomImage, `${randomCharacter.name}.jpg`, message, m);
 
-  } catch (error) {
-    console.error('Error en el comando ytmp3:', error.message);
-    m.reply('⚠️ *Ocurrió un error al procesar tu solicitud.* Por favor, intenta nuevamente más tarde.');
-  }
+        // Asignar usuario si está libre
+        if (!randomCharacter.user) {
+            randomCharacter.user = userId;
+            await saveCharacters(characters);
+        }
+
+        cooldowns[userId] = now + 60 * 1000; // 1 minuto de cooldown
+
+    } catch (error) {
+        await conn.reply(m.chat, `✘ Error al cargar el personaje: ${error.message}`, m);
+    }
 };
 
-handler.help = ['doc'];
-handler.tags = ['descargar'];
-handler.command = /^doc|doc$/i;
+handler.help = ['waifu'];
+handler.tags = ['slut'];
+handler.command = ['waifuclaim'];
 
 export default handler;
