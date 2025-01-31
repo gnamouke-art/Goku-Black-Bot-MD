@@ -1,3 +1,8 @@
+//CRÉDITOS A hutao proyect by:miguelon
+/*
+• @Eliasivan 
+- https://github.com/Eliasivan 
+*/
 import fetch from "node-fetch";
 import yts from 'yt-search';
 import axios from "axios";
@@ -100,12 +105,12 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     await conn.reply(m.chat, infoMessage, m, JT);
 
-    if (command === 'play10') {
+    if (command === 'play') {
         const api = await ddownr.download(url, 'mp3');
         const result = api.downloadUrl;
         await conn.sendMessage(m.chat, { audio: { url: result }, mimetype: "audio/mpeg" }, { quoted: m });
 
-    } else if (command === 'play20' || command === 'ytmp40') {
+    } else if (command === 'play2' || command === 'ytmp4') {
       let sources = [
         `https://api.siputzx.my.id/api/d/ytmp4?url=${url}`,
         `https://api.zenkey.my.id/api/download/ytmp4?apikey=zenkey&url=${url}`,
@@ -147,7 +152,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 };
 
-handler.command = handler.help = ['play10', 'ytmp40', 'play20'];
+handler.command = handler.help = ['play', 'ytmp4', 'play2'];
 handler.tags = ['downloader'];
 handler.group = true
 
