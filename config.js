@@ -84,36 +84,36 @@ global.jadi = 'jadibots'
 global.hutaoJadibts = true
 
 global.ch = {
-ch1: '120363350554513092@newsletter',
-ch2: '120363263466636910@newsletter',
-ch3: '120363307382381547@newsletter',
-ch4: '120363370415738881@newsletter',
-ch5: '120363358338732714@newsletter',
+ch1: '120363276986902836@newsletter',
+ch2: '120363276986902836@newsletter',
+ch3: '120363276986902836@newsletter',
+ch4: '120363276986902836@newsletter',
+ch5: '120363276986902836@newsletter',
 }
 
 //• ↳ ◜𝑭𝑨𝑲𝑬 𝑬𝑺𝑻𝑰𝑳𝑶◞ • 🪩
-global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: '󠁖󠁖󠁖󠁖󠁖󠁖󠁻󠁻𝐇𝐮ⷡ𝐓ⷪ𝐚ⷮ𝐨-𝐌𝐃󠁂󠀧󠁂🈀', orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
+global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: '󠁖󠁖󠁖󠁖󠁖󠁖󠁻󠁻Goku-Black-Bot-MD', orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
 
 global.fakegif2 = { key: { participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { videoMessage: { title: 'HuTao', h: `Hmm`, seconds: '99999', gifPlayback: true, caption: '♡٨ﮩ٨ﮩﮩ٨ﮩﮩ٨ﮩ ᗷIEᑎᐯEᑎIᗪO ﮩ٨ﮩﮩ٨ﮩﮩ٨ﮩ٨♡', jpegThumbnail: logo5 }}};
 
-global.fakegif3 = { key: { participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { videoMessage: { title: 'HuTao-MD', h: `Hmm`, seconds: '99999', gifPlayback: true, caption: '⚘݄𖠵⃕⁖𝐓𝐨𝐧𝐭𝐨 (￣へ ￣ ) ', jpegThumbnail: logo3 }}};
+global.fakegif3 = { key: { participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { videoMessage: { title: 'Goku-Black-Bot-MD, h: `Hmm`, seconds: '99999', gifPlayback: true, caption: '⚘݄𖠵⃕Eres un sabio 💞', jpegThumbnail: logo3 }}};
 
-global.fakegif4 = { key: { participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { videoMessage: { title: 'HuTao', h: `Hmm`, seconds: '99999', gifPlayback: true, caption: 'ཫ꙳✱( รՇเςкєгร )✱꙳ཀ', jpegThumbnail: logo5 }}};
+global.fakegif4 = { key: { participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { videoMessage: { title: 'HuTao', h: `Hmm`, seconds: '99999', gifPlayback: true, caption: 'Goku-Black-Bot-MD, jpegThumbnail: logo5 }}};
 
 global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: '󠁖󠁖󠁖󠁖󠁖󠁖󠁻󠁻𝐇𝐮ⷡ𝐓ⷪ𝐚ⷮ𝐨-𝐌𝐃󠁂󠀧󠁂🈀', orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
 
-global.fgif2 = { key: {participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "6289643739077-1613049930@g.us" } : {})},message: {"videoMessage": { "title":`͟͞ ★彡( Ӿł_₥ł₲ɄɆⱠØ₦77ӾӾ )彡★͟͞`, "h": `Hmm`,'seconds': '99999', 'gifPlayback': 'true', 'caption': `❀🔥❀❦ǶꓴƬ𐤠Θ-ꝒⱤΘƳƸƇƬ❧ ❀🦋❀\n ★彡( Ӿł_₥ł₲ɄɆⱠØ₦77ӾӾ )彡★͟`, 'jpegThumbnail': logo4 }}}
+global.fgif2 = { key: {participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "6289643739077-1613049930@g.us" } : {})},message: {"videoMessage": { "title":`͟͞ ★彡( Ӿł_₥ł₲ɄɆⱠØ₦77ӾӾ )彡★͟͞`, "h": `Hmm`,'seconds': '99999', 'gifPlayback': 'true', 'caption': `Goku-Black-Bot-MD\n Ivan`, 'jpegThumbnail': logo4 }}}
 
 //• ↳ ◜𝑳𝑰𝑵𝑲𝑺◞ • 🌿
-global.gp4 = 'https://chat.whatsapp.com/LcifaLUrmww6CPT27IuSAa' //Grupo Oficial De Hutao
-global.gp1 = 'https://chat.whatsapp.com/GFyLX1dDDxI0utho5GBmJI' //Grupo 
-global.gp2 = 'GE1wUxAsLleAxfCVvtsp1x' //Grupo
-global.comunidad1 = 'https://chat.whatsapp.com/GPEtINYPyIB6a6S55ZJcAO' //Comunidad Megumin
-global.channel = 'https://whatsapp.com/channel/0029VacDy0R6hENqnTKnG820' //Canal Oficial
-global.yt = 'https://youtube.com/@davidchian4957' //Canal De Youtube
-global.md = 'https://github.com/CheirZ' //Github Oficial
-global.correo = 'miguel.doce12000@outlook.com'
-global.cn ='https://whatsapp.com/channel/0029VacDy0R6hENqnTKnG820';
+global.gp4 = '' //Grupo Oficial De Hutao
+global.gp1 = '' //Grupo 
+global.gp2 = '' //Grupo
+global.comunidad1 = '' //Comunidad GokuBlack-Bot
+global.channel = '' //Canal Oficial
+global.yt = 'https://youtube.com/@Ivamods15' //Canal De Youtube
+global.md = 'https://github.com/Eliasivan' //Github Oficial
+global.correo = 'fireb5429@gmail.com'
+global.cn ='';
 
 var ase = new Date(); var hour = ase.getHours(); switch(hour){ case 0: hour = 'Linda Mañana'; break; case 1: hour = 'Linda Mañana'; break; case 2: hour = 'Linda Mañana'; break; case 3: hour = 'Linda Mañana'; break; case 4: hour = 'linda mañana'; break; case 5: hour = 'Linda Mañana'; break; case 6: hour = 'Linda Mañana'; break; case 7: hour = 'Linda Mañana'; break; case 8: hour = 'Linda Mañana'; break; case 9: hour = 'Linda Mañana'; break; case 10: hour = 'Lindo Dia'; break; case 11: hour = 'Lindo Dia'; break; case 12: hour = 'Lindo Dia'; break; case 13: hour = 'Lindo Dia'; break; case 14: hour = 'Linda Tarde'; break; case 15: hour = 'Linda Tarde'; break; case 16: hour = 'Linda Tarde'; break; case 17: hour = 'Linda Tarde'; break; case 18: hour = 'Linda Noche'; break; case 19: hour = 'Linda Noche'; break; case 20: hour = 'Linda Noche'; break; case 21: hour = 'Linda Noche'; break; case 22: hour = 'Linda Noche'; break; case 23: hour = 'Linda Noche'; break;}
 global.saludo = '🍭' + hour;
