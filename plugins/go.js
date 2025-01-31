@@ -43,8 +43,9 @@ let handler = async (m, { conn }) => {
             : 'Libre';
 
         const message = `Nombre » *${randomCharacter.name}*
-⚥ Valor » *${randomCharacter.value}*
-♡ Estado » ${statusMessage}*`; // Manejo de ID
+❃ Valor » *${randomCharacter.value}*
+₰ Estado » ${statusMessage}*
+𝗕𝗬:𝗚𝗢𝗞𝗨-𝗕𝗟𝗔𝗖𝗞-𝗕𝗢𝗧-𝗠𝗗`; // Manejo de ID
 
         await conn.sendFile(m.chat, randomImage, `${randomCharacter.name}.jpg`, message, m);
 
