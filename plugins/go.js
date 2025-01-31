@@ -90,8 +90,8 @@ ID: *${randomCharacter.id}*`;
     }
 };
 
-handler.help = ['rt', 'rt', 'rt'];
+handler.help = ['rb', 'rb', 'rb'];
 handler.tags = ['gachu'];
-handler.command = ['rt', 'rt', 'rt'];
+handler.command = ['rb', 'rb', 'rb'];
 
 export default handler;
