@@ -1,21 +1,46 @@
+import { WASocket, useMultiFileAuthState, makeInMemoryStore } from '@whiskeysockets/baileys';
+import { Boom } from '@hapi/boom';
+
 export async function before(m, { conn, isAdmin, isBotAdmin }) {
-    if (!m.isGroup) return;
-    let chat = global.db.data.chats[m.chat]
-    let delet = m.key.participant
-    let bang = m.key.id
-    let bot = global.db.data.settings[this.user.jid] || {}
-    if (m.fromMe) return true;
+  if (!m.isGroup) return;
 
-    if (m.id.startsWith('3EB0') && m.id.length === 22) {
-        let chat = global.db.data.chats[m.chat];
+  let chat = global.db.data.chats[m.chat];
+  if (m.fromMe) return true;
 
-        if (chat.antiBot) {
-       //     await conn.reply(m.chat, "     ͞ ͟͞ ͟GOOD!!💥͟ ͟͞ ͞   \n╚▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬▭╝\n\n𝑆𝑜𝑦 GokuBlack-𝑩𝒐𝒕-𝑴𝑫 𝑙𝑎 𝑚𝑒𝑗𝑜𝑟 𝑏𝑜𝑡 𝑑𝑒 𝑾𝒉𝒂𝒕𝒔𝑨𝒑𝒑!!\n𝐸𝑠𝑡𝑒 𝑔𝑟𝑢𝑝𝑜 𝑛𝑜 𝑡𝑒 𝑛𝑒𝑐𝑒𝑠𝑖𝑡𝑎, 𝑎𝑑𝑖𝑜𝑠𝑖𝑡𝑜 𝑏𝑜𝑡 𝑑𝑒 𝑠𝑒𝑔𝑢𝑛𝑑𝑎.", null, rcanal);
+  const botPatterns = [
+    /^3EB0/, 
+    /^4EB0/,
+    /^5EB0/,
+    /^6EB0/,
+    /^7EB0/,
+    /^8EB0/,
+    /^9EB0/,
+    /^AEB0/,
+    /^BEB0/,
+    /^CEB0/,
+    /^DEB0/,
+    /^EEB0/,
+    /^FEB0/,
+    /^BAE5/,
+    /^BAE7/,
+    /^CAEB0/,
+    /^DAEB0/,
+    /^EAEB0/,
+    /^FAEB0/,
+  ];
 
-            if (isBotAdmin) {
-await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: delet }})
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-            }
-        }
+  if (botPatterns.some(pattern => pattern.test(m.key.id)) && m.key.remoteJid.endsWith('@g.us')) {
+    if (chat.antiBot) {
+      if (isBotAdmin) {
+        console.log(`Eliminando mensaje del bot: ${m.key.id} del participante ${m.key.participant}`);
+        
+        await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.key.id, participant: m.key.participant } });
+
+       // await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
+      } else {
+        console.log('El bot no es administrador, no puede eliminar bots.');
+        m.reply('🧧 No soy administrador, el admin le tocara eliminarlo manualmente.\n> 🧨 Postada: Dame Admin Y Listo.');
+      }
     }
-}
+  }
+}*/
