@@ -1,7 +1,6 @@
 import { promises as fs } from 'fs';
 
 const charactersFilePath = './src/JSON/characters.json';
-const haremFilePath = './src/database/harem.json';
 
 const cooldowns = {};
 
@@ -22,77 +21,48 @@ async function saveCharacters(characters) {
     }
 }
 
-async function loadHarem() {
-    try {
-        const data = await fs.readFile(haremFilePath, 'utf-8');
-        return JSON.parse(data);
-    } catch (error) {
-        return [];
-    }
-}
-
-async function saveHarem(harem) {
-    try {
-        await fs.writeFile(haremFilePath, JSON.stringify(harem, null, 2), 'utf-8');
-    } catch (error) {
-        throw new Error('❀ No se pudo guardar el archivo harem.json.');
-    }
-}
-
 let handler = async (m, { conn }) => {
     const userId = m.sender;
     const now = Date.now();
 
+    // Verificar cooldown
     if (cooldowns[userId] && now < cooldowns[userId]) {
         const remainingTime = Math.ceil((cooldowns[userId] - now) / 1000);
         const minutes = Math.floor(remainingTime / 60);
         const seconds = remainingTime % 60;
-        return await conn.reply(m.chat, `《✧》Debes esperar *${minutes} minutos y ${seconds} segundos* para usar *#rw* de nuevo.`, m);
+        return await conn.reply(m.chat, `《✧》Debes esperar *${minutes} minutos y ${seconds} segundos* para usar *#ver* de nuevo.`, m);
     }
 
     try {
         const characters = await loadCharacters();
         const randomCharacter = characters[Math.floor(Math.random() * characters.length)];
-        const randomImage = randomCharacter.img[Math.floor(Math.random() * randomCharacter.img.length)];
+        const randomImage = randomCharacter.url; // Asegúrate de que esto esté correcto
 
-        const harem = await loadHarem();
-        const userEntry = harem.find(entry => entry.characterId === randomCharacter.id);
-        const statusMessage = randomCharacter.user 
+        const statusMessage = randomCharacter.user
             ? `Reclamado por @${randomCharacter.user.split('@')[0]}` 
             : 'Libre';
 
-        const message = `❀ Nombre » *${randomCharacter.name}*
-⚥ Género » *${randomCharacter.gender}*
-✰ Valor » *${randomCharacter.value}*
-♡ Estado » ${statusMessage}
-❖ Fuente » *${randomCharacter.source}*
-ID: *${randomCharacter.id}*`;
+        const message = `Nombre » *${randomCharacter.name}*
+⚥ Valor » *${randomCharacter.value}*
+♡ Estado » ${statusMessage}*`; // Manejo de ID
 
-        const mentions = userEntry ? [userEntry.userId] : [];
-        await conn.sendFile(m.chat, randomImage, `${randomCharacter.name}.jpg`, message, m, { mentions });
+        await conn.sendFile(m.chat, randomImage, `${randomCharacter.name}.jpg`, message, m);
 
+        // Asignar usuario si está libre
         if (!randomCharacter.user) {
             randomCharacter.user = userId;
-            const userEntry = {
-                userId: userId,
-                characterId: randomCharacter.id,
-                lastVoteTime: now,
-                voteCooldown: now + 1.5 * 60 * 60 * 1000
-            };
-            harem.push(userEntry);
-            await saveHarem(harem);
+            await saveCharacters(characters);
         }
 
-        await saveCharacters(characters);
-        cooldowns[userId] = now + 15 * 60 * 1000;
+        cooldowns[userId] = now + 60 * 1000; // 1 minuto de cooldown
 
     } catch (error) {
         await conn.reply(m.chat, `✘ Error al cargar el personaje: ${error.message}`, m);
     }
 };
 
-handler.help = ['rb', 'rb', 'rb'];
-handler.tags = ['gachu'];
-handler.command = ['rb', 'rb', 'rb'];
+handler.help = ['rb'];
+handler.tags = ['rb'];
+handler.command = ['rb'];
 
 export default handler;
