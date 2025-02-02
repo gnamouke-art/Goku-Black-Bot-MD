@@ -1,64 +1,31 @@
-import { WAMessageStubType } from '@whiskeysockets/baileys';
-import fetch from 'node-fetch';
+import { WAMessageStubType } from '@whiskeysockets/baileys'
+import fetch from 'node-fetch'
 
 export async function before(m, { conn, participants, groupMetadata }) {
-  if (!m.messageStubType || !m.isGroup) return true;
+  if (!m.messageStubType || !m.isGroup) return true
 
-  let vn = 'https://qu.ax/cTDa.mp3';
-  let vn2 = 'https://qu.ax/xynz.mp3';
-  let welc = welcome;
-  let adi = adios;
-  let chat = global.db.data.chats[m.chat];
-  const getMentionedJid = () => {
-    return m.messageStubParameters.map(param => `${param}@s.whatsapp.net`);
-  };
+  let who = m.messageStubParameters[0]
+  let taguser = `@${who.split('@')[0]}`
+  let chat = global.db.data.chats[m.chat]
+  let defaultImage = 'https://files.catbox.moe/xr2m6u.jpg';
 
-  let who = m.messageStubParameters[0] + '@s.whatsapp.net';
-  let user = global.db.data.users[who];
+  if (chat.welcome) {
+    let img;
+    try {
+      let pp = await conn.profilePictureUrl(who, 'image');
+      img = await (await fetch(pp)).buffer();
+    } catch {
+      img = await (await fetch(defaultImage)).buffer();
+    }
 
-  let userName = user ? user.name : await conn.getName(who);
-
-  if (chat.welcome && m.messageStubType === 27) {
-    this.sendMessage(m.chat, {
-      audio: { url: vn },
-      contextInfo: {
-        mentionedJid: getMentionedJid(),
-        "externalAdReply": {
-          "thumbnail": welc,
-          "title": "  ͟͞ Ｗ Ｅ Ｌ Ｃ Ｏ Ｍ Ｅ ͟͞  ",
-          "body": `${userName}!`,
-          "previewType": "PHOTO",
-          "thumbnailUrl": null,
-          "showAdAttribution": true,
-          sourceUrl: [yt, md, channel].sort(() => 0.5 - Math.random())[0]
-        }
-      },
-      ptt: true,
-      mimetype: 'audio/mpeg',
-      fileName: 'welcome.mp3'
-    }, { quoted: fkontak });
+    if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
+      let bienvenida = `🍬 *Bienvenido* a ${groupMetadata.subject}\n ✰ ${taguser}\n${global.welcom1}\n •(=^●ω●^=)• Disfruta tu estadía en el grupo!\n> 🍭 Puedes usar *#help* para ver la lista de comandos.`
+      await conn.sendMessage(m.chat, { image: img, caption: bienvenida, mentions: [who] })
+    } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE || m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
+      let bye = `🍬 *Adiós* De ${groupMetadata.subject}\n ✰ ${taguser}\n${global.welcom2}\n •(=^●ω●^=)• Te esperamos pronto!\n> 🍭 Puedes usar *#help* para ver la lista de comandos.`
+      await conn.sendMessage(m.chat, { image: img, caption: bye, mentions: [who] })
+    }
   }
 
-  if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) {
-    this.sendMessage(m.chat, {
-      audio: { url: vn2 },
-      contextInfo: {
-        mentionedJid: getMentionedJid(),
-        "externalAdReply": {
-        "thumbnail": adi,
-        "title": '  ͟͞ Ａ Ｄ Ｉ Ｏ Ｓ ͟͞  ',
-        "body": `${userName}, se despide.`,
-        "previewType": "PHOTO",
-          "showAdAttribution": true,
-          "containsAutoReply": true,
-         "thumbnailUrl": null,
-          "showAdAttribution": true,
-          "sourceUrl": redes
-        }
-      },
-      ptt: true,
-      mimetype: 'audio/mpeg',
-      fileName: 'bye.mp3'
-    }, { quoted: fkontak });
-  }
+  return true
 }
