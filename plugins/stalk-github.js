@@ -54,7 +54,7 @@ let handler = async (m, { text, command, usedPrefix }) => {
 
 handler.tags = ['internet'];
 handler.help = ['stalk *<búsqueda>*'];
-handler.command = /^s(talk|e)ar(git)?$/i;
+handler.command = ['stalk', 'stalkgit']
 handler.register = true;
 
 export default handler;
