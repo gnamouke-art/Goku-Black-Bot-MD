@@ -1,53 +1,55 @@
-import { default as makeWASocket } from '@whiskeysockets/baileys';
 
-const handler = async (m, { conn }) => {
+let handler = async (m, { conn, args }) => {
   try {
-        const documents = [
-      {
+    let id = args?.[0]?.match(/\d+\-\d+@g.us/) || m.chat;
 
-        title: "Grupo 1",
-        url: "https://chat.whatsapp.com/J9gyFJLbhVIJXaUZlpo8Xt",
-        fileName: "Grupo 1 - WhatsApp"
-      },
-      {
-        title: "Grupo 2",
-        url: "https://chat.whatsapp.com/J9gyFJLbhVIJXaUZlpo8Xt",
-        fileName: "Grupo 2 - WhatsApp"
-      },
-      {
-        title: "Grupo 3",
-        url: "https://chat.whatsapp.com/LJKcR8QBJgu37bVFWuhRVn",
-        fileName: "Grupo 3 - WhatsApp"
-      },
-      {
-        title: "Canal Oficial",
-        url: "https://whatsapp.com/channel/0029VacDy0R6hENqnTKnG820",
-        fileName: "Canal Oficial - WhatsApp"
-      }
-    ];
+    const participantesUnicos = Object.values(conn.chats[id]?.messages || {})
+      .map((item) => item.key.participant)
+      .filter((value, index, self) => self.indexOf(value) === index);
 
-    for (const doc of documents) {
-      const buttonMessage = {
-        document: {
-          url: doc.url,
-        },
-        mimetype: 'application/pdf',
-        fileName: doc.fileName,
-        caption: `📄 ${doc.title} - Únete al grupo`,
-        buttons: [
-          { buttonId: `link_${doc.url}`, buttonText: { displayText: `Unirme a ${doc.title}` }, type: 1 }
-        ],
-        headerType: 1
-      };
+    const participantesOrdenados = participantesUnicos.sort((a, b) =>
+      a.split("@")[0].localeCompare(b.split("@")[0]),
+    );
 
-      await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
-    }
+    const listaEnLinea =
+      participantesOrdenados
+        .map((k, i) => `*${i + 1}.* @${k.split("@")[0]}`)
+        .join("\n") || "No hay usuarios en linea en este momento :c.";
+
+    const imgUrl = "https://qu.ax/LgBRM.jpg";
+    const responseImg = await axios.get(imgUrl, {
+      responseType: "arraybuffer",
+    });
+
+    await conn.sendFile(
+      m.chat,
+      responseImg.data,
+      "thumbnail.png",
+      `*🌐 Lista de usuarios en línea ahora ♡:*\n${listaEnLinea}\n\n\`Goku-Black-Bot-MD By Ivan\``,
+      m,
+      {
+        contextInfo: { mentionedJid: participantesOrdenados },
+      },
+    );
+
+    await m.react("✅");
   } catch (error) {
-    console.error("Error enviando el mensaje:", error);
-    conn.reply(m.chat, `❌️ *OCURRIÓ UN ERROR:* ${error.message}`, m);
+    console.error(error);
+    await m.reply("Hubo un error al enviar  la imagen.");
   }
 };
 
-handler.command = ['test4'];
+handler.help = ["listonline"];
+handler.tags = ["grupo"];
+handler.command = ["listonline", "online", "linea", "enlinea"];
+handler.owner = false;
+handler.mods = false;
+handler.premium = false;
+handler.group = true;
+handler.private = false;
+handler.admin = false;
+handler.botAdmin = false;
+handler.fail = null;
+handler.register = true;
 
 export default handler;
