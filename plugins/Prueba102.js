@@ -1,22 +1,48 @@
 /*
 - GRACIAS POR VER ESTE ARCHIVO 
 */
-import fetch from 'node-fetch'
+import gplay from 'google-play-scraper';
+import fetch from 'node-fetch';
 
-let HS = async (m, { conn, command, text, usedPrefix }) => {
-if (!text) return conn.reply(m.chat, '`oyee pa deja el porno, ingresa el link pajero pa descargarte`', m)
-//si borras creditos eri gei 👀
-try {
-let api = await fetch(`https://www.dark-yasiya-api.site/download/phub?url=${text}`)
-let json = await api.json()
-let { video_title, video_uploader } = json.result
-let { download_url, resolution, } = json.result.format[1]
-await conn.sendMessage(m.chat, { video: { url: download_url }, caption: video_title }, { quoted: m })
-} catch (error) {
-console.error(error)
-}}
+let handler = async (m, { conn, args, usedPrefix: prefix, command }) => {
+    m.react('🤍');
 
-HS.command = ['hubpor']
+    if (!args[0]) {
+        console.log('Argumento vacío, enviando mensaje de ayuda');
+        return conn.reply(m.chat, `*🚩 Ingresa el enlace de la aplicación que deseas descargar de la Play Store.*\n\n*Ejemplo:*\n\`${prefix + command} https://play.google.com/store/apps/details?id=com.whatsapp\``, m);
+    }
 
-export default HS
-//Dejen creditos 👀 [ By Jtxs ] https://whatsapp.com/channel/0029Vanjyqb2f3ERifCpGT0W
+    const url = args[0];
+
+    let packageName;
+    try {
+        packageName = new URL(url).searchParams.get("id");
+        if (!packageName) throw new Error();
+    } catch {
+        return conn.reply(m.chat, `*❌ La URL proporcionada no es válida o no contiene un ID de aplicación.*`, m);
+    }
+
+    console.log(`ID de paquete: ${packageName}`);
+
+    let info;
+    try {
+        info = await gplay.app({ appId: packageName });
+    } catch (error) {
+        console.error(error);
+        return conn.reply(m.chat, `*❌ No se pudo encontrar la aplicación. Asegúrate de que el enlace sea correcto.*`, m);
+    }
+
+    const h = info.title;
+    console.log(`Título de la aplicación: ${h}\nID de la aplicación: ${info.appId}`);
+
+    let link = `https://d.apkpure.com/b/APK/${info.appId}?version=latest`;
+
+    conn.sendFile(m.chat, link, `${h}.apk`, ``, m, false, { mimetype: 'application/vnd.android.package-archive', asDocument: true });
+
+    m.react('✅️');
+
+    conn.reply(m.chat, `*¡Descarga completada para "${h}"!*`, m);
+}
+
+handler.command = /^(dlplaystore)$/i;
+export default handler;
