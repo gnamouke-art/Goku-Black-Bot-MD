@@ -1,12 +1,11 @@
 import fetch from 'node-fetch'
 
 let HS = async (m, { conn, command, text, usedPrefix }) => {
-if (!text) return conn.reply(m.chat, '`ingresa un texto para hablar con Cami-ia`', m)
-//si borras creditos eri gei 👀
+if (!text) return conn.reply(m.chat, '`ingresa un texto para hablar con Cami-ia`', rcanal, m)
 try {
 let api = await fetch(`https://api.davidcyriltech.my.id/ai/chatbot?query=${text}`)
 let json = await api.json()
-let JT = { contextInfo: { externalAdReply: { title: 'Cami - Ai', body: null,  mediaType: 1, previewType: 0, mediaUrl: 'https://chatgpt.com', sourceUrl: 'https://chatgpt.com', thumbnailUrl: 'https://qu.ax/OfoAC.jpg', renderLargerThumbnail: false }}}
+let JT = { contextInfo: { externalAdReply: { title: 'Cami - Ai', body: null,  mediaType: 1, previewType: 0, mediaUrl: 'https://Cami-Ia.com', sourceUrl: 'https://chatgpt.com', thumbnailUrl: 'https://qu.ax/OfoAC.jpg', renderLargerThumbnail: false }}}
 
   await conn.reply(m.chat, json.result, m, JT)
 
