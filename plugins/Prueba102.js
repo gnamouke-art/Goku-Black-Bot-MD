@@ -44,5 +44,5 @@ let handler = async (m, { conn, args, usedPrefix: prefix, command }) => {
     conn.reply(m.chat, `*¡Descarga completada para "${h}"!*`, m);
 }
 
-handler.command = /^(dlplaystore)$/i;
+handler.command = /^(store)$/i;
 export default handler;
