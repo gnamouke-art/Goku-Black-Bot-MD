@@ -23,7 +23,6 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 handler.help = ['jota *<url>*'];
 handler.tags = ['descargas'];
 handler.command = ['jota', 'yt'];
-handler.estrellas = 4;
 handler.register = true;
 
 export default handler;
