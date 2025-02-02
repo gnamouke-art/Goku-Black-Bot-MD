@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text }) => {
-if (!text) return conn.reply(m.chat, `❀ Ingresa un link de soundcloud`, m)
+if (!text) return conn.reply(m.chat, ` Ingresa un link de soundcloud`, m)
     
 if (!text.includes('soundcloud.com') && !text.includes('m.soundcloud.com')) return conn.reply(m.chat, `Ingresa un link de soundcloud`, m)
 
