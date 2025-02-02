@@ -1,33 +1,21 @@
 /*
 - GRACIAS POR VER ESTE ARCHIVO 
 */
-import axios from 'axios'
+import fetch from 'node-fetch'
 
-let HS = async (m, { conn, text }) => {
-if (!text) return conn.reply(m.chat, `❀ Ingresa un link de YouTube`, m)
-  
+let handler = async (m, { conn, text }) => {
+if (!text) throw '• Ingresa un enlace de YouTube.'
 try {
-let api = await axios.get(`https://mahiru-shiina.vercel.app/download/ytmp3?url=${text}`)
-let json = api.data
-
-let { title, description, uploaded, duration, views, type, url, thumbnail, author, download } = json.data
-let { name, url: authorUrl } = author
-
-
-let HS = `- *Titulo:* ${title}
-- *Autor:* ${name} - ${authorUrl}
-- *Descripción:* ${description}
-- *Subido:* ${uploaded}
-- *Duración:* ${duration}
-- *Vistas:* ${views}`
-
-await conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: HS }, { quoted: m })
-await conn.sendMessage(m.chat, { audio: { url: download }, mimetype: 'audio/mpeg' }, { quoted: m })
-    
-} catch (error) {
-console.error(error)
+let res = await fetch(`https://api.diioffc.web.id/api/download/ytmp3?url=${encodeURIComponent(text)}`)
+let json = await res.json()
+if (json.status && json.result?.download?.url) {
+let { title, thumbnail, views, duration, author, download } = json.result
+let caption = `• *Título:* ${title}\n• *Canal:* ${author.name}\n• *Duración:* ${duration.timestamp}\n• *Vistas:* ${views.toLocaleString()}`
+await conn.sendMessage(m.chat, { image: { url: thumbnail }, caption }, { quoted: m })
+await conn.sendMessage(m.chat, { audio: { url: download.url }, mimetype: 'audio/mpeg', fileName: download.filename || 'audio.mp3' }, { quoted: m })
+} else throw 'No se pudo obtener el audio.'
+} catch (e) {
+m.reply(`❌ *Error:* Ocurrió un error desconocido`)
 }}
-
-HS.command = ['ytmp3']
-
-export default HS
+handler.command = ['ytt']
+export default handler
