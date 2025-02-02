@@ -1,48 +1,28 @@
 /*
 - GRACIAS POR VER ESTE ARCHIVO 
 */
-import gplay from 'google-play-scraper';
-import fetch from 'node-fetch';
+//By JTxs  Ivanmods15
+// *[ ❀ PLAY ]*
+import fetch from 'node-fetch'
 
-let handler = async (m, { conn, args, usedPrefix: prefix, command }) => {
-    m.react('🤍');
+let handler = async (m, { conn, command, text, usedPrefix }) => {
+if (!text) return conn.reply(m.chat, `Ingresa el nombre de la cancion que quieras buscar`, m)
 
-    if (!args[0]) {
-        console.log('Argumento vacío, enviando mensaje de ayuda');
-        return conn.reply(m.chat, `*🚩 Ingresa el enlace de la aplicación que deseas descargar de la Play Store.*\n\n*Ejemplo:*\n\`${prefix + command} https://play.google.com/store/apps/details?id=com.whatsapp\``, m);
-    }
+try {
+let api = await fetch(`https://api.vreden.web.id/api/ytplaymp3?query=${text}`)
+let json = await api.json()
+let { title, thumbnail, timestamp, ago, views, author } = json.result.metadata
+let HS = `- *Titulo :* ${title}
+- *Duracion :* ${timestamp}
+- *Subido :* ${ago}
+- *Visitas :* ${views}
+- *Autor :* ${author.name}`
+await conn.sendFile(m.chat, thumbnail, 'HasumiBotFreeCodes.jpg', HS, m)
+await conn.sendFile(m.chat, json.result.download.url, 'HasumiBotFreeCodes.mp3', null, m)
+} catch (error) {
+console.error(error)
+}}
 
-    const url = args[0];
+handler.command = /^(play)$/i
 
-    let packageName;
-    try {
-        packageName = new URL(url).searchParams.get("id");
-        if (!packageName) throw new Error();
-    } catch {
-        return conn.reply(m.chat, `*❌ La URL proporcionada no es válida o no contiene un ID de aplicación.*`, m);
-    }
-
-    console.log(`ID de paquete: ${packageName}`);
-
-    let info;
-    try {
-        info = await gplay.app({ appId: packageName });
-    } catch (error) {
-        console.error(error);
-        return conn.reply(m.chat, `*❌ No se pudo encontrar la aplicación. Asegúrate de que el enlace sea correcto.*`, m);
-    }
-
-    const h = info.title;
-    console.log(`Título de la aplicación: ${h}\nID de la aplicación: ${info.appId}`);
-
-    let link = `https://d.apkpure.com/b/APK/${info.appId}?version=latest`;
-
-    conn.sendFile(m.chat, link, `${h}.apk`, ``, m, false, { mimetype: 'application/vnd.android.package-archive', asDocument: true });
-
-    m.react('✅️');
-
-    conn.reply(m.chat, `*¡Descarga completada para "${h}"!*`, m);
-}
-
-handler.command = /^(store)$/i;
-export default handler;
+export default handler
