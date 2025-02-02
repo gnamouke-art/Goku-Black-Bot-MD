@@ -1,25 +1,60 @@
+import axios from 'axios';
 import fetch from 'node-fetch';
+import cheerio from 'cheerio';
+import {mediafiredl} from '@bochilteam/scraper';
 
-let handler = async (m, { conn, text }) => {
-    if (!text) return conn.reply(m.chat, `🍬 Por favor, ingresa un link de mediafire`, m)
-  await m.react('🕓');
-
-    try {
-        let api = await fetch(`https://restapi.apibotwa.biz.id/api/mediafire?url=${text}`)
-        let json = await api.json()
-        let { filename, type, size, uploaded, ext, mimetype, download: dl_url } = json.data.response
-        m.reply(`${waitttt}`)
-        await m.react('✅');
-        await conn.sendFile(m.chat, dl_url, filename, null, m, null, { mimetype: ext, asDocument: true })
-    } catch (error) {
-        console.error(error)
-    }
-}
-
-handler.help = ['mediafire *<url>*']
-handler.tags = ['descargas']
-handler.command = ['mediafire', 'mf']
-handler.coin = 5;
-handler.premium
-
+const handler = async (m, {conn, args, usedPrefix, command}) => {
+let sticker = 'https://qu.ax/Wdsb.webp'
+if (!args[0]) return conn.reply(m.chat, `⚠️ 𝙄𝙣𝙜𝙧𝙚𝙨𝙚 𝙪𝙣 𝙀𝙣𝙡𝙖𝙘𝙚 𝙫𝙖𝙡𝙞𝙙𝙤 𝙙𝙚𝙡 𝙢𝙚𝙙𝙞𝙖𝙛𝙞𝙧𝙚 𝙀𝙟:*\n${usedPrefix + command} https://www.mediafire.com/file/cv64tns6co3272q/Lolibot.zip/file`, m, {contextInfo: {externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: wm, previewType: 0, thumbnail: img.getRandom(), sourceUrl: redes.getRandom()}}})   
+m.react(`🚀`) 
+ try {
+const res = await fetch(`${apis}/api/mediafire?url=${args[0]}`);
+if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+const data = await res.json();
+const fileDataArray = data.data;
+fileDataArray.forEach((fileData) => {
+const caption = `┏━━『 𝐌𝐄𝐃𝐈𝐀𝐅𝐈𝐑𝐄 』━━•\n┃❥ 𝐍𝐨𝐦𝐛𝐫𝐞 :\n┃${fileData.filename}\n┃——————«•»——————\n┃❥ 𝐏𝐞𝐬𝐨 :\n┃${fileData.size}\n\n┃——————«•»——————\n┃❥ 𝐓𝐢𝐩𝐨 :\n┃${fileData.mime}\n╰━━━⊰ 𓃠 ${vs} ⊱━━━━•\n\n> ⏳ ᴱˢᵖᵉʳᵉ ᵘⁿ ᵐᵒᵐᵉⁿᵗᵒ ᵉⁿ ˡᵒˢ ᵠᵘᵉ ᵉⁿᵛᶦᵒˢ ˢᵘˢ ᵃʳᶜʰᶦᵛᵒˢ`.trim();
+m.reply(caption);
+conn.sendFile(m.chat, fileData.link, fileData.filename, '', m, null, {mimetype: fileData.mime, asDocument: true, 
+});
+m.react(`✅`);
+});
+} catch (error) {
+try {
+const resEX = await mediafiredl(args[0]);
+const captionES = `┏━━『 𝐌𝐄𝐃𝐈𝐀𝐅𝐈𝐑𝐄 』━━•\n┃❥ 𝐍𝐨𝐦𝐛𝐫𝐞 :\n┃${resEX.filename}\n┃——————«•»——————\n┃❥ 𝐏𝐞𝐬𝐨 :\n┃ ${resEX.filesizeH}\n\n┃——————«•»——————\n┃❥ 𝐓𝐢𝐩𝐨 :\n┃${resEX.ext}\n\n╰━━━⊰ 𓃠 ${vs} ⊱━━━━•\n\n> ⏳ ᴱˢᵖᵉʳᵉ ᵘⁿ ᵐᵒᵐᵉⁿᵗᵒ ᵉⁿ ˡᵒˢ ᵠᵘᵉ ᵉⁿᵛᶦᵒˢ ˢᵘˢ ᵃʳᶜʰᶦᵛᵒˢ`.trim();
+m.reply(captionES);
+await conn.sendFile(m.chat, resEX.url, resEX.filename, '', m, null, {mimetype: resEX.ext, asDocument: true});
+m.react(`✅`)     
+} catch (error2) {
+try {
+const res = await mediafireDl(args[0]);
+const {name, size, date, mime, link} = res;
+const caption = `┏━━『 𝐌𝐄𝐃𝐈𝐀𝐅𝐈𝐑𝐄 』━━•\n┃❥ 𝐍𝐨𝐦𝐛𝐫𝐞 :\n┃${name}\n┃——————«•»——————\n┃❥ 𝐏𝐞𝐬𝐨 :\n┃${size}\n\n┃——————«•»——————\n┃❥ 𝐓𝐢𝐩𝐨 :\n┃${mime}\n\n╰━━━⊰ 𓃠 ${vs} ⊱━━━━•\n\n> ⏳ ᴱˢᵖᵉʳᵉ ᵘⁿ ᵐᵒᵐᵉⁿᵗᵒ ᵉⁿ ˡᵒˢ ᵠᵘᵉ ᵉⁿᵛᶦᵒˢ ˢᵘˢ ᵃʳᶜʰᶦᵛᵒˢ`.trim();
+await m.reply(caption);
+await conn.sendFile(m.chat, link, name, '', m, null, {mimetype: mime, asDocument: true});      
+m.react(`✅`) 
+} catch (error3) {
+console.error(error3);
+conn.sendFile(m.chat, sticker, 'error.webp', '', m, null, fake)
+m.react(`❌`) 
+}}}}
+handler.help = ['mediafire', 'mediafiredl'];
+handler.tags = ['downloader'];
+handler.command = /^(mediafire|mediafiredl|dlmediafire)$/i
+handler.register = true
+handler.limit = 3
 export default handler;
+
+async function mediafireDl(url) {
+  const res = await axios.get(`https://www-mediafire-com.translate.goog/${url.replace('https://www.mediafire.com/', '')}?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=en&_x_tr_pto=wapp`);
+  const $ = cheerio.load(res.data);
+  const link = $('#downloadButton').attr('href');
+  const name = $('body > main > div.content > div.center > div > div.dl-btn-cont > div.dl-btn-labelWrap > div.promoDownloadName.notranslate > div').attr('title').replaceAll(' ', '').replaceAll('\n', '');
+  const date = $('body > main > div.content > div.center > div > div.dl-info > ul > li:nth-child(2) > span').text();
+  const size = $('#downloadButton').text().replace('Download', '').replace('(', '').replace(')', '').replace('\n', '').replace('\n', '').replace('                         ', '').replaceAll(' ', '');
+  let mime = '';
+  const rese = await axios.head(link);
+  mime = rese.headers['content-type'];
+  return {name, size, date, mime, link};
+}
