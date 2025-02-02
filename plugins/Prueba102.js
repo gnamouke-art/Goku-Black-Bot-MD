@@ -23,6 +23,6 @@ await conn.sendFile(m.chat, json.result.download.url, 'HasumiBotFreeCodes.mp3', 
 console.error(error)
 }}
 
-handler.command = /^(play)$/i
+handler.command = /^(kadu)$/i
 
 export default handler
