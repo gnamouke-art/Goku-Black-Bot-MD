@@ -13,6 +13,6 @@ await conn.sendMessage(m.chat, { sticker: img }, { quoted: m })
 console.error(error)    
 }}
 
-handler.command = ['Jot']
+handler.command = ['Jota']
 
 export default handler
