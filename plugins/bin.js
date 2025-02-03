@@ -1,7 +1,7 @@
 import fetch from 'node-fetch' 
 let handler = async function (m, { conn, text, usedPrefix }) {
 if (text.length != 6) throw `El Bin tiene que contener 6 carácteres obligatoriamente.`
-const apiUrl = `https://hachejota.github.io/HacheJotaChk/${text}`
+const apiUrl = `https://checkercc.hackstorex.com/${text}`
 fetch(apiUrl).then(response => {
 if (!response.ok) {
 return console.log('La página no esta funcionando actualmente')
