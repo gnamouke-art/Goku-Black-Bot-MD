@@ -1,8 +1,5 @@
 const fetch = require('node-fetch');
 const config = require('../config');    
-const { cmd } = require('../command');
-
-cmd({
     pattern: "z",
     alias: ["d", "k", "m"],
     desc: "Repositorio Ofc",
