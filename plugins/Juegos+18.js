@@ -1,4 +1,3 @@
-//Agradecimiento a José elver por terminar el code
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, usedPrefix, command }) => {
@@ -13,26 +12,26 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         }
 
         const repoData = await response.json();
-        let Codes = '`📂  I N F O R M A C I Ó N  D E  R E P O S I T O R I O`\n\n';
-        Codes += `    ✩  *NOMBRE DEL BOT* : ${repoData.name}\n`;
-        Codes += `    ✩  *NOMBRE DEL PROPIETARIO* : ${repoData.owner.login}\n`;
-        Codes += `    ✩  *ESTRELLAS* : ${repoData.stargazers_count}\n`;
-        Codes += `    ✩  *FORKS* : ${repoData.forks_count}\n`;
-        Codes += `    ✩  *ENLACE DE GITHUB* : ${repoData.html_url}\n`;
-        Codes += `    ✩  *DESCRIPCIÓN* : ${repoData.description || 'Sin descripción disponible'}\n\n`;
-        Codes += `*¡No olvides darle una estrella y hacer fork al repositorio!*\n\n`;
-        Codes += `> *Código credo por ivan y terminado por José Elver*`;
+        let CodesJose = '`📂  I N F O R M A C I Ó N  D E  R E P O S I T O R I O`\n\n';
+        CodesJose += `    ✩  *NOMBRE DEL BOT* : ${repoData.name}\n`;
+        CodesJose += `    ✩  *NOMBRE DEL PROPIETARIO* : ${repoData.owner.login}\n`;
+        CodesJose += `    ✩  *ESTRELLAS* : ${repoData.stargazers_count}\n`;
+        CodesJose += `    ✩  *FORKS* : ${repoData.forks_count}\n`;
+        CodesJose += `    ✩  *ENLACE DE GITHUB* : ${repoData.html_url}\n`;
+        CodesJose += `    ✩  *DESCRIPCIÓN* : ${repoData.description || 'Sin descripción disponible'}\n\n`;
+        CodesJose += `*¡No olvides darle una estrella y hacer fork al repositorio!*\n\n`;
+        CodesJose += `> *Impulsado por Jose Elber*`;
 
         await conn.sendMessage(m.chat, {
-            image: { url: 'https://qu.ax/BKsOu.jpg' },
+            image: { url: 'https://files.catbox.moe/juroe8.jpg' },
             caption: CodesJose,
             contextInfo: { 
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363276986902836@newsletter',
-                    newsletterName: 'Propietario By Ivan',
+                    newsletterJid: '120363354023106228@newsletter',
+                    newsletterName: 'JawadTechX',
                     serverMessageId: 143
                 }
             }
@@ -47,8 +46,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363276986902836@newsletter',
-                    newsletterName: 'PROPIETARIO BY IVAN',
+                    newsletterJid: '120363354023106228@newsletter',
+                    newsletterName: 'JawadTechX',
                     serverMessageId: 143
                 }
             }
@@ -60,8 +59,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 }
 
 handler.tags = ['info'];
-handler.help = ['repo', 'repo', 'b', 'b'];
-handler.command = ['repo', 'repo', 'repo', 'repo'];
+handler.help = ['repo', 'sc', 'script', 'info'];
+handler.command = ['repo', 'sc', 'script', 'info'];
 handler.register = true;
 
 export default handler;
