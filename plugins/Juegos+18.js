@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, usedPrefix, command }) => {
-    const githubRepoURL = 'https://github.com/Eliasivan/Goku-Black-Bot-MD';
+    const githubRepoURL = 'https://github.com/Ivanmods15/Goku-Black-Bot-MD';
 
     try {
         const [, username, repoName] = githubRepoURL.match(/github\.com\/([^/]+)\/([^/]+)/);
@@ -23,15 +23,15 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         CodesJose += `> *Impulsado por Jose Elber*`;
 
         await conn.sendMessage(m.chat, {
-            image: { url: 'https://files.catbox.moe/juroe8.jpg' },
+            image: { url: 'https://qu.ax/BKsOu.jpg' },
             caption: CodesJose,
             contextInfo: { 
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363354023106228@newsletter',
-                    newsletterName: 'JawadTechX',
+                    newsletterJid: '120363276986902836@newsletter',
+                    newsletterName: 'Power by ivan',
                     serverMessageId: 143
                 }
             }
@@ -46,8 +46,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363354023106228@newsletter',
-                    newsletterName: 'JawadTechX',
+                    newsletterJid: '120363276986902836@newsletter',
+                    newsletterName: 'Power by ivan',
                     serverMessageId: 143
                 }
             }
