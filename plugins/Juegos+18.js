@@ -39,7 +39,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         }, { quoted: m });
 
         await conn.sendMessage(m.chat, {
-            audio: { url: '' },
+            audio: { url: 'https://github.com/JawadYTX/KHAN-DATA/raw/refs/heads/main/autovoice/repo.m4a' },
             mimetype: 'audio/mp4',
             ptt: true,
             contextInfo: { 
