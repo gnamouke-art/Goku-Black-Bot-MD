@@ -13,15 +13,15 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         }
 
         const repoData = await response.json();
-        let CodesJose = '`📂  I N F O R M A C I Ó N  D E  R E P O S I T O R I O`\n\n';
-        CodesJose += `    ✩  *NOMBRE DEL BOT* : ${repoData.name}\n`;
-        CodesJose += `    ✩  *NOMBRE DEL PROPIETARIO* : ${repoData.owner.login}\n`;
-        CodesJose += `    ✩  *ESTRELLAS* : ${repoData.stargazers_count}\n`;
-        CodesJose += `    ✩  *FORKS* : ${repoData.forks_count}\n`;
-        CodesJose += `    ✩  *ENLACE DE GITHUB* : ${repoData.html_url}\n`;
-        CodesJose += `    ✩  *DESCRIPCIÓN* : ${repoData.description || 'Sin descripción disponible'}\n\n`;
-        CodesJose += `*¡No olvides darle una estrella y hacer fork al repositorio!*\n\n`;
-        CodesJose += `> *Impulsado por Jose Elber*`;
+        let Codes = '`📂  I N F O R M A C I Ó N  D E  R E P O S I T O R I O`\n\n';
+        Codes += `    ✩  *NOMBRE DEL BOT* : ${repoData.name}\n`;
+        Codes += `    ✩  *NOMBRE DEL PROPIETARIO* : ${repoData.owner.login}\n`;
+        Codes += `    ✩  *ESTRELLAS* : ${repoData.stargazers_count}\n`;
+        Codes += `    ✩  *FORKS* : ${repoData.forks_count}\n`;
+        Codes += `    ✩  *ENLACE DE GITHUB* : ${repoData.html_url}\n`;
+        Codes += `    ✩  *DESCRIPCIÓN* : ${repoData.description || 'Sin descripción disponible'}\n\n`;
+        Codes += `*¡No olvides darle una estrella y hacer fork al repositorio!*\n\n`;
+        Codes += `> *Código credo por ivan y terminado por José Elver*`;
 
         await conn.sendMessage(m.chat, {
             image: { url: 'https://files.catbox.moe/juroe8.jpg' },
