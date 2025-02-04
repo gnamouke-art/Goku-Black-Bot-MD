@@ -14,7 +14,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         const repoData = await response.json();
         let Codes = '`📂  I N F O R M A C I Ó N  D E  R E P O S I T O R I O`\n\n';
         Codes += `    ✩  *NOMBRE DEL BOT* : ${repoData.name}\n`;
-        CodesJose += `    ✩  *NOMBRE DEL PROPIETARIO* : ${repoData.owner.login}\n`;
+        Codes += `    ✩  *NOMBRE DEL PROPIETARIO* : ${repoData.owner.login}\n`;
         Codes += `    ✩  *ESTRELLAS* : ${repoData.stargazers_count}\n`;
         Codes += `    ✩  *FORKS* : ${repoData.forks_count}\n`;
         Codes += `    ✩  *ENLACE DE GITHUB* : ${repoData.html_url}\n`;
