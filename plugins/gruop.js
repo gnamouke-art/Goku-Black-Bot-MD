@@ -1,28 +1,26 @@
-/*
-「✦」 Credits: OfcKing
-- github.com/OfcKing
-*/
-
 import { makeWASocket } from '@whiskeysockets/baileys';
-import fs from 'fs';
 
-let handler = async (m, { conn, args }) => {
+let handler = async (m, { conn, usedPrefix, command }) => {
+  let q = m.quoted ? m.quoted : m;
+  let mime = (q.msg || q).mimetype || q.mediaType || '';
 
-  let newImage = args[0];
-  if (!newImage || !fs.existsSync(newImage)) {
-    return m.reply('「✦」 Por favor, proporciona una ruta válida para la nueva imagen.');
-  }
+  if (/image/.test(mime)) {
+    let img = await q.download();
+    if (!img) return m.reply('🍬 Te faltó la imagen para el perfil del grupo.');
 
-  try {
-    let groupId = m.chat;
-    await conn.updateProfilePicture(groupId, { url: newImage });
-    m.reply('「✦」 Imagen de perfil del grupo actualizada exitosamente.');
-  } catch (e) {
-    m.reply(`⚠︎ *Error:* ${e.message}`);
+    try {
+      await conn.updateProfilePicture(m.chat, img);
+      m.reply('🍬 Perfecto.');
+      m.react(done)
+    } catch (e) {
+      m.reply(`︎⚠️ *Error:* ${e.message}`);
+    }
+  } else {
+    return m.reply('🍭 Te faltó la imagen para cambiar el perfil del grupo.');
   }
 };
 
-handler.command = ['setppgroup', 'setgrouppic'];
+handler.command = ['gpbanner', 'groupimg'];
 handler.group = true;
 handler.admin = true;
 handler.botAdmin = true;
