@@ -25,13 +25,13 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 
         await conn.sendMessage(m.chat, {
             image: { url: 'https://files.catbox.moe/juroe8.jpg' },
-            caption: CodesJose,
+            caption: Codes,
             contextInfo: { 
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363354023106228@newsletter',
+                    newsletterJid: '120363276986902836@newsletter',
                     newsletterName: 'JawadTechX',
                     serverMessageId: 143
                 }
@@ -47,7 +47,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363354023106228@newsletter',
+                    newsletterJid: '120363276986902836@newsletter',
                     newsletterName: 'JawadTechX',
                     serverMessageId: 143
                 }
