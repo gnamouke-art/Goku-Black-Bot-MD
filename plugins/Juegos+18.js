@@ -2,7 +2,7 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, usedPrefix, command }) => {
-    const githubRepoURL = 'https://github.com/JawadYTX/KHAN-MD';
+    const githubRepoURL = 'https://github.com/Ivanmods15/Goku-Black-Bot-MD';
 
     try {
         const [, username, repoName] = githubRepoURL.match(/github\.com\/([^/]+)\/([^/]+)/);
@@ -24,7 +24,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         Codes += `> *Código credo por ivan y terminado por José Elver*`;
 
         await conn.sendMessage(m.chat, {
-            image: { url: 'https://files.catbox.moe/juroe8.jpg' },
+            image: { url: 'https://qu.ax/BKsOu.jpg' },
             caption: Codes,
             contextInfo: { 
                 mentionedJid: [m.sender],
