@@ -23,7 +23,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         Codes += `> *Código creado por ivan y terminado por José Elver*`;
 
         await conn.sendMessage(m.chat, {
-            image: { url: 'https://qu.ax/BKsOu.jpg' },
+            image: { url: 'https://files.catbox.moe/zhxljj.jpg' },
             caption: Codes,
             contextInfo: { 
                 mentionedJid: [m.sender],
