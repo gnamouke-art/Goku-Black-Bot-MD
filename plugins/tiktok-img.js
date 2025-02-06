@@ -1,3 +1,10 @@
+/*
+• @Eliasivan
+- https://github.com/Eliasivan
+• @JoseElver
+- https://github.com/JoseElver
+*/
+
 import axios from 'axios';
 import cheerio from 'cheerio';
 
