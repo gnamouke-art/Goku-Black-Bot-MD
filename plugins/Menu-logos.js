@@ -4,7 +4,7 @@ const handler = async (m, { conn, usedPrefix }) => {
   if (usedPrefix == 'a' || usedPrefix == 'A') return;
   
   try {
-    const pp = catalogo;
+    const pp = logo2;
     const d = new Date(new Date + 3600000);
     const locale = 'es-ES';
     const week = d.toLocaleDateString(locale, { weekday: 'long' });
