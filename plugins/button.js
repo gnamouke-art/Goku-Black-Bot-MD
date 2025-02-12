@@ -41,19 +41,19 @@ let handler = async (m, { conn, args }) => {
     footer: 'Selecciona una opción',
     buttons: [
       {
-        buttonId: `.play https://youtu.be/${video.videoId}`,
+        buttonId: `.ytmp3 https://youtu.be/${video.videoId}`,
         buttonText: {
           displayText: '˙˚ʚ₍ ᐢ. ̫ .ᐢ ₎ɞ˚ 𝗔𝗨𝗗𝗜𝗢 ',
         },
       },
       {
-        buttonId: `.play2 https://youtu.be/${video.videoId}`,
+        buttonId: `.ytmp4 https://youtu.be/${video.videoId}`,
         buttonText: {
           displayText: '˙˚ʚ₍ ᐢ. ̫ .ᐢ ₎ɞ˚ 𝗩𝗜𝗗𝗘𝗢',
         },
       },
       {
-        buttonId: `.ytv.a https://youtu.be/${video.videoId}`,
+        buttonId: `.ytmp4doc https://youtu.be/${video.videoId}`,
         buttonText: {
           displayText: '🔥 𝗩𝗜𝗗𝗘𝗢 (𝗗𝗼𝗰)',
         },
@@ -68,7 +68,7 @@ let handler = async (m, { conn, args }) => {
 
 handler.help = ['play *<texto>*'];
 handler.tags = ['dl'];
-handler.command = ['playbutt'];
+handler.command = ['play9'];
 
 export default handler;
 
