@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 import yts from 'yt-search'
 
 let handler = async (m, { conn, text, args }) => {
-if (!text)  return conn.reply(m.chat, `\n >Ingresa la canciones que deseas descargar`, m)
+if (!text)  return conn.reply(m.chat, `\n > Ingresa la canciones que deseas descargar`, m)
 
 
 try {
