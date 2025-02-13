@@ -1,4 +1,8 @@
 //𝘗𝘰𝘸𝘦𝘳 𝘣𝘺 𝘪𝘷𝘢𝘯
+let tiempo = 5 * 60
+if (cooldowns[m.sender] && Date.now() - cooldowns[m.sender] < tiempo * 1000) {
+let tiempo2 = segundosAHMS(Math.ceil((cooldowns[m.sender] + tiempo * 1000 - Date.now()) / 1000))
+conn.reply(m.chat, `🍟 Hola ${nombre}, Ya has minado recientemente, espera ⏱️ *${tiempo2}* para regresar a la Mina.`, m, rcanal)
 let handler = async (m, { conn }) => {
     const mascotas = [
         'Perro',
