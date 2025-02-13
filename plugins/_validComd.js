@@ -19,7 +19,7 @@ const handler = {
 };
 
 handler.tags = ['Game'];
-handler.help = ['Mascotas];
+handler.help = ['Mascotas'];
 handler.command = ['Mascotas'];
 handler.register = true;
 
