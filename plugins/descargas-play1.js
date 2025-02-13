@@ -1,5 +1,4 @@
-//IVAN HA VUELTO REVIVIR A GOKUBLACK-BOT-MD
-/*by ivan*/
+//𝘗𝘓𝘈𝘠 𝘍𝘜𝘕𝘊𝘐𝘖𝘕𝘈𝘓 𝘊𝘙𝘌𝘋𝘐𝘛𝘖𝘚 𝘈 𝘔𝘐 𝘟𝘋
 
 import fetch from 'node-fetch'
 import yts from 'yt-search'
@@ -17,11 +16,11 @@ let apiVid = await fetch(`https://api.agungny.my.id/api/youtube-video?url=${'htt
 let dataVid = await apiVid.json()
 
 
-let txt = `*Goku-Black-Bot-MD*
-☆ ${res[0].title}
-☆ ${res[0].timestamp}
-☆ ${res[0].views}
-☆ ${res[0].ago}
+let txt = `*♫︎ Goku-Black-Bot-MD ♫︎*
+☆ 𝑇𝐼𝑇𝑈𝐿𝑂: ${res[0].title}
+☆ 𝘋𝘶𝘳𝘢𝘤𝘪𝘰𝘯: ${res[0].timestamp}
+☆ 𝘝𝘐𝘚𝘛𝘈𝘚: ${res[0].views}
+☆ 𝘚𝘜𝘉𝘐𝘋𝘖: ${res[0].ago}
 > Responda la opciónes
 1 : Audio
 2 : Video`
