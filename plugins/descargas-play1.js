@@ -18,10 +18,10 @@ let dataVid = await apiVid.json()
 
 
 let txt = `*Goku-Black-Bot-MD*
-☆ 📑 𝐓𝐢𝐭𝐮𝐥𝐨:${res[0].title}
-☆ 🎼 𝐃𝐮𝐫𝐚𝐜𝐢𝐨𝐧:${res[0].timestamp}
-☆ 🗓️ 𝐕𝐢𝐬𝐭𝐚𝐬:${res[0].views}
-☆ 📄 𝐋𝐢𝐧𝐤:${res[0].ago}
+☆ ${res[0].title}
+☆ ${res[0].timestamp}
+☆ ${res[0].views}
+☆ ${res[0].ago}
 > Responda la opciónes
 1 : Audio
 2 : Video`
