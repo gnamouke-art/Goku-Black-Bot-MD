@@ -43,7 +43,7 @@ let handler = async (m, { conn }) => {
 
     const mascotaAleatoria = getRandom(mascotas);
 
-    conn.reply(m.chat, `¡Tu mascota aleatoria es: ${mascotaAleatoria}!`, m);
+    conn.reply(m.chat, `¡Tu mascota aleatoria es: ${mascotaAleatoria}! obtienes ${poin}`, m);
 }
 
 handler.help = ['mascotaAleatoria'];
