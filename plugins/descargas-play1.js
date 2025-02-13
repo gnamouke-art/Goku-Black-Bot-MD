@@ -1,5 +1,6 @@
 //IVAN HA VUELTO REVIVIR A GOKUBLACK-BOT-MD
 /*by ivan*/
+
 import fetch from 'node-fetch'
 import yts from 'yt-search'
 
@@ -47,7 +48,7 @@ await conn.sendMessage(UC, { text: "Opcion invalida, responde con 1 *(audio)* o 
 console.error(error)
 }}
 
-handler.command = ["yoa"]
+handler.command = ["play5"]
 
 export default handler
 
