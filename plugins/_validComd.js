@@ -1,6 +1,5 @@
 //XD
 const handler = {
-    command: ['Mascotas', 'Mascota'],
     execute: function() {
         const mascotas = [
             'Perro',
@@ -17,7 +16,6 @@ const handler = {
         console.log(`¡Tu mascota aleatoria es: ${mascotaAleatoria}!`);
     }
 };
-
 handler.tags = ['Game'];
 handler.help = ['Mascotas'];
 handler.command = ['Mascotas'];
