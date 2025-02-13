@@ -26,7 +26,7 @@ let txt = `*Goku-Black-Bot-MD*
 1 : Audio
 2 : Video`
 
-let SM = await conn.sendFile(m.chat, res[0].thumbnail, 'Menu.jpg', rcanal, txt, m)
+let SM = await conn.sendFile(m.chat, res[0].thumbnail, 'Menu.jpg', txt, m)
 conn.ev.on("messages.upsert", async (upsertedMessage) => {
 let RM = upsertedMessage.messages[0];
 if (!RM.message) return
