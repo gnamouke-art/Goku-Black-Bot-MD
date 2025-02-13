@@ -19,10 +19,14 @@ const handler = {
         const adivinanza = this.adivinanzas[randomIndex];
 
         console.log(adivinanza.pregunta);
-        // Aquí puedes agregar lógica para recibir la respuesta del usuario
-        // y compararla con adivinanza.respuesta
+        
+ adivinanza.respuesta
     }
 };
 
-// Para iniciar el juego, solo llama a handler.jugar()
-handler.jugar();
+handler.tags = ['downloader'];
+handler.help = ['aleatorio'];
+handler.command = ['aleatorio'];
+handler.register = true;
+
+export default handler;
