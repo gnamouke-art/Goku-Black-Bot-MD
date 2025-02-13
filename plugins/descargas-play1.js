@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 import yts from 'yt-search'
 
 let handler = async (m, { conn, text, args }) => {
-if (!text)  return conn.reply(m.chat, `> Ingresa la canciones que deseas descargar`, m)
+if (!text)  return conn.reply(m.chat, `> Ingresa la cancion que deseas descargar`, m)
 
 
 try {
@@ -17,12 +17,11 @@ let dataVid = await apiVid.json()
 
 
 let txt = `*Goku-Black-Bot-MD*
-☆ 📑 𝐓𝐢𝐭𝐮𝐥𝐨: ${yt_play[0].title}
-☆ 🎼 𝐃𝐮𝐫𝐚𝐜𝐢𝐨𝐧: ${secondString(yt_play[0].duration.seconds)}
-☆ 🗓️ 𝐕𝐢𝐬𝐭𝐚𝐬: ${`${MilesNumber(yt_play[0].views)}`}
-☆ 🖋️ 𝐀𝐮𝐭𝐨𝐫: ${yt_play[0].author.name}
-☆ 🎞️ 𝐂𝐚𝐧𝐚𝐥: ${yt_play[0].author.url}
-☆ 📄 𝐋𝐢𝐧𝐤: ${yt_play[0].url}\n
+☆ 📑 𝐓𝐢𝐭𝐮𝐥𝐨:${res[0].title}
+☆ 🎼 𝐃𝐮𝐫𝐚𝐜𝐢𝐨𝐧:${res[0].timestamp}
+☆ 🗓️ 𝐕𝐢𝐬𝐭𝐚𝐬:${res[0].views}
+☆ 📄 𝐋𝐢𝐧𝐤:${res[0].ago}
+> Responda la opciónes
 1 : Audio
 2 : Video`
 
