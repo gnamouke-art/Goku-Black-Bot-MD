@@ -1,28 +1,54 @@
-//Hola creditos a Jxstxn
-import {sticker} from '../lib/sticker.js';
-import MessageType from '@whiskeysockets/baileys';
-import fetch from 'node-fetch';
-import fs from 'fs';
-const handler = async (m, {conn, text, args}) => {
-  if (!args[0]) throw '*[❗𝐈𝐍𝐅𝐎❗] 𝙴𝙻 𝚄𝚂𝙾 𝙳𝙴 𝙴𝚂𝚃𝙴 𝙲𝙾𝙼𝙰𝙽𝙳𝙾 𝙳𝙴𝙱𝙴 𝚂𝙴𝚁 #emojimix <emoji 1>&<emoji 2>*\n*𝙴𝙹𝙴𝙼𝙿𝙻𝙾:*\n*#emojimix 🤨&😣*';
-  const [emoji1, emoji2] = text.split`&`;
-  const anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`);
-  for (const res of anu.results) {
-    const stiker = await sticker(false, res.url, global.packname, global.author);
-    conn.sendFile(m.chat, stiker, null, {asSticker: true});
-  }
+import moment from 'moment-timezone';
+
+const handler = async (m, {conn}) => {
+  const fechaper = moment().tz('America/Lima').format('DD/MM HH:mm');
+  const fechamex = moment().tz('America/Mexico_City').format('DD/MM HH:mm');
+  const fechabol = moment().tz('America/La_Paz').format('DD/MM HH:mm');
+  const fechachi = moment().tz('America/Santiago').format('DD/MM HH:mm');
+  const fechaarg = moment().tz('America/Argentina/Buenos_Aires').format('DD/MM HH:mm');
+  const fechacol = moment().tz('America/Bogota').format('DD/MM HH:mm');
+  const fechaecu = moment().tz('America/Guayaquil').format('DD/MM HH:mm');
+  const fechacosr = moment().tz('America/Costa_Rica').format('DD/MM HH:mm');
+  const fechacub = moment().tz('America/Havana').format('DD/MM HH:mm');
+  const fechagua = moment().tz('America/Guatemala').format('DD/MM HH:mm');
+  const fechahon = moment().tz('America/Tegucigalpa').format('DD/MM HH:mm');
+  const fechanic = moment().tz('America/Managua').format('DD/MM HH:mm');
+  const fechapan = moment().tz('America/Panama').format('DD/MM HH:mm');
+  const fechauru = moment().tz('America/Montevideo').format('DD/MM HH:mm');
+  const fechaven = moment().tz('America/Caracas').format('DD/MM HH:mm');
+  const fechapar = moment().tz('America/Asuncion').format('DD/MM HH:mm');
+  const fechanew = moment().tz('America/New_York').format('DD/MM HH:mm');
+  const fechaasi = moment().tz('Asia/Jakarta').format('DD/MM HH:mm');
+  const fechabra = moment().tz('America/Sao_Paulo').format('DD/MM HH:mm');
+  const fechaafri = moment().tz('Africa/Malabo').format('DD/MM HH:mm');
+  await conn.sendMessage(m.chat, {text: `
+「ZONA-HORARIA-GLOBAL」
+●Peru       : ${fechaper}
+●Mexico     : ${fechamex}
+●Bolivia    : ${fechabol}
+●Chile      : ${fechachi}
+●Argentina  : ${fechaarg}
+●Colombia   : ${fechacol}
+●Ecuador    : ${fechaecu}
+●Costa_Rica : ${fechacosr}
+●Cuba       : ${fechacub}
+●Guatemala  : ${fechagua}
+●Honduras   : ${fechahon}
+●Nicaragua  : ${fechanic}
+●Panama     : ${fechapan}
+●Uruguay    : ${fechauru}
+●Venezuela  : ${fechaven}
+●Paraguay   : ${fechapar}
+●New York   : ${fechanew}
+●Asia       : ${fechaasi}
+●Brasil     : ${fechabra}
+●G.N.Q      : ${fechaafri}
+${String.fromCharCode(8206).repeat(850)}
+Zona horaria del servidor actual:\n[ ${Intl.DateTimeFormat().resolvedOptions().timeZone} ]\n${moment().tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format('DD/MM/YY HH:mm:ss')}`}, {quoted: m});
 };
-handler.help = ['emojimix'].map((v) => v + ' emot1|emot2>');
-handler.tags = ['fun'];
-handler.command = /^(emojimix)$/i;
+
+handler.help = ['Mundo'];
+handler.tags = ['info'];
+handler.command = /^(Mundo)$/i;
+
 export default handler;
-const fetchJson = (url, options) => new Promise(async (resolve, reject) => {
-  fetch(url, options)
-      .then((response) => response.json())
-      .then((json) => {
-        resolve(json);
-      })
-      .catch((err) => {
-        reject(err);
-      });
-});
