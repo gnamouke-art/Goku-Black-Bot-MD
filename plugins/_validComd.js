@@ -18,7 +18,9 @@ const handler = {
     }
 };
 
-// Simular la ejecución del comando
-if (handler.command.includes('Mascotas') || handler.command.includes('Mascota')) {
-    handler.execute();
-}
+handler.tags = ['Game'];
+handler.help = ['Mascotas];
+handler.command = ['Mascotas'];
+handler.register = true;
+
+export default handler;
