@@ -1,5 +1,5 @@
 const handler = {
-    command: ['Adivinar', 'Acertijo'],
+    command: ['Adivi', 'Acerti'],
     adivinanzas: [
         {
             pregunta: "¿Qué tiene un ojo pero no puede ver?",
