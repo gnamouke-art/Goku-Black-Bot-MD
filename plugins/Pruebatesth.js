@@ -69,7 +69,7 @@ const ddownr = {
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     if (!text.trim()) {
-      return conn.reply(m.chat, `🍬 ingresa el nombre de la música a descargar.`, m);
+      return conn.reply(m.chat, `☄ ingresa el nombre de la música a descargar.`, m);
     }
 
     const search = await yts(text);
@@ -126,7 +126,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
               video: { url: downloadUrl },
               fileName: `${title}.mp4`,
               mimetype: 'video/mp4',
-              caption: `🍬 Aqui tienes ฅ^•ﻌ•^ฅ.`,
+              caption: `Tómalo ☄`,
               thumbnail: thumb
             }, { quoted: m });
             break;
@@ -147,7 +147,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 };
 
-handler.command = handler.help = ['1', '2', '3', '4', '5', '6', '7'];
+handler.command = handler.help = ['play', 'play2'];
 handler.tags = ['downloader'];
 
 export default handler;
