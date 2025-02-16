@@ -80,17 +80,16 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const videoInfo = search.all[0];
     const { title, thumbnail, timestamp, views, ago, url } = videoInfo;
     const vistas = formatViews(views);
-    const infoMessage = `
-*Goku-Black-Bot-MD* PLAY
+    const infoMessage = `*Goku-Black-Bot-MD* 
 *Título:* ${title}
 *Duración:* ${timestamp}
 *Vistas:* ${vistas}\
 *Canal:* ${videoInfo.author.name || 'Desconocido'}
 *Publicado:* ${ago}
 *Enlace:* ${url}
-___________________*`;
+*__G___O__K__U__B__L__A_C__K__*`;
     const thumb = (await conn.getFile(thumbnail))?.data;
-
+m.react('💥');
     const JT = {
       contextInfo: {
         externalAdReply: {
