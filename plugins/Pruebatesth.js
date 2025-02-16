@@ -105,7 +105,7 @@ m.react('💥');
       },
     };
 
-    await conn.reply(m.chat, infoMessage, m, JT);
+    await conn.reply(m.chat, infoMessage, m,  rcanal, JT);
 
     if (command === 'play') {
         const api = await ddownr.download(url, 'mp3');
