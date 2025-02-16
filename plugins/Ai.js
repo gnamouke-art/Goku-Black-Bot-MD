@@ -2,85 +2,43 @@
 -@Rayo-ofc 
 -@Joseelver
 */
-import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys';
-import yts from 'yt-search';
-import fs from 'fs';
+import axios from 'axios';
 
-const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
-    const device = await getDevice(m.key.id);
-
-    if (!text) return conn.reply(m.chat, '> Ingresa el nombre de una musica de YouTube', m, rcanal);
+let handler = async (m, { conn, args }) => {
     m.react('🕓');
+    if (!args[0]) {
+        return conn.reply(m.chat, '🍟 Por favor, ingresa un enlace de YouTube válido.', m, rcanal);
+    }
 
-    if (device !== 'desktop' && device !== 'web') {
-        const results = await yts(text);
-        const videos = results.videos.slice(0, 20);
-        const randomIndex = Math.floor(Math.random() * videos.length);
-        const randomVideo = videos[randomIndex];
-m.react('✅');
-        const messa = await prepareWAMessageMedia({ image: { url: randomVideo.thumbnail }}, { upload: conn.waUploadToServer });
-        const interactiveMessage = {
-            body: {
-                text: `乂  Y O U T U B E  -  P L A Y\n\n» *Título:* ${randomVideo.title}\n» *Duración:* ${randomVideo.duration.timestamp}\n» *Autor:* ${randomVideo.author.name || 'Desconocido'}\n» *Publicado:* ${randomVideo.ago}\n» *Enlace:* ${randomVideo.url}\n`
-            },
-            footer: { text: `${global.dev}`.trim() },
-            header: {
-                title: `*🍇 Búsqueda de Video 🍇*\n`,
-                hasMediaAttachment: true,
-                imageMessage: messa.imageMessage,
-            },
-            nativeFlowMessage: {
-                buttons: [
-                    {
-                        name: 'single_select',
-                        buttonParamsJson: JSON.stringify({
-                            title: 'OPCIONES DE DESCARGA',
-                            sections: videos.map((video) => ({
-                                title: video.title,
-                                rows: [
-                                    { header: video.title, title: video.author.name, description: 'Descargar MP3 (Audio)', id: `${prefijo}ytmp3 ${video.url}` },
-                                    { header: video.title, title: video.author.name, description: 'Descargar MP4 (Video)', id: `${prefijo}test2 ${video.url}` },
-                                    { header: video.title, title: video.author.name, description: 'Descargar MP3 como Documento', id: `${prefijo}play4 ${video.url}` },
-                                    { header: video.title, title: video.author.name, description: 'Descargar MP4 como Documento', id: `${prefijo}ytmp4doc ${video.url}` }
-                                ]
-                            }))
-                        })
-                    }
-                ],
-                messageParamsJson: ''
-            }
-        };
+    try {
+        const apiUrl = `https://api.agungny.my.id/api/youtube-video?url=${encodeURIComponent(args[0])}`;
+        const response = await axios.get(apiUrl);
 
-        let msg = generateWAMessageFromContent(m.chat, {
-            viewOnceMessage: {
-                message: {
-                    interactiveMessage,
-                },
-            },
-        }, { userJid: conn.user.jid, quoted: null });
-        conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
+        if (response.data.status === "true") {
+            const { title, duration, resolution, downloadUrl } = response.data.result;
+            const message = `🎥 *Título:* ${title}\n🔥 *Duración:* ${duration}\n📺 *Resolución:* ${resolution}`;
 
-    } else {
-        const idioma = global.db.data.users[m.sender].language;
-        const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`));
-        const traductor = _translate.plugins.buscador_yts;
-        const results = await yts(text);
-        const tes = results.all;
-        const teks = results.all.map((v) => {
-            if (v.type === 'video') return `
-° *_${v.title}_*
-↳ 🫐 *_Enlace :_* ${v.url}
-↳ 🕒 *_Duración :_* ${v.timestamp}
-↳ 📥 *_Subido :_* ${v.ago}
-↳ 👁 *_Vistas :_* ${v.views}`;
-        }).filter(v => v).join('\n\n◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦\n\n');
-        conn.sendFile(m.chat, tes[0].thumbnail, 'error.jpg', teks.trim(), m);
+            await conn.sendMessage(m.chat, {
+                document: { url: downloadUrl }, 
+                mimetype: 'video/mp4', 
+                fileName: `${title}.mp4`,
+                caption: message
+            }, { quoted: m });
+
+            await m.react('✅');
+        } else {
+            await conn.reply(m.chat, `❌ No se pudo obtener el video. Asegúrate de que el enlace sea correcto.`, m);
+            await m.react('✖️');
+        }
+    } catch (error) {
+        console.error(error);
+        await conn.reply(m.chat, `❌ Ocurrió un error al intentar descargar el video. Inténtalo más tarde.`, m);
+        await m.react('✖️');
     }
 };
 
-handler.help = ['play *<texto>*'];
+handler.help = ['ytmp4doc *<url>*', 'ytvdoc *<url>*', 'videoytdoc *<url>*', 'ytddoc *<url>*', 'ytviddoc *<url>*'];
+handler.command = ['ytmp4doc', 'ytvdoc', 'videoytdoc', 'ytddoc', 'ytviddoc'];
 handler.tags = ['dl'];
-handler.command = ['play', 'play2'];
-handler.register = true;
 
 export default handler;
