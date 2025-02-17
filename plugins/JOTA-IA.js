@@ -11,7 +11,7 @@ import { sticker } from '../lib/sticker.js';
     let pp2 = 'https://telegra.ph/file/89891693613651230d6f0.mp4'
     const videos = [pp1, pp2];
     const video = videos[Math.floor(Math.random() * videos.length)];
-    conn.sendMessage(m.chat, { video: { url: video }, gifPlayback: true, caption:str, mentions: [m.sender] },{ quoted: estilo })
+    conn.sendMessage(m.chat, { video: { url: video }, gifPlayback: true, { quoted: estilo })
     };
 
   //  m.react('🔥');
