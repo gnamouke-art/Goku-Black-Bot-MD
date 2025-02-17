@@ -14,7 +14,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let str = `${name2} explotaste el culo a ${name}`.trim();
     if (m.isGroup){
 
-    let pp = 'https://telegra.ph/file/21543bac2383ce0fc6f51.mp4'
+    let pp1 = 'https://telegra.ph/file/21543bac2383ce0fc6f51.mp4'
     let pp2 = 'https://telegra.ph/file/89891693613651230d6f0.mp4'
     const videos = [pp1, pp2];
     const video = videos[Math.floor(Math.random() * videos.length)];
