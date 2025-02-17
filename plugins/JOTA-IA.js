@@ -11,7 +11,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let name2 = conn.getName(m.sender);
    // m.react('⏳');
     await conn.sendMessage(m.chat, { react: { text: '🥵', key: m.key } })
-    let str = `${name2} explotaste el culo a ${name}`.trim();
+    let str = `Le explotaste el culo a diomar we`.trim();
     if (m.isGroup){
 
     let pp1 = 'https://telegra.ph/file/21543bac2383ce0fc6f51.mp4'
