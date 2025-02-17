@@ -13,7 +13,7 @@ ${pickRandom(global.chamba)}
 }
 handler.help = ['chamba']
 handler.tags = ['chamba']
-handler.command = ['trampar']
+handler.command = ['tra']
 handler.exp = 0
 
 export default handler
