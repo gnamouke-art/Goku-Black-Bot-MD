@@ -2,14 +2,7 @@ import path from 'path';
 import uploadImage from '../lib/uploadImage.js'
 import { sticker } from '../lib/sticker.js';
 
-let handler = async (m, { conn, usedPrefix }) => {
-    let who;
-    if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false;
-    else who = m.chat;
-    let user = global.db.data.users[who];
-    let name = conn.getName(who);
-    let name2 = conn.getName(m.sender);
-   // m.react('⏳');
+// m.react('⏳');
     await conn.sendMessage(m.chat, { react: { text: '🥵', key: m.key } })
     let str = `Le explotaste el culo a diomar we`.trim();
     if (m.isGroup){
