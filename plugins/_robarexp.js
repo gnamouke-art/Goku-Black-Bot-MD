@@ -1,40 +1,25 @@
-const ro = 3000;
-const handler = async (m, {conn, usedPrefix, command}) => {
-  const time = global.db.data.users[m.sender].lastrob + 1200000;
-  if (new Date - global.db.data.users[m.sender].lastrob < 1200000) {
-  conn.reply(m.chat, `🍬 Debes esperar ${msToTime(time - new Date())} para usar #robxp de nuevo.`, m, rcanal);
-  return;
-  }
+import MessageType from '@whiskeysockets/baileys';
+const pajak = 0;
+const handler = async (m, {conn, text}) => {
   let who;
-  if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false;
+  if (m.isGroup) who = m.mentionedJid[0];
   else who = m.chat;
-  if (!who) {
-  conn.reply(m.chat, `*✧ Debes mencionar a alguien para intentar robarle XP.`, m, rcanal)
-  return;
-    };
-  if (!(who in global.db.data.users)) { 
-  conn.reply(m.chat, `✧ El usuario no se encuentra en mi base de datos.`, m, rcanal)
-return;
-  }
-  const users = global.db.data.users[who];
-  const rob = Math.floor(Math.random() * ro);
-  if (users.exp < rob) return conn.reply(m.chat, `✧ @${who.split`@`[0]} no tiene suficiente *${ro} XP* como para que valga la pena intentar robar.":`, m, {mentions: [who]});
-  global.db.data.users[m.sender].exp += rob;
-  global.db.data.users[who].exp -= rob;✎
-  conn.reply(m.chat, `* Le robaste ${rob} XP a @${who.split`@`[0]}*`, m, {mentions: [who]});
-  global.db.data.users[m.sender].lastrob = new Date * 1;
+  if (!who) throw '*[❗𝐈𝐍𝐅𝐎❗] 𝙴𝚃𝙸𝚀𝚄𝙴𝚃𝙰 𝙰 𝚄𝙽 𝚄𝚂𝚄𝙰𝚁𝙸𝙾 𝙲𝙾𝙽 𝙴𝙻 @𝚝𝚊𝚐*';
+  const txt = text.replace('@' + who.split`@`[0], '').trim();
+  if (!txt) throw '*[❗𝐈𝐍𝐅𝐎❗] 𝙸𝙽𝙶𝚁𝙴𝚂𝙰 𝙻𝙰 𝙲𝙰𝙽𝚃𝙸𝙳𝙰𝙳 𝙳𝙴 𝙳𝙸𝙰𝙼𝙰𝙽𝚃𝙴𝚂 𝚀𝚄𝙴 𝙳𝙴𝚂𝙴𝙰 𝙰𝙽̃𝙰𝙳𝙸𝚁*';
+  if (isNaN(txt)) throw '*[❗𝐈𝐍𝐅𝐎❗] 𝚂𝙸𝙼𝙱𝙾𝙻𝙾 𝙽𝙾 𝙰𝙳𝙼𝙸𝚃𝙸𝙳𝙾, 𝚂𝙾𝙻𝙾 𝙽𝚄𝙼𝙴𝚁𝙾𝚂!*';
+  const dmt = parseInt(txt);
+  let limit = dmt;
+  const pjk = Math.ceil(dmt * pajak);
+  limit += pjk;
+  if (limit < 1) throw '*[❗𝐈𝐍𝐅𝐎❗] 𝙴𝙻 𝙽𝚄𝙼𝙴𝚁𝙾 𝙼𝙸𝙽𝙸𝙼𝙾 𝙳𝙴 𝙳𝙸𝙰𝙼𝙰𝙽𝚃𝙴𝚂 𝙿𝙰𝚁𝙰 𝙰𝙽̃𝙰𝙳𝙸𝚁 𝙴𝚂 𝟷*';
+  const users = global.db.data.users;
+  users[who].limit += dmt;
+  m.reply(`≡ *𝙰𝙽̃𝙰𝙳𝙸𝙳𝙾*
+┌──────────────
+▢ *𝚃𝚘𝚝𝚊𝚕:* ${dmt}
+└──────────────`);
 };
-handler.help = ['rob'];
-handler.tags = ['economy'];
-handler.command = ['robxp', 'robarxp'];
+handler.command = ['añadirestrellas', 'addd', 'dard', 'darestrellas'];
+handler.rowner = true;
 export default handler;
-function msToTime(duration) {
-  const milliseconds = parseInt((duration % 1000) / 100);
-  let seconds = Math.floor((duration / 1000) % 60);
-  let minutes = Math.floor((duration / (1000 * 60)) % 60);
-  let hours = Math.floor((duration / (1000 * 60 * 60)) % 5);
-  hours = (hours < 5) ? '0' + hours : hours;
-  minutes = (minutes < 5) ? '0' + minutes : minutes;
-  seconds = (seconds < 5) ? '0' + seconds : seconds;
-  return hours + ' Hora(s) ' + minutes + ' Minuto(s)';
-}
