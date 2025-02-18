@@ -29,7 +29,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
   if (cookies > users.cookies) return conn.reply(m.chat, "🚩 No tienes suficientes *🍪 Cookies* para realizar esa apuesta.", m, rcanal)
 
-  await conn.reply(m.chat, `🚩 Apostaste ${cookies} *🍪 Cookies* al color ${color}. Espera *⏱ 10 segundos* para conocer el resultado.`, m, rcanal)
+  await conn.reply(m.chat, `🚩 Apostaste ${estrellas} *🍪 Cookies* al color ${color}. Espera *⏱ 10 segundos* para conocer el resultado.`, m, rcanal)
 
   setTimeout(() => {
     let result = Math.random()
@@ -43,10 +43,10 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
     if (win) {
       users.cookies += cookies
-      conn.reply(m.chat, `🚩 ¡Ganaste! Obtuviste ${cookies} *🍪 Cookies*. Total: ${users.cookies} *🍪 Cookies*.`, m, rcanal)
+      conn.reply(m.chat, `🚩 ¡Ganaste! Obtuviste ${estrellas} *🍪 Cookies*. Total: ${users.estrellas} *🍪 Cookies*.`, m, rcanal)
     } else {
       users.cookies -= cookies
-      conn.reply(m.chat, `🚩 Perdiste. Se restaron ${cookies} *🍪 Cookies*. Total: ${users.cookies} *🍪 Cookies*.`, m, rcanal)
+      conn.reply(m.chat, `🚩 Perdiste. Se restaron ${estrellas} *🍪 Cookies*. Total: ${users.estrellas} *🍪 Cookies*.`, m, rcanal)
     }
 
 
