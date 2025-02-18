@@ -1,25 +1,47 @@
 /*
 -ivan
 */
-let handler = async (m, {conn, text, usedPrefix}) => {	
-if (!text) throw `Por favor ingresa el código de canjeo asignado `;
-const user = global.db.data.users[m.sender];
-if (!text === '0987123ABC') {
-    if (user.hero === 0) {
-      // Si ya ha utilizado el canjeo, mostrar un mensaje de error
-      m.reply('Ya haz utilizado el canjeo');
-      //console.log('Ya has utilizado el canjeo');
+import db from '../lib/database.js';
+import MessageType from '@whiskeysockets/baileys';
+
+let impts = 0;
+
+let handler = async (m, { conn, text }) => {
+    let who;
+    if (m.isGroup) {
+        if (m.mentionedJid.length > 0) {
+            who = m.mentionedJid[0];
+        } else {
+            const quoted = m.quoted ? m.quoted.sender : null;
+            who = quoted ? quoted : m.chat;
+        }
     } else {
-      // Realizar el canjeo
-      global.db.data.users[m.sender].coin += 150000;
-      // Mostrar un mensaje de éxito
-      m.reply(m.chat, '¡Canjeo realizado con éxito! Puedes verificar utilizando #bal', m);
-      user.hero = 0
-     // console.log('Canjeo realizado con éxito');
+        who = m.chat;
     }
-} else { 
-m.reply(m.chat, 'Codigo incorrecto', m);
-}
-}
-handler.command = ['canjear'] 
-export default handler
+    
+    if (!who) return m.reply('*🍬 Por favor, menciona al usuario o cita un mensaje.*');
+    
+    let txt = text.replace('@' + who.split`@`[0], '').trim();
+    if (!txt) return m.reply('*🍬 Por favor, ingresa la cantidad que deseas añadir.*');
+    if (isNaN(txt)) return m.reply('🍭 *sólo números*');
+    
+    let dmt = parseInt(txt);
+    let coin = dmt;
+    let pjk = Math.ceil(dmt * impts);
+    coin += pjk;
+    
+    if (coin < 1) return m.reply('🍭 Mínimo es *1*');
+    
+    let users = global.db.data.users;
+    users[who].coin += dmt;
+    
+    m.reply(`💸 *Añadido:*
+» ${dmt} \n@${who.split('@')[0]}, recibiste ${dmt} 💸`, null, { mentions: [who] });
+};
+
+handler.help = ['addcoins *<@user>*'];
+handler.tags = ['owner'];
+handler.command = ['añadircoin', 'addcoin', 'addcoins']; 
+handler.rowner = true;
+
+export default handler;
