@@ -17,9 +17,9 @@ const handler = async (m, {conn, text}) => {
   users[who].limit += dmt;
   m.reply(`≡ *💎 𝙰𝙽̃𝙰𝙳𝙸𝙳𝙾*
 ┌──────────────
-▢ *𝚃𝚘𝚝𝚊𝚕:* ${joincount}
+▢ *𝚃𝚘𝚝𝚊𝚕:* ${dmt}
 └──────────────`);
 };
-handler.command = ['añadirestrellas', 'addd', 'dard', 'darestrellas'];
+handler.command = ['añadirdiamantes', 'addd', 'dard', 'dardiamantes'];
 handler.rowner = true;
 export default handler;
