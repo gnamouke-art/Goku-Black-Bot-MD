@@ -5,7 +5,7 @@ import fs from 'fs';
 const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
     const device = await getDevice(m.key.id);
 
-    if (!text) return conn.reply(m.chat, '🤍 Ingresa el nombre de una musica de YouTube', m, rcanal);
+    if (!text) return conn.reply(m.chat, 'Ingresa el nombre de una musica de YouTube', m, rcanal);
 
     if (device !== 'desktop' && device !== 'web') {
         const results = await yts(text);
@@ -33,10 +33,10 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
                             sections: videos.map((video) => ({
                                 title: video.title,
                                 rows: [
-                                    { header: video.title, title: video.author.name, description: 'Descargar MP3 (Audio)', id: `${prefijo}ytmp3 ${video.url}` },
-                                    { header: video.title, title: video.author.name, description: 'Descargar MP4 (Video)', id: `${prefijo}ytmp4 ${video.url}` },
+                                    { header: video.title, title: video.author.name, description: 'Descargar MP3 (Audio)', id: `${prefijo}play ${video.url}` },
+                                    { header: video.title, title: video.author.name, description: 'Descargar MP4 (Video)', id: `${prefijo}ytmp4doc ${video.url}` },
                                     { header: video.title, title: video.author.name, description: 'Descargar MP3 como Documento', id: `${prefijo}ytmp3doc ${video.url}` },
-                                    { header: video.title, title: video.author.name, description: 'Descargar MP4 como Documento', id: `${prefijo}ytmp4doc ${video.url}` }
+                                    { header: video.title, title: video.author.name, description: 'Descargar MP4 como Documento', id: `${prefijo}play5 ${video.url}` }
                                 ]
                             }))
                         })
