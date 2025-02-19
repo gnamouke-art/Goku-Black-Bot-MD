@@ -100,7 +100,7 @@ console.error(error);
 delete tempStorage[m.sender];
 }
 }
-handler.command = /^(play5)$/i
+handler.command = /^(play6)$/i
 //handler.limit = 2
 handler.register = true 
 export default handler
