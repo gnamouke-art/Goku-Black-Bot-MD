@@ -165,7 +165,7 @@ await conn.sendMessage(m.chat, {
   mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
   fileLength: 99999999, 
   caption: text.trim(), 
-  contextInfo: { isForwarded: true, mentionedJid: [m.sender], forwardedNewsletterMessageInfo: { newsletterJid: idchannel, newsletterName: namechannel }, externalAdReply: { title: `${botname} - V2`, body: `${dev}`, thumbnailUrl: imagen1, sourceUrl: channel, mediaType: 1, renderLargerThumbnail: true } }
+  contextInfo: { isForwarded: true, mentionedJid: [m.sender], forwardedNewsletterMessageInfo: { newsletterJid: newsletterName: namechannel }, externalAdReply: { title: `${botname} - V2`, body: `${dev}`, thumbnailUrl: imagen1, sourceUrl: channel, mediaType: 1, renderLargerThumbnail: true } }
 });
 
   } catch (e) {
