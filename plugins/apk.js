@@ -19,18 +19,6 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       image: { url: videoInfo.thumbnail },
       caption: body,
       footer: dev,
-      buttons: [
-        {
-          buttonId: `.yta ${videoInfo.url}`,
-          buttonText: {
-            displayText: 'ᯓᡣ𐭩 ᥲᥙძі᥆',
-          },
-        },
-        {
-          buttonId: `.ytv ${videoInfo.url}`,
-          buttonText: {
-            displayText: 'ᯓᡣ𐭩 ᥎іძᥱ᥆',
-          },
         },
       ],
       viewOnce: true,
