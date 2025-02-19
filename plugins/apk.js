@@ -94,7 +94,7 @@ Tu pendejada se está enviando espere un rato..`;
 
   let result;
   try {
-    if (command === 'play' || command === 'play2' || command === 'playvid') {
+    if (command === 'play10' || command === 'play2' || command === 'playvid') {
   await conn.sendMessage(m.chat, {
       image: { url: videoInfo.thumbnail },
       caption: body,
