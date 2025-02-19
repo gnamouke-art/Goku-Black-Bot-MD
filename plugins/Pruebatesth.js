@@ -114,9 +114,9 @@ m.react('💥');
 
     } else if (command === 'play2' || command === 'ytmp4') {
       let sources = [
-        `https://api.siputzx.my.id/api/d/ytmp4?url=${url}`,
-        `https://api.zenkey.my.id/api/download/ytmp4?apikey=zenkey&url=${url}`,
-        `https://axeel.my.id/api/download/video?url=${encodeURIComponent(url)}`,
+        `https://api.alyachan.dev/api/youtube?url=${videoInfo.url}&type=mp4&apikey=Gata-Dios`,
+        `https://delirius-apiofc.vercel.app/download/ytmp4?url=${videoInfo.url}`,
+        `https://api.vreden.my.id/api/ytmp4?url=${videoInfo.url}`,
         `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`
       ];
 
