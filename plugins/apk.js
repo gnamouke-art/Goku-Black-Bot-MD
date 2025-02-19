@@ -5,14 +5,15 @@ import fs from 'fs';
 const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
     const device = await getDevice(m.key.id);
 
-    if (!text) return conn.reply(m.chat, 'Ingresa el nombre de una musica de YouTube', m, rcanal);
+    if (!text) return conn.reply(m.chat, '❤️‍🔥 Ingresa el nombre de una musica de YouTube', m, rcanal);
+    m.react('🌟');
 
     if (device !== 'desktop' && device !== 'web') {
         const results = await yts(text);
         const videos = results.videos.slice(0, 20);
         const randomIndex = Math.floor(Math.random() * videos.length);
         const randomVideo = videos[randomIndex];
-
+m.react('🎶');
         const messa = await prepareWAMessageMedia({ image: { url: randomVideo.thumbnail }}, { upload: conn.waUploadToServer });
         const interactiveMessage = {
             body: {
@@ -20,7 +21,10 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
             },
             footer: { text: `${global.dev}`.trim() },
             header: {
-                title: ``,
+                title: `𖤓⏤͟͟͞͞【𝙎𝙩𝙖𝙧𝙩𝙞𝙣𝙜 8 𝙚𝙨𝙩𝙧𝙚𝙡𝙡𝙖𝙨 】⏤͟͟͞͞𖤓\n
+
+  ⊱ ────── {.⋅ 𖤓 ⋅.} ───── ⊰
+`,
                 hasMediaAttachment: true,
                 imageMessage: messa.imageMessage,
             },
@@ -29,14 +33,14 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
                     {
                         name: 'single_select',
                         buttonParamsJson: JSON.stringify({
-                            title: 'OPCIONES DE DESCARGA',
+                            title: '🎶 Elije una opcion',
                             sections: videos.map((video) => ({
                                 title: video.title,
                                 rows: [
-                                    { header: video.title, title: video.author.name, description: 'Descargar MP3 (Audio)', id: `${prefijo}play ${video.url}` },
-                                    { header: video.title, title: video.author.name, description: 'Descargar MP4 (Video)', id: `${prefijo}ytmp4doc ${video.url}` },
-                                    { header: video.title, title: video.author.name, description: 'Descargar MP3 como Documento', id: `${prefijo}ytmp3doc ${video.url}` },
-                                    { header: video.title, title: video.author.name, description: 'Descargar MP4 como Documento', id: `${prefijo}play5 ${video.url}` }
+                                    { header: video.title, title: video.author.name, description: 'Descargar MP3 (Audio)', id: `${prefijo}ytmp3 ${video.url}` },
+                                    { header: video.title, title: video.author.name, description: 'Descargar MP4 (Video)', id: `${prefijo}test2 ${video.url}` },
+                                    { header: video.title, title: video.author.name, description: 'Descargar MP3 como Documento', id: `${prefijo}play4 ${video.url}` },
+                                    { header: video.title, title: video.author.name, description: 'Descargar MP4 como Documento', id: `${prefijo}ytmp4doc ${video.url}` }
                                 ]
                             }))
                         })
@@ -73,9 +77,9 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
     }
 };
 
-handler.help = ['play10 *<texto>*'];
+handler.help = ['play *<texto>*'];
 handler.tags = ['dl'];
-handler.command = ['play10'];
+handler.command = ['play21'];
 handler.register = true;
 
 export default handler;
