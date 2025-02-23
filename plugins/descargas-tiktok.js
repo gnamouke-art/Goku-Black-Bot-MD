@@ -9,7 +9,10 @@ body: wm,
     }
 
     try {
-        await conn.reply(m.chat, "🏔️ Espere un momento, estoy descargando su video.", m);
+        await conn.reply(m.chat, "🏔️ Espere un momento, estoy descargando su video.", m, {
+contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
+title: packname,
+body: wm,
 
         const tiktokData = await tiktokdl(args[0]);
 
