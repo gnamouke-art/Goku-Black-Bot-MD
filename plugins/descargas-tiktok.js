@@ -9,7 +9,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
             text: "⁂ 𝒊𝒏𝒈𝒓𝒆𝒔𝒂 𝒖𝒏 𝒍𝒊𝒏𝒌 𝒗𝒂𝒍𝒊𝒅𝒐 𝒅𝒆 𝒕𝒊𝒌𝒕𝒐𝒌", 
             contextInfo: { 
                 externalAdReply: { 
-                    title: "⚠ Error al descargar",
+                    title: "⚠  𝗘𝗥𝗥𝗢𝗥 𝗔𝗟 𝗗𝗘𝗦𝗖𝗔𝗥𝗚𝗔𝗥  ⚠",
                     body: "🔗 Asegúrate de ingresar un enlace válido.",
                     mediaType: 1, 
                     thumbnail: await (await fetch(thumbnail)).buffer(), 
