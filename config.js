@@ -100,9 +100,9 @@ global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(fa
 global.fgif2 = { key: {participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "6289643739077-1613049930@g.us" } : {})},message: {"videoMessage": { "title":'GokuBlack-Bot', "h": `Hmm`,'seconds': '99999', 'gifPlayback': 'true', 'caption': `Goku-Black-Bot-MD\n Ivan`, 'jpegThumbnail': logo4 }}}
 
 //• ↳ ◜𝑳𝑰𝑵𝑲𝑺◞ • 🌿
-global.gp4 = '' //Grupo Oficial De Hutao
-global.gp1 = '' //Grupo 
-global.gp2 = '' //Grupo
+global.gp4 = 'https://chat.whatsapp.com/Igsky5kNI7cDMsBJU6gcKB' //Grupo Oficial De GokuBlack 
+global.gp1 = 'https://chat.whatsapp.com/Igsky5kNI7cDMsBJU6gcKB' //Grupo 
+global.gp2 = 'https://chat.whatsapp.com/Igsky5kNI7cDMsBJU6gcKB' //Grupo
 global.comunidad1 = '' //Comunidad GokuBlack-Bot
 global.channel = '' //Canal Oficial
 global.yt = 'https://youtube.com/@Ivamods15' //Canal De Youtube
