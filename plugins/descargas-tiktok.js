@@ -8,7 +8,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
     try {
         // URL de la miniatura (puedes cambiarla o usar una local)
         let thumbnail = 'https://qu.ax/NoDcO.jpg';  
-        let rcanal = 'https://t.me/tu_canal'; // Reemplaza con tu canal
+        let rcanal = 'https://whatsapp.com/channel/0029VaYh3Zm4dTnQKQ3VLT0h'; // Reemplaza con tu canal
 
         await conn.sendMessage(m.chat, { 
             text: "🏔️ Espere un momento, estoy descargando su video.", 
