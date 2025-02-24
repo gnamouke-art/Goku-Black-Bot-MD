@@ -7,7 +7,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
 
     try {
         // URL de la miniatura (puedes cambiarla o usar una local)
-        let thumbnail = 'https://qu.ax/NoDcO.jpg';  
+        let thumbnail = 'https://i.postimg.cc/qRLjf3Dk/HD-wallpaper-artstation-fanart-black-goku-dragon-ball-super-goku-channel-art.jpg';  
         let rcanal = 'https://whatsapp.com/channel/0029VaYh3Zm4dTnQKQ3VLT0h'; // Reemplaza con tu canal
 
         await conn.sendMessage(m.chat, { 
