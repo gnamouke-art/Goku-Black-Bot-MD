@@ -6,7 +6,23 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
     }
 
     try {
-        await conn.reply(m.chat, "🏔️ Espere un momento, estoy descargando su video.", m);
+        // URL de la miniatura (puedes cambiarla o usar una local)
+        let thumbnail = 'https://i.imgur.com/your_thumbnail.jpg';  
+        let rcanal = 'https://t.me/tu_canal'; // Reemplaza con tu canal
+
+        await conn.sendMessage(m.chat, { 
+            text: "🏔️ Espere un momento, estoy descargando su video.", 
+            contextInfo: { 
+                externalAdReply: { 
+                    title: "Descargando TikTok...",
+                    body: "📌 Espere unos segundos...",
+                    mediaType: 1, 
+                    thumbnail: await (await fetch(thumbnail)).buffer(), 
+                    sourceUrl: rcanal 
+                }
+            }
+        });
+
         const tiktokData = await tiktokdl(args[0]);
 
         if (!tiktokData || !tiktokData.data || !tiktokData.data.play) {
@@ -39,4 +55,4 @@ async function tiktokdl(url) {
     let tikwm = `https://www.tikwm.com/api/?url=${url}?hd=1`;
     let response = await (await fetch(tikwm)).json();
     return response;
-}
+            }
