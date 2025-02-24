@@ -1,15 +1,25 @@
 import fetch from 'node-fetch';
 
 var handler = async (m, { conn, args, usedPrefix, command }) => {
+    let thumbnail = 'https://i.postimg.cc/qRLjf3Dk/HD-wallpaper-artstation-fanart-black-goku-dragon-ball-super-goku-channel-art.jpg';  
+    let rcanal = 'https://whatsapp.com/channel/0029VaYh3Zm4dTnQKQ3VLT0h'; // Reemplaza con tu canal
+
     if (!args[0]) {
-        return conn.reply(m.chat, '⁂ 𝒊𝒏𝒈𝒓𝒆𝒔𝒂 𝒖𝒏 𝒍𝒊𝒏𝒌 𝒗𝒂𝒍𝒊𝒅𝒐 𝒅𝒆 𝒕𝒊𝒌𝒕𝒐𝒌', m);
+        return conn.sendMessage(m.chat, { 
+            text: "⁂ 𝒊𝒏𝒈𝒓𝒆𝒔𝒂 𝒖𝒏 𝒍𝒊𝒏𝒌 𝒗𝒂𝒍𝒊𝒅𝒐 𝒅𝒆 𝒕𝒊𝒌𝒕𝒐𝒌", 
+            contextInfo: { 
+                externalAdReply: { 
+                    title: "⚠ Error al descargar",
+                    body: "🔗 Asegúrate de ingresar un enlace válido.",
+                    mediaType: 1, 
+                    thumbnail: await (await fetch(thumbnail)).buffer(), 
+                    sourceUrl: rcanal 
+                }
+            }
+        });
     }
 
     try {
-        // URL de la miniatura (puedes cambiarla o usar una local)
-        let thumbnail = 'https://i.postimg.cc/qRLjf3Dk/HD-wallpaper-artstation-fanart-black-goku-dragon-ball-super-goku-channel-art.jpg';  
-        let rcanal = 'https://whatsapp.com/channel/0029VaYh3Zm4dTnQKQ3VLT0h'; // Reemplaza con tu canal
-
         await conn.sendMessage(m.chat, { 
             text: "🏔️ Espere un momento, estoy descargando su video.", 
             contextInfo: { 
@@ -55,4 +65,5 @@ async function tiktokdl(url) {
     let tikwm = `https://www.tikwm.com/api/?url=${url}?hd=1`;
     let response = await (await fetch(tikwm)).json();
     return response;
-            }
+                                          }
+        
