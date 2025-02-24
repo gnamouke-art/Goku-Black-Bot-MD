@@ -7,7 +7,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
 
     try {
         // URL de la miniatura (puedes cambiarla o usar una local)
-        let thumbnail = 'https://i.imgur.com/your_thumbnail.jpg';  
+        let thumbnail = 'https://qu.ax/NoDcO.jpg';  
         let rcanal = 'https://t.me/tu_canal'; // Reemplaza con tu canal
 
         await conn.sendMessage(m.chat, { 
