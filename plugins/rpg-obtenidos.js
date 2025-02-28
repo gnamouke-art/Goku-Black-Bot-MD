@@ -1,113 +1,96 @@
-//Codígo creado por David Chian wa.me/5351524614
-import _0x1cf45a from 'fs';
-import { generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys';
-import _0x1db1ed from 'dotenv';
-_0x1db1ed.config();
-const SECRET_KEY = process.env.SECRET_KEY;
-const contarTotalPersonajes = () => {
-  if (_0x1cf45a.existsSync("./src/JSON/characters.json")) {
-    const _0x52690d = _0x1cf45a.readFileSync("./src/JSON/characters.json", 'utf-8').split("\n");
-    return _0x52690d.length - 0x2;
-  } else {
-    return 0x0;
-  }
-};
-let handler = async (_0x3c3b79, {
-  conn: _0x264f66,
-  usedPrefix: _0x29affa
-}) => {
-  const _0x4c095e = _0x3c3b79.sender;
-  let _0x22f1f7 = _0x1cf45a.existsSync("data.json") ? JSON.parse(_0x1cf45a.readFileSync('data.json', "utf-8")) : {
-    'usuarios': {},
-    'personajesReservados': []
-  };
-  let _0x22c111 = _0x1cf45a.existsSync("./src/JSON/characters.json") ? JSON.parse(_0x1cf45a.readFileSync('./src/JSON/characters.json', "utf-8")) : [];
-  let _0x5cbf6d = contarTotalPersonajes();
-  if (!_0x22f1f7.usuarios || !(_0x4c095e in _0x22f1f7.usuarios) || _0x22f1f7.usuarios[_0x4c095e].characters.length === 0x0) {
-    _0x264f66.reply(_0x3c3b79.chat, "*No tienes ningún objeto en tu inventario 😹🫵!*", _0x3c3b79);
-    return;
-  }
-  const _0x1fc603 = () => {
-    try {
-      const _0x107296 = JSON.parse(_0x1cf45a.readFileSync('./package.json', "utf-8"));
-      if (_0x107296.name !== "Goku-Black-Bot-MD") {
-        return false;
-      }
-      if (_0x107296.repository.url !== "git+https://github.com/Eliasivan/Goku-Black-Bot-MD.git") {
-        return false;
-      }
-      if (SECRET_KEY !== "49rof384foerAlkkO4KF4Tdfoflw") {
-        return false;
-      }
-      return true;
-    } catch (_0x4df9b4) {
-      console.error("Error al leer package.json:", _0x4df9b4);
+/*
+• @David-Chian
+- https://github.com/David-Chian:alias el gay
+*/
+
+import _0x1473e5 from 'fs';
+import _0x30c6a2 from 'node-fetch';
+const isHutaoBotMD = () => {
+  try {
+    const _0x299229 = JSON.parse(_0x1473e5.readFileSync('./package.json', 'utf-8'));
+    if (_0x299229.name !== "Goku-Black-Bot-MD") {
       return false;
     }
-  };
-  if (!_0x1fc603()) {
-    await _0x264f66.reply(_0x3c3b79.chat, "Este comando solo está disponible para GokuBlack", _0x3c3b79, rcanal);
-    return;
-  }
-  const {
-    characters: _0x12e34d,
-    totalRwcoins: _0x559be8
-  } = _0x22f1f7.usuarios[_0x4c095e];
-  const _0x4b1f32 = _0x12e34d.length;
-  let _0x2ad3cd = new Set();
-  Object.values(_0x22f1f7.usuarios).forEach(_0xaf7a6e => {
-    _0xaf7a6e.characters.forEach(_0x12e9c5 => _0x2ad3cd.add(_0x12e9c5));
-  });
-  let _0x28c623 = _0x22c111.filter(_0x2ba530 => !_0x2ad3cd.has(_0x2ba530.name));
-  let _0x544e0b = _0x28c623.length;
-  const _0x2f82ce = "╭──────┄ ♡ ┄──────\n│╽𝑻.𝑼 𝑰.𝑵.𝑽.𝑬.𝑵.𝑻.𝑨.𝑹.𝑰.𝑶╽\n┊𝙋𝙚𝙧𝙨𝙤𝙣𝙖𝙟𝙚𝙨:\n⎆ " + _0x4b1f32 + " 𝑊𝐹 ♡\n┊𝙏𝙤𝙩𝙖𝙡 𝙙𝙚 𝙒𝙁𝙘𝙤𝙞𝙣𝙨:\n│ " + _0x559be8 + "\n┊𝙋𝙤𝙧𝙘𝙚𝙣𝙩𝙖𝙟𝙚:\n⎆ " + (_0x4b1f32 / _0x5cbf6d * 0x64).toFixed(0x2) + "%\n┊𝙋𝙚𝙧𝙨𝙤𝙣𝙖𝙟𝙚𝙨 𝙙𝙞𝙨𝙥𝙤𝙣𝙞𝙗𝙡𝙚𝙨:\n⎆ " + _0x544e0b + " de " + _0x5cbf6d + " en total.\n╰──────┄ ♢ ┄──────";
-  let _0x1eabbb = _0x12e34d.map((_0x36299f, _0x306f1c) => ({
-    'header': _0x36299f,
-    'title': "Personaje " + (_0x306f1c + 0x1),
-    'description': "Selecciona para ver la imagen de " + _0x36299f,
-    'id': _0x29affa + "character " + _0x36299f
-  }));
-  const _0x1671b4 = await getDevice(_0x3c3b79.key.id);
-  if (_0x1671b4 !== "desktop" && _0x1671b4 !== "web") {
-    const _0x340eb2 = {
-      'body': {
-        'text': _0x2f82ce
-      },
-      'footer': {
-        'text': "Personajes Obtenidos"
-      },
-      'nativeFlowMessage': {
-        'buttons': [{
-          'name': "single_select",
-          'buttonParamsJson': JSON.stringify({
-            'title': "Tus Personajes",
-            'sections': [{
-              'title': "Lista de Personajes",
-              'rows': _0x1eabbb
-            }]
-          })
-        }],
-        'messageParamsJson': ''
-      }
-    };
-    let _0x25b811 = generateWAMessageFromContent(_0x3c3b79.chat, {
-      'viewOnceMessage': {
-        'message': {
-          'interactiveMessage': _0x340eb2
-        }
-      }
-    }, {
-      'userJid': _0x264f66.user.jid,
-      'quoted': _0x3c3b79
-    });
-    _0x264f66.relayMessage(_0x3c3b79.chat, _0x25b811.message, {
-      'messageId': _0x25b811.key.id
-    });
-  } else {
-    _0x264f66.reply(_0x3c3b79.chat, _0x2f82ce, _0x3c3b79);
+    if (_0x299229.repository.url !== "git+https://github.com/Eliasivan/Goku-Black-Bot-MD.git") {
+      return false;
+    }
+    return true;
+  } catch (_0x532f75) {
+    return false;
   }
 };
-handler.help = ['obtenidos'];
-handler.tags = ["fun"];
-handler.command = ['obtenidos', "obtenido", 'ob'];
+const obtenerPersonajes = async () => {
+  try {
+    const _0x542bfb = await _0x30c6a2("https://raw.githubusercontent.com/David-Chian/Megumin-Bot-MD/main/lib/characters.json");
+    return await _0x542bfb.json();
+  } catch (_0x2d6eee) {
+    console.error("Error al leer characters.json:", _0x2d6eee);
+    return [];
+  }
+};
+const mostrarInventario = async (_0x35f27d, _0x521557, _0x2d66de, _0x88e47e, _0x3d8ac6) => {
+  const _0x507859 = _0x521557.sender;
+  const {
+    characters: _0x40d852,
+    totalRwcoins: _0x31f70c
+  } = _0x2d66de.usuarios[_0x507859] || {
+    'characters': [],
+    'totalRwcoins': 0x0
+  };
+  const _0x4319eb = _0x40d852.length;
+  const _0x21a453 = Math.ceil(_0x4319eb / 0xa);
+  _0x3d8ac6 = Math.max(0x1, Math.min(_0x3d8ac6, _0x21a453));
+  const _0x9d1603 = (_0x3d8ac6 - 0x1) * 0xa;
+  const _0x3876e4 = _0x9d1603 + 0xa;
+  const _0x341884 = _0x40d852.slice(_0x9d1603, _0x3876e4);
+  let _0x3e2f70 = new Set();
+  Object.values(_0x2d66de.usuarios).forEach(_0x1df7f4 => {
+    _0x1df7f4.characters.forEach(_0x3bbcf1 => _0x3e2f70.add(_0x3bbcf1.name));
+  });
+  const _0x3653af = "🦋 Personajes reclamados 🦋\n❤️‍🔥 Personajes: *" + _0x4319eb + ":*\n\n" + _0x341884.map((_0x47abe1, _0x7f03d2) => "» " + (_0x9d1603 + _0x7f03d2 + 0x1) + ". " + _0x47abe1.name).join("\n") + "\n\n> ◈ _Pagina *" + _0x3d8ac6 + "* de *" + _0x21a453 + '*_';
+  await _0x35f27d.reply(_0x521557.chat, _0x3653af, _0x521557);
+};
+let handler = async (_0x5a6f09, {
+  conn: _0x3be8bb,
+  usedPrefix: _0x5a0023,
+  command: _0x474d0f
+}) => {
+  if (!isHutaoBotMD()) {
+    await _0x5a6f09.reply("❤️‍🔥 Comando no disponible por el momento.");
+    return;
+  }
+  const _0x4788d1 = _0x5a6f09.sender;
+  const _0x144147 = _0x5a6f09.chat;
+  let _0x31973e = _0x1473e5.existsSync('data.json') ? JSON.parse(_0x1473e5.readFileSync("data.json", "utf-8")) : {
+    'chats': {}
+  };
+  if (!_0x31973e.chats[_0x144147]) {
+    _0x31973e.chats[_0x144147] = {
+      'usuarios': {},
+      'personajesReservados': []
+    };
+  }
+  const _0x29fdf4 = _0x31973e.chats[_0x144147];
+  if (!_0x29fdf4.usuarios[_0x4788d1] || _0x29fdf4.usuarios[_0x4788d1].characters.length === 0x0) {
+    _0x3be8bb.reply(_0x5a6f09.chat, "🦋 No tienes personajes reclamados.", _0x5a6f09);
+    return;
+  }
+  let _0xeb242c = (await obtenerPersonajes()).length;
+  const _0x14e5d8 = _0x29fdf4.usuarios[_0x4788d1].characters.length;
+  const _0xd42ddb = Math.ceil(_0x14e5d8 / 0xa);
+  _0x3be8bb.session = _0x3be8bb.session || {};
+  _0x3be8bb.session[_0x144147] = _0x3be8bb.session[_0x144147] || {};
+  _0x3be8bb.session[_0x144147].currentPage = _0x3be8bb.session[_0x144147].currentPage || 0x1;
+  let _0x37ba6f = _0x3be8bb.session[_0x144147].currentPage;
+  if (_0x474d0f === 'nex' || _0x474d0f === "next" || _0x474d0f === "siguiente") {
+    _0x37ba6f = Math.min(_0x37ba6f + 0x1, _0xd42ddb);
+  } else if (_0x474d0f === 'return' || _0x474d0f === "atras" || _0x474d0f === 'atrás') {
+    _0x37ba6f = Math.max(_0x37ba6f - 0x1, 0x1);
+  }
+  _0x3be8bb.session[_0x144147].currentPage = _0x37ba6f;
+  await mostrarInventario(_0x3be8bb, _0x5a6f09, _0x29fdf4, _0xeb242c, _0x37ba6f);
+};
+handler.help = ["obtenidos"];
+handler.tags = ["gacha"];
+handler.command = ["obtenidos", "ginfo", "nex", "next", 'siguiente', "atrás", "atras", "return", 'ob'];
 export default handler;
