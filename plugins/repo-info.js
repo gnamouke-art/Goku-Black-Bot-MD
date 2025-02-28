@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, usedPrefix, command }) => {
-    const githubRepoURL = 'https://github.com/Eliasivan/Goku-Black-Bot-MD';
+    const githubRepoURL = 'https://github.com/Ivanmods15/Goku-Black-Bot-MD-Lite';
 
     try {
         const [, username, repoName] = githubRepoURL.match(/github\.com\/([^/]+)\/([^/]+)/);
