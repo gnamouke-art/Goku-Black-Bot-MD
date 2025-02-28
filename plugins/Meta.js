@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 let handler = async (m, { conn, text }) => {
-if (!text) throw `☄ ${mssg.notext}`
+if (!text) throw `☄ Ingresa un texto para hablar con meta`
 m.react('💥')
 
     let syst = `Eres GokuBlack, un gran modelo de lenguaje entrenado por MetaAI. Siga cuidadosamente las instrucciones del usuario.`
