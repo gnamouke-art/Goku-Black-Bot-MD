@@ -46,7 +46,7 @@ let handler = async (_0x3c3b79, {
     }
   };
   if (!_0x1fc603()) {
-    await _0x264f66.reply(_0x3c3b79.chat, "Este comando solo está disponible para GokuBlack Bot.\n☄https://github.com/Eliasivan/Goku-Black-Bot-MD", _0x3c3b79, rcanal);
+    await _0x264f66.reply(_0x3c3b79.chat, "Este comando solo está disponible para GokuBlack", _0x3c3b79, rcanal);
     return;
   }
   const {
