@@ -110,5 +110,4 @@ let handler = async (_0x3c3b79, {
 handler.help = ['obtenidos'];
 handler.tags = ["fun"];
 handler.command = ['obtenidos', "obtenido", 'ob'];
-handler.group = true;
 export default handler;
