@@ -1,24 +1,48 @@
-import fetch from 'node-fetch'
+import { randomBytes } from "crypto"
+import axios from "axios"
 
-var handler = async (m, { text,  usedPrefix, command }) => {
-if (!text) return conn.reply(m.chat, `Ꙭ *Ingresé una petición*\n\nEjemplo, ${usedPrefix + command} Conoces a GokuBlack?`, m, rcanal)
-try {
-await m.react('🕒')
-conn.sendPresenceUpdate('composing', m.chat)
-var apii = await fetch(`https://skynex.boxmine.xyz/docs/ai/myprompt?text=${text}&prompt=${syst}&apikey=Dylux`)
-var res = await apii.json()
-await conn.reply(m.chat, res.result, m, rcanal)
-await m.react('✅️')
-} catch (error) {
-await m.react('✖️')
-console.error(error)
-return conn.reply(m.chat, '☢︎︎ *Ocurrió un fallo*', m, rcanal)
-}}
+let handler = async (m, { conn, text }) => {
+    if (!text) throw `¿Cómo puedo ayudarte hoy?`;
+    try {
+        conn.reply(m.chat, m);
+        let data = await chatGpt(text);
+        await conn.sendMessage(m.chat, { 
+            text: '*Demo:* ' + data
+        }, { quoted: m });
 
-handler.command = ['bard']
-handler.help = ['bard']
+    } catch (err) {
+        m.reply('error cik:/ ' + err);
+    }
+}
+
+handler.help = ['bard *<texto>*'];
+handler.command = ['bard'];
+handler.tags = ['ai'];
 handler.group = true;
-handler.register = false
-handler.tags = ['ai']
-handler.premium = false
-export default handler
+
+export default handler;
+
+async function chatGpt(query) {
+    try {
+        const { id_ } = (await axios.post("https://chat.chatgptdemo.net/new_chat", { user_id: "crqryjoto2h3nlzsg" }, { headers: { "Content-Type": "application/json" } })).data;
+
+        const json = { "question": query, "chat_id": id_, "timestamp": new Date().getTime() };
+
+        const { data } = await axios.post("https://chat.chatgptdemo.net/chat_api_stream", json, { headers: { "Content-Type": "application/json" } });
+        const cek = data.split("data: ");
+
+        let res = [];
+
+        for (let i = 1; i < cek.length; i++) {
+            if (cek[i].trim().length > 0) {
+                res.push(JSON.parse(cek[i].trim()));
+            }
+        }
+
+        return res.map((a) => a.choices[0].delta.content).join("");
+
+    } catch (error) {
+        console.error("Error parsing JSON:", error);
+        return 404;
+    }
+}
