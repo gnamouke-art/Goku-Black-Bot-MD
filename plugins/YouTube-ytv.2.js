@@ -46,7 +46,7 @@ let handler = async (_0x244539, {
     }
   }
   try {
-    const _0x28459d = await _0x555d8d("https://api.lolhuman.xyz/api/ytvideo2?apikey=${lolkeysapi}&url=${yt_play}" + encodeURIComponent(_0x542cf5));
+    const _0x28459d = await _0x555d8d("https://api.siputzx.my.id/api/d/ytmp4?url=${url}" + encodeURIComponent(_0x542cf5));
     let {
       data: _0x2e1440
     } = await _0x28459d.json();
@@ -60,7 +60,8 @@ let handler = async (_0x244539, {
     });
   } catch {
     try {
-      const _0x2c1273 = "https://api.lolhuman.xyz/api/ytvideo2?apikey=${lolkeysapi}&url=${yt_play}" + encodeURIComponent(_0x542cf5);
+      const _0x2c1273 = "
+https://api.siputzx.my.id/api/d/ytmp4?url=${url}" + encodeURIComponent(_0x542cf5);
       const _0x3c76bd = await _0x555d8d(_0x2c1273);
       const _0x3a7491 = await _0x3c76bd.json();
       if (!_0x3a7491 || !_0x3a7491.downloads?.["url"]) {
@@ -92,7 +93,7 @@ let handler = async (_0x244539, {
         });
       } catch {
         try {
-          const _0x31d4ec = "https://api.lolhuman.xyz/api/ytvideo2?apikey=${lolkeysapi}&url=${yt_play}" + encodeURIComponent(videoUrl);
+          const _0x31d4ec = "https://api.siputzx.my.id/api/d/ytmp4?url=${url}" + encodeURIComponent(videoUrl);
           const _0x4ca6d7 = await _0x555d8d(_0x31d4ec);
           const _0x2ac531 = await _0x4ca6d7.json();
           if (_0x2ac531.status === 'tunnel' && _0x2ac531.url) {
@@ -108,7 +109,7 @@ let handler = async (_0x244539, {
           }
         } catch {
           try {
-            const _0x49ad85 = await _0x555d8d("https://api.lolhuman.xyz/api/ytvideo2?apikey=${lolkeysapi}&url=${yt_play}" + encodeURIComponent(_0x542cf5));
+            const _0x49ad85 = await _0x555d8d("https://api.siputzx.my.id/api/d/ytmp4?url=${url}" + encodeURIComponent(_0x542cf5));
             let {
               result: _0x14a508
             } = await _0x49ad85.json();
