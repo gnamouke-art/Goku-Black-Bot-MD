@@ -157,6 +157,5 @@ https://api.siputzx.my.id/api/d/ytmp4?url=${url}" + encodeURIComponent(_0x542cf5
     }
   }
 };
-handler.command = /^ytv.3$/i;
-handler.group = true;
+handler.command = /^ytv.3$/i
 export default handler;
