@@ -1,24 +1,24 @@
 import fetch from 'node-fetch'
 
 var handler = async (m, { text,  usedPrefix, command }) => {
-if (!text) return conn.reply(m.chat, `🍟 *Ingresé una petición*\n\nEjemplo, ${usedPrefix + command} Conoces a Goku-Black-Bot-MD-Lite?`, m, rcanal)
+if (!text) return conn.reply(m.chat, `Ꙭ *Ingresé una petición*\n\nEjemplo, ${usedPrefix + command} Conoces a GokuBlack?`, m, rcanal)
 try {
 await m.react('🕒')
 conn.sendPresenceUpdate('composing', m.chat)
-var apii = await fetch(`https://aemt.me/bard?text=${text}`)
+var apii = await fetch(`https://skynex.boxmine.xyz/docs/ai/myprompt?text=${text}&prompt=${syst}&apikey=Dylux`)
 var res = await apii.json()
 await conn.reply(m.chat, res.result, m, rcanal)
 await m.react('✅️')
 } catch (error) {
 await m.react('✖️')
 console.error(error)
-return conn.reply(m.chat, '🚩 *Ocurrió un fallo*', m, rcanal)
+return conn.reply(m.chat, '☢︎︎ *Ocurrió un fallo*', m, rcanal)
 }}
 
 handler.command = ['bard']
 handler.help = ['bard']
 handler.group = true;
-handler.register = true
+handler.register = false
 handler.tags = ['ai']
 handler.premium = false
 export default handler
