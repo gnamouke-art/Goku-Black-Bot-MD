@@ -7,8 +7,8 @@ let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.js
 m.reply(`
 *≡ SCRIPT*
 
-▢ Git : https://github.com/Ivanmods15/Goku-Black-Bot-MD
-`.trim())
+▢ Git : https://github.com/Ivanmods15/Goku-Black-Bot-MD-Lite
+>la nueva versión es privada.`.trim())
     
 }
 
