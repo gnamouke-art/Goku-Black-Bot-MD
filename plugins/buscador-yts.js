@@ -1,102 +1,134 @@
-/*
+import fetch from 'node-fetch';
+import yts from "yt-search";
+import axios from 'axios';
+const { generateWAMessageContent, generateWAMessageFromContent, proto } = (await import('@whiskeysockets/baileys')).default;
+import FormData from "form-data";
+import Jimp from "jimp";
 
-- Agradecimiento a la comunidad de "WSApp • Developers"
- * https://chat.whatsapp.com/FaQunmlp9BmDRk6lEEc9FJ
-- Agradecimiento especial a Carlos (PT) por los codigos de interactiveMessage (botones)
-- Agradecimiento a Darlyn1234 por la estructura de uso en este codigo y quoted
- * https://github.com/darlyn1234
-- Adaptacion de imagen en tipo lista, codigo y funcionamiento por BrunoSobrino
- * https://github.com/BrunoSobrino
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+    if (!text) return m.reply(`• *Ejemplo:* ${usedPrefix + command} elaina edit`);
 
-*/
-import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys'
-import yts from 'yt-search';
-import fs from 'fs';
+  await m.react('🕓')
 
-const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
-    const datas = global;
-    const device = await getDevice(m.key.id);
-    
-  if (!text) throw `⚠️ *_Que quieres que busque en YouTube?_*`;
-    
-  if (device !== 'desktop' || device !== 'web') {      
-    
-  const results = await yts(text);
-  const videos = results.videos.slice(0, 20);
-  const randomIndex = Math.floor(Math.random() * videos.length);
-  const randomVideo = videos[randomIndex];
+    async function createImage(img) {
+        const { imageMessage } = await generateWAMessageContent({
+            image: img
+        }, {
+            upload: conn.waUploadToServer
+        });
+        return imageMessage;
+    }
 
-  var messa = await prepareWAMessageMedia({ image: {url: randomVideo.thumbnail}}, { upload: conn.waUploadToServer })
-  const interactiveMessage = {
-    body: { text: `*╭┈─────⸌̗⸃》̗̀💥̖́《⸍̖⸂─────┈╮*\n*│≣ 🔥 ʀᴇsᴜʟᴛᴀᴅᴏs ᴏʙᴛᴇɴɪᴅᴏs:* ${results.videos.length}\n*│≡ 🎲 Video aleatorio:*\n*│≠ 🌹-› Title:* ${randomVideo.title}\n*│≜ 👤-› Author:* ${randomVideo.author.name}\n*│≚ 💫-› Views:* ${randomVideo.views}\n*│≋ 🌱-› Link :* ${randomVideo.url}\n*│≍ 🏞-› Imagen:* ${randomVideo.thumbnail}\n*╰┈─────⸌̗⸃》̗̀🔥̖́《⸍̖⸂─────┈╯*`.trim() },
-    footer: { text: `${global.wm}`.trim() },  
-      header: {
-          title: `*❤️‍🔥 Goku-Black Sᴇᴀʀᴄʜ ❤️‍🔥*\n`,
-          hasMediaAttachment: true,
-          imageMessage: messa.imageMessage,
-      },
-    nativeFlowMessage: {
-      buttons: [
-        {
-          name: 'single_select',
-          buttonParamsJson: JSON.stringify({
-            title: 'OPCIONES DISPONIBLES',
-            sections: videos.map((video) => ({
-              title: video.title,
-              rows: [
-                {
-                  header: video.title,
-                  title: video.author.name,
-                  description: 'Descargar MP3',
-                  id: `${prefijo}play.1 ${video.url}`
-                },
-                {
-                  header: video.title,
-                  title: video.author.name,
-                  description: 'Descargar MP4',
-                  id: `${prefijo}play.2 ${video.url}`
-                }
-              ]
-            }))
-          })
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
-      ],
-      messageParamsJson: ''
     }
-  };        
-            
-        let msg = generateWAMessageFromContent(m.chat, {
-            viewOnceMessage: {
-                message: {
-                    interactiveMessage,
-                },
-            },
-        }, { userJid: conn.user.jid, quoted: fgif2 })
-      conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id});
 
-  } else {
-  const datas = global;
-  const idioma = datas.db.data.users[m.sender].language;
-  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`));
-  const traductor = _translate.plugins.buscador_yts;      
-  const results = await yts(text);
-  const tes = results.all;
-  const teks = results.all.map((v) => {
-    switch (v.type) {
-      case 'video': return `
-° *_${v.title}_*
-↳ 🫐 *_Link :_* ${v.url}
-↳ 🕒 *_DuraciÃ³n :_* ${v.timestamp}
-↳ 📥 *_Subido :_* ${v.ago}
-↳ 👁 *_Vistas :_* ${v.views}`;
+    let push = [];
+    let results = await yts(text);
+    let videos = results.videos.slice(0, 9); 
+    shuffleArray(videos);
+
+    let i = 1;
+    for (let video of videos) {
+        let imageUrl = video.thumbnail;
+        let imageK = await fetch(imageUrl);
+        let imageB = await imageK.buffer();
+      let pr = await remini(imageB, "enhance")
+        push.push({
+            body: proto.Message.InteractiveMessage.Body.fromObject({
+                text: `◦ *Título:* ${video.title}\n◦ *Duración:* ${video.timestamp}\n◦ *Vistas:* ${video.views}`
+            }),
+            footer: proto.Message.InteractiveMessage.Footer.fromObject({
+                text: '' 
+            }),
+            header: proto.Message.InteractiveMessage.Header.fromObject({
+                title: ``,
+                hasMediaAttachment: true,
+                imageMessage: await createImage(pr) 
+            }),
+            nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
+                buttons: [
+                    {
+                "name": "cta_copy",
+                "buttonParamsJson": JSON.stringify({
+                "display_text": "Descargar audio! 🎧",
+                "copy_code": `.ytmp3 ${video.url}`
+                })
+              },{
+                "name": "cta_copy",
+                "buttonParamsJson": JSON.stringify({
+                "display_text": "Descargar video! 📹",
+                "copy_code": `.ytmp4 ${video.url}`
+                })
+              }
+                ]
+            })
+        });
     }
-  }).filter((v) => v).join('\n\n◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦\n\n');
-  conn.sendFile(m.chat, tes[0].thumbnail, 'error.jpg', teks.trim(), m);      
-  }    
-};
-handler.help = ['ytsearch <texto>'];
-handler.tags = ['search'];
-handler.command = ['ytsearch','yts','searchyt','buscaryt','videosearch','audiosearch'];
-handler.register = true;
-handler.group = true;
+
+    const bot = generateWAMessageFromContent(m.chat, {
+        viewOnceMessage: {
+            message: {
+                messageContextInfo: {
+                    deviceListMetadata: {},
+                    deviceListMetadataVersion: 2
+                },
+                interactiveMessage: proto.Message.InteractiveMessage.fromObject({
+                    body: proto.Message.InteractiveMessage.Body.create({
+                        text: '*🤍 Resultados de:* ' + `*${text}*`
+                    }),
+                    footer: proto.Message.InteractiveMessage.Footer.create({
+                        text: 'Para descargar, solo desliza sobre los resultados y toca el botón para copiar, y copiaras el comando, solo envialo, y listo! 😁'
+                    }),
+                    header: proto.Message.InteractiveMessage.Header.create({
+                        hasMediaAttachment: false
+                    }),
+                    carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({
+                        cards: [...push] // Mengisi carousel dengan hasil video
+                    })
+                    
+                })
+            }
+        }
+    }, {
+    'quoted': m
+  });
+
+    await conn.relayMessage(m.chat, bot.message, { messageId: bot.key.id });
+  await m.react('✅')
+}
+
+handler.help = ["ytsearch1", "yts1"];
+handler.tags = ["search"];
+handler.command = ["ytsearch1", "yts1"];
+
 export default handler;
+
+async function remini(imageData, operation) {
+  return new Promise(async (resolve, reject) => {
+    const availableOperations = ["enhance", "recolor", "dehaze"]
+    if (availableOperations.includes(operation)) {
+      operation = operation
+    } else {
+      operation = availableOperations[0]
+    }
+    const baseUrl = "https://inferenceengine.vyro.ai/" + operation + ".vyro"
+    const formData = new FormData()
+    formData.append("image", Buffer.from(imageData), {filename: "enhance_image_body.jpg", contentType: "image/jpeg"})
+    formData.append("model_version", 1, {"Content-Transfer-Encoding": "binary", contentType: "multipart/form-data; charset=utf-8"})
+    formData.submit({url: baseUrl, host: "inferenceengine.vyro.ai", path: "/" + operation, protocol: "https:", headers: {"User-Agent": "okhttp/4.9.3", Connection: "Keep-Alive", "Accept-Encoding": "gzip"}},
+      function (err, res) {
+        if (err) reject(err);
+        const chunks = [];
+        res.on("data", function (chunk) {chunks.push(chunk)});
+        res.on("end", function () {resolve(Buffer.concat(chunks))});
+        res.on("error", function (err) {
+        reject(err);
+        });
+      },
+    )
+  })
+}
