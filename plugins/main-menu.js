@@ -35,7 +35,7 @@ const defaultMenu = {
 
 ╔══✦「 Info del Bot 」✦══╗
 ║ ✧ 👨‍💻 Creador: Ivan
-║ ✧ 🌀 Tipo Bot: Goku-Black-Bot-MD-Lite
+║ ✧ 🌀 Tipo Bot: Goku-Black-Bot-MD
 ║ ✧ 🚩 Modo: Público
 ║ ✧ 📚 Baileys: Multi Device
 ║ ✧ ⏱️ Tiempo Activo: %uptime
