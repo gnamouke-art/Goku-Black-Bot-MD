@@ -81,7 +81,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
                         text: '*🤍 Resultados de:* ' + `*${text}*`
                     }),
                     footer: proto.Message.InteractiveMessage.Footer.create({
-                        text: 'Para descargar, solo desliza sobre los resultados y toca el botón para copiar, y copiaras el comando, solo envialo, y listo! 😁'
+                        text: '${dev}'
                     }),
                     header: proto.Message.InteractiveMessage.Header.create({
                         hasMediaAttachment: false
@@ -101,9 +101,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   await m.react('✅')
 }
 
-handler.help = ["ytsearch1", "yts1"];
+handler.help = ["ytsearch", "yts"];
 handler.tags = ["search"];
-handler.command = ["ytsearch1", "yts1"];
+handler.command = ["ytsearch", "yts"];
 
 export default handler;
 
