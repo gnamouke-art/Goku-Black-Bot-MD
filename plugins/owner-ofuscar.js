@@ -18,5 +18,7 @@ function obfuscateCode(code) {
 let obfuscatedCode = await obfuscateCode(text);
 conn.sendMessage(m.chat, {text: obfuscatedCode}, {quoted: m});
 }
-handler.command = /^(ofuscar|ofuscador)$/i
+handler.command = ['ofuscador']
+handler.rowner = true
 export default handler
+
