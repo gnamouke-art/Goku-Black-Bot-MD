@@ -1,5 +1,6 @@
 /* - @Eliasivan
-   -@Jose-Elber*/
+   -@Jose-Elber 
+*/
 
 function _0x25c9(_0x34fd86, _0x509319) {
     const _0x2a0074 = _0x3fb8();
