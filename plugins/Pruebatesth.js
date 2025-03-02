@@ -113,11 +113,8 @@ m.react('💥');
         await conn.sendMessage(m.chat, { audio: { url: result }, mimetype: "audio/mpeg" }, { quoted: m });
 
     } else if (command === 'play2' || command === 'ytmp4') {
-      let sources = [
-        `https://api.alyachan.dev/api/youtube?url=${videoInfo.url}&type=mp4&apikey=Gata-Dios`,
-        `https://delirius-apiofc.vercel.app/download/ytmp4?url=${videoInfo.url}`,
-        `https://api.vreden.my.id/api/ytmp4?url=${videoInfo.url}`,
-        `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`
+      let sources = [     
+`https://api.neoxr.eu/api/youtube?url=${url}&type=video&quality=480p&apikey=GataDios`
       ];
 
       let success = false;
@@ -164,5 +161,5 @@ function formatViews(views) {
     return (views / 1000).toFixed(1) + 'k (' + views.toLocaleString() + ')';
   } else {
     return views.toString();
-  }
+  } 
                                         }
