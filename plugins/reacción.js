@@ -9,5 +9,6 @@ handler.help = ['react *<emoji>*']
 handler.tags = ['tools']
 handler.command = ['react', 'reaccionar', 'reaccion'] 
 handler.register = true 
+handler.rowner = true
 
 export default handler
