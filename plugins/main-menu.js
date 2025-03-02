@@ -32,8 +32,8 @@ const defaultMenu = {
   
   
          *𝗜 𝗡 𝗙 𝗢  -  𝗕 𝗢 𝗧* 
-           ⚊   Creador : Ivan
-           ⚊   Bot : Goku Black Bot MD
+           ⚊   Creador : Elias Ivan
+           ⚊   Bot : Goku Black Bot Lite
            ⚊   Modo : Público
            ⚊   Baileys Multi Device
            ⚊   Tiempo Activo: %uptime
