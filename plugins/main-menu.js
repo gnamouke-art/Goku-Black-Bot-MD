@@ -4,60 +4,65 @@ import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
 
 let tags = {
-  'main': '🄸🄽🄵🄾×🄱🄾🅃',
-  'buscador': '🄱🅄🅂🄲🄰🄳🄾🅁🄴🅂',
-  'fun': '🄹🅄🄴🄶🄾🅂',
-  'jadibot': '🅂🄴🅁🄱🄾🅃',
-  'rpg': '×🅁×🄿×🄶×',
-  'rg': '🅁🄴🄶🄸🅂🅃🅁🄾',
-  'xp': '×🄴×🅇×🄿×',
-  'sticker': '🅂🅃🄸🄲🄺🄴🅁🅂',
-  'anime': '🄰🄽🄸🄼🄴🅂',
-  'database': '🄳🄰🅃🄰🄱🄰🅂🄴',
-  'fix': '🄵🄸🅇🄼🄴🄽🅂🄰🄹🄴',
-  'grupo': '🄶🅁🅄🄿🄾🅂',
-  'nable': '🄾🄽 / 🄾🄵🄵', 
-  'descargas': '🄳🄴🅂🄲🄰🅁🄶🄰🅂',
-  'youtube': '🅈🄾🅄🅃🅄🄱🄴',
-  'tools': '🄷🄴🅁🅁🄰🄼🄸🄴🄽🅃🄰🅂',
-  'info': '🄸🄽🄵🄾🅁🄼🄰🄲🄸🄾́🄽',
-  'nsfw': '🄽🅂🄵🅆', 
-  'owner': '🄲🅁🄴🄰🄳🄾🅁', 
-  'mods': '🅂🅃🄰🄵🄵 🄽🄴🄶🅄🄽🄸🄽',
-  'audio': '🄰🅄🄳🄸🄾🅂', 
-  'ai': '×🄰×🄸×',
-  'transformador': '🄲🄾🄽🅅🄴🅁🅃🄸🄳🄾🅁🄴🅂',
+  'main': 'Info Bot',
+  'buscador': 'Buscador',
+  'fun': 'Juegos',
+  'rpg': 'Rpg',
+  'rg': 'Registror',
+  'xp': 'Exp',
+  'sticker': 'Stickers',
+  'anime': 'Animes',
+  'database': 'Database',
+  'fix': 'Fix Mensaje',
+  'grupo': 'Grupos',
+  'nable': 'On / Off',
+  'descargas': 'Descargas',
+  'tools': 'Herramientas',
+  'info': 'Información',
+  'nsfw': 'Nsfw',
+  'owner': 'Creador',
+  'mods': 'Staff',
+  'audio': 'Audios',
+  'ai': 'Ia',
+  'transformador': 'Convertidores',
 }
 
 const defaultMenu = {
-  before: `╭══════════════ ⪩
-“ Hola *Humano* mi nombre es *Goku-Black-Bot-MD*, %greeting ”
+  before: `─────────────────────────── 
+  
+  
+         *𝗜 𝗡 𝗙 𝗢  -  𝗕 𝗢 𝗧* 
+           ⚊   Creador : Ivan
+           ⚊   Bot : Goku Black Bot MD
+           ⚊   Modo : Público
+           ⚊   Baileys Multi Device
+           ⚊   Tiempo Activo: %uptime
+           ⚊   Usuarios registrados: %totalreg
 
-╔══✦「 Info del Bot 」✦══╗
-║ ✧ 👨‍💻 Creador: Ivan
-║ ✧ 🌀 Tipo Bot: Goku-Black-Bot-MD
-║ ✧ 🚩 Modo: Público
-║ ✧ 📚 Baileys: Multi Device
-║ ✧ ⏱️ Tiempo Activo: %uptime
-║ ✧ 👤 Usuarios registrados: %totalreg
-╚═════════════════════✦
-%readmore
-╔══✦「 Info del Usuario 」✦══╗
-║ ✧ 💌 Cliente: %name
-║ ✧ ⚡ Experiencia: %exp
-║ ✧ 🍪 cookies: %estrellas
-║ ✧ 🫧 Nivel: %level
-║ ✧ 🛡️ Rango: %role
-╚═════════════════════✦
 
-%readmore
-*☆─ׅ─ׄ★─ׅ─ׄ✮─ׅ─ׄ★─ׅ─ׄ☆─ׅ─ׄ☆─ׅ─ׄ★─ׅ─ׄ✮─ׅ─ׄ★─ׅ─ׄ☆*
+─────────────────────────── 
 
-\t*𝗟𝗜𝗦𝗧𝗔 𝗗𝗘 𝗖𝗢𝗠𝗔𝗡𝗗𝗢𝗦* 
+
+
+─────────────────────────── 
+  
+  
+         *𝗜 𝗡 𝗙 𝗢  -  𝗨 𝗦 𝗨 𝗔 𝗥 𝗜 𝗢* 
+           ⚊   Cliente: %name
+           ⚊   Experiencia: %exp
+           ⚊   cookies: %estrellas
+           ⚊   Nivel: %level
+           ⚊   Rango: %role
+
+
+─────────────────────────── 
+
+
+*– L I S T A   D E   C O M A N D O S*\n
 `.trimStart(),
-      header: '.    ╭─◉⧫┈⎯🫧⦿𖠙✦⧫◉─╮\n╭╼⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪ %category ໑⃪࣭۪ٜ݊݊݊݊𑁍ꥈ࣪⬪\n┃֪࣪   ╰─◉⧫┈⎯🫧❈⧫⎯◉─╯',
-  body: '├ׁ̟̇❍✎ %cmd\n',
-  footer: '╚═⎯⧫❈⠄⭎⧫❈⠄⭎⧫❈⠄⭎⧫❈⎯═╝\n',
+      header: '╭── ︿︿︿︿︿ *⭒   ⭒   ⭒   ⭒   ⭒   ⭒*\n┊ ‹‹ *Category* :: *%category*\n┊•*⁀➷ °⭒⭒⭒ •*⁀➷ °⭒⭒⭒\n╰─── ︶︶︶︶ ✰⃕  ⌇ *⭒ ⭒ ⭒*   ˚̩̥̩̥*̩̩͙✩',
+  body: '│⏤𑁯๋࣮ׄ🫕̸̷݂֟፝ۛᮬᮢּׁ͠ ּ࣮ ݄ᰍֹּ ┊%cmd\n',
+  footer: '╰─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒\n',
   after: `> ${dev}`
 }
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
@@ -167,40 +172,19 @@ const pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://telegr
   global.vid = rlink
   const response = await fetch(vid)
   const gif = await response.buffer()
- // const img = imagen1
 
-/*await conn.reply(m.chat, '╭ׅׄ̇─ׅ̻ׄ╮۪̇߭︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇⊹۪̇߭︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇⊹۪̇߭︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇⊹*\n├ ⚘݄𖠵⃕⁖𖥔.Ƈᴀʀɢᴀɴᴅᴏ,  ꪶꪾ❍̵̤̂̂ꫂ\n├Ąɢᴜᴀʀᴅᴇ ᴜɴ ᴍᴏᴍᴇɴᴛᴏ❞\n╰ׁ̻─ׅׄ─۪۬─۟─۪─۟─۪۬─۟─۪─۟─۪۬─۟─۪─۟┄۪۬┄۟┄۪┈۟┈۪', m, { contextInfo:{ forwardingScore: 2024, isForwarded: true, externalAdReply: {title: namechannel, body: '𝐃𝐞𝐯 𝐖𝐨𝐫𝐝 𝐓𝐞𝐚𝐦 𝐎𝐟𝐢𝐜𝐢𝐚𝐥', sourceUrl: channel, thumbnail: icons }}})*/
+await conn.sendMessage(m.chat, {
+  footer: `© 2025 ${botname}`, 
+  headerType: 1, 
+  viewOnce: true, 
+  document: fs.readFileSync("./package.json"), 
+  fileName: `${wm} </>`, 
+  mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+  fileLength: 99999999, 
+  caption: text.trim(), 
+  contextInfo: { isForwarded: true, mentionedJid: [m.sender], forwardedNewsletterMessageInfo: { newsletterJid: '120363276986902836@newsletter', newsletterName: 'ᘜOKᑌ-ᗷᒪᗩᑕK-ᗷOT-ᗰᗪ-ᒪITᗴ' }, externalAdReply: { title: `${botname} - V2`, body: `${dev}`, thumbnailUrl: icono, sourceUrl: channel, mediaType: 1, renderLargerThumbnail: true } }
+});
 
-// await conn.reply(m.chat, '🍟 Enviando el menú.....', m, rcanal)
-
-await m.react('🫧') 
-
-//await conn.sendFile(m.chat, imagen1, 'yaemori.jpg', text.trim(), fkontak, null, rcanal)
-
-await conn.sendMessage(
-  m.chat,
-  { video: { url: vid }, caption: text.trim(),
-  contextInfo: {
-    mentionedJid: [m.sender],
-    isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363276986902836@newsletter',
-      newsletterName: 'ᘜOKᑌ-ᗷᒪᗩᑕK-ᗷOT-ᗰᗪ-ᒪITᗴ',
-      serverMessageId: -1,
-    },/*
-    forwardingScore: 999,
-    externalAdReply: {
-      title: '𝐆𝐨𝐤𝐮-𝐁𝐥𝐚𝐜𝐤-𝐁𝐨𝐭-𝐌𝐃-𝐋𝐢𝐭𝐞',
-      body: dev,
-      thumbnailUrl: icono,
-      sourceUrl: redes,
-      mediaType: 1,
-      renderLargerThumbnail: false,
-    },*/
-  },
-
-  gifPlayback: true, gifAttribution: 0 },
-  { quoted: fkontak })
 
   } catch (e) {
     conn.reply(m.chat, '🔵 Lo sentimos, el menú tiene un error', m, rcanal, )
@@ -212,44 +196,44 @@ handler.tags = ['main']
 handler.command = ['menu', 'menú', 'menuall', 'allmenú', 'allmenu', 'menucompleto'] 
 handler.register = true
 
-export default handler
+export default handler;
+
+function pickRandom(list) {
+  return list[Math.floor(Math.random() * list.length)]
+}
 
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
 
 function clockString(ms) {
-  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
+  let d = isNaN(ms) ? '--' : Math.floor(ms / 86400000);
+  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000) % 24;
+  let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60;
+  return [d, ' D ', h, ' H ', m, ' M '].map(v => v.toString().padStart(2, '0')).join('');
+}
+function clockStringP(ms) {
+  let ye = isNaN(ms) ? '--' : Math.floor(ms / 31104000000) % 10
+  let mo = isNaN(ms) ? '--' : Math.floor(ms / 2592000000) % 12
+  let d = isNaN(ms) ? '--' : Math.floor(ms / 86400000) % 30
+  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000) % 24
   let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
   let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
-  return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
+  return [ye, ' *Years 🗓️*\n', mo, ' *Month 🌙*\n', d, ' *Days ☀️*\n', h, ' *Hours 🕐*\n', m, ' *Minute ⏰*\n', s, ' *Second ⏱️*'].map(v => v.toString().padStart(2, 0)).join('')
 }
-
-  var ase = new Date();
-  var hour = ase.getHours();
-switch(hour){
-  case 0: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌙'; break;
-  case 1: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 💤'; break;
-  case 2: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🦉'; break;
-  case 3: hour = 'Bᴜᴇɴᴏs Dɪᴀs ✨'; break;
-  case 4: hour = 'Bᴜᴇɴᴏs Dɪᴀs 💫'; break;
-  case 5: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌅'; break;
-  case 6: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌄'; break;
-  case 7: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌅'; break;
-  case 8: hour = 'Bᴜᴇɴᴏs Dɪᴀs 💫'; break;
-  case 9: hour = 'Bᴜᴇɴᴏs Dɪᴀs ✨'; break;
-  case 10: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌞'; break;
-  case 11: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌨'; break;
-  case 12: hour = 'Bᴜᴇɴᴏs Dɪᴀs ❄'; break;
-  case 13: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌤'; break;
-  case 14: hour = 'Bᴜᴇɴᴀs Tᴀʀᴅᴇs 🌇'; break;
-  case 15: hour = 'Bᴜᴇɴᴀs Tᴀʀᴅᴇs 🥀'; break;
-  case 16: hour = 'Bᴜᴇɴᴀs Tᴀʀᴅᴇs 🌹'; break;
-  case 17: hour = 'Bᴜᴇɴᴀs Tᴀʀᴅᴇs 🌆'; break;
-  case 18: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌙'; break;
-  case 19: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌃'; break;
-  case 20: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌌'; break;
-  case 21: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌃'; break;
-  case 22: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌙'; break;
-  case 23: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌃'; break;
+function ucapan() {
+    const time = moment.tz('America/Lima').format('HH')
+    let res = "Buenas Noches🌙"
+    if (time >= 5) {
+        res = "Buena Madrugada🌄"
+    }
+    if (time > 10) {
+        res = "Buenos días☀️"
+    }
+    if (time >= 12) {
+        res = "Buenas Tardes🌅"
+    }
+    if (time >= 19) {
+        res = "Buenas Noches🌙"
+    }
+    return res
 }
-  var greeting = hour;
