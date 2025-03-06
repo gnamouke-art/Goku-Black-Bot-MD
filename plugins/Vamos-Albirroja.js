@@ -1,6 +1,6 @@
 //Codigo creado por Ivan 
 import fetch from 'node-fetch'
-
+    const stickerUrl = 'https://files.catbox.moe/wy49r0.webp'; 
 let handler  = async (m, { conn, usedPrefix, command }) => {
 let img = await (await fetch(`https://qu.ax/yYMht.mp4`)).buffer()
 const more = String.fromCharCode(8206)
