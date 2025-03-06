@@ -1,61 +1,21 @@
-// By: @OfcKing  
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+    if (!text) return conn.reply(m.chat, '🌠 ¿Que comando quieres sugerir?', m)
+    if (text.length < 5) return conn.reply(m.chat, '🌠 La sugerencia debe ser más de 5 caracteres.', m)
+    if (text.length > 1000) return conn.reply(m.chat, '🌠 Máximo de la sugerencia es de 1000 caracteres.', m)
 
-import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
-import * as fs from 'fs';
-import { sticker } from '../lib/sticker.js';
-import uploadFile from '../lib/uploadFile.js';
-import uploadImage from '../lib/uploadImage.js';
-import { webp2png } from '../lib/webp2mp4.js';
+    const teks = `🌠 Sugerencia de nuevo comando del usuario *${m.sender}*
 
-const idgroup = global.idchannel
-const idgp = "120363351999685409@g.us"; 
+🛡️ Han sugerido un comando:
+> ${text}`
 
-var handler = async (m, { conn, text }) => {
-    if (!m.quoted && !text) return conn.reply(m.chat, `🚩 Por favor, escribe tu mensaje o cita el contenido que deseas enviar.`, m);
+    const groupChatId = '120363400951168089@g.us';
+    await conn.reply(groupChatId, m.quoted ? teks + m.quoted.text : teks, m, { mentions: conn.parseMention(teks) })
 
-    let messageType = 'un texto'; 
-    let isMedia = false;
-    let quoted, mime, mediax, htextos;
+    m.reply('🌠 La sugerencia se envió al Staff.')
+}
+handler.help = ['sugerencia']
+handler.tags = ['owner']
+handler.command = ['sugerencia', 'sugerir']
+handler.group = false;
 
-    try {
-        quoted = m.quoted ? m.quoted : m;
-        mime = (quoted.msg || quoted).mimetype || '';
-        isMedia = /image|video|sticker|audio/.test(mime);
-        htextos = `${text ? text : ""}`;
-
-        if (isMedia && quoted.mtype === 'imageMessage') {
-            mediax = await quoted.download?.();
-            await conn.sendMessage(idgroup, { image: mediax, caption: htextos || null }, { quoted: null });
-            messageType = htextos ? 'una imagen con texto' : 'una imagen';
-        } else if (isMedia && quoted.mtype === 'videoMessage') {
-            mediax = await quoted.download?.();
-            await conn.sendMessage(idgroup, { video: mediax, caption: htextos || null }, { quoted: null });
-            messageType = htextos ? 'un video con texto' : 'un video';
-        } else if (isMedia && quoted.mtype === 'audioMessage') {
-            mediax = await quoted.download?.();
-            await conn.sendMessage(idgroup, { audio: mediax, mimetype: 'audio/mp4', fileName: `hutao.mp3` }, { quoted: null });
-            messageType = 'un audio';
-        } else if (isMedia && quoted.mtype === 'stickerMessage') {
-            mediax = await quoted.download?.();
-            await conn.sendMessage(idgroup, { sticker: mediax }, { quoted: null });
-            messageType = 'un sticker';
-        } else {
-            await conn.relayMessage(idgroup, { extendedTextMessage: { text: `${htextos}` } }, {});
-            messageType = 'un texto';
-        }
-
-        let senderInfo = `✨️ *HuTao-Proyect* ✨️\n\n👤 Usuario » @${m.sender.split('@')[0]}\n🎋 Tipo » ${messageType}\n🪴 Mensaje » ${text ? text : 'No se incluyó ningun texto.'}`;
-        await conn.sendMessage(idgp, { text: senderInfo, mentions: [m.sender] });
-
-    } catch (err) {
-        console.error('Error al enviar el mensaje:', err);
-        m.reply('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.\n\n' + err);
-    }
-};
-
-handler.help = ['enviar'];
-handler.tags = ['main'];
-handler.command = ['enviar', 'sug', 'solicitud', 'enviarcanal'];
-handler.register = false;
-
-export default handler;
+export default handler
