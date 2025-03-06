@@ -145,9 +145,9 @@ showAdAttribution: false,
 renderLargerThumbnail: false
 }}};
 
-await conn.sendMessage('120363387375075395@newsletter', { text: approvedText, contextInfo: options.contextInfo }, { quoted: null });
+await conn.sendMessage('120363351515256850@newsletter', { text: approvedText, contextInfo: options.contextInfo }, { quoted: null });
 
-await conn.reply(sender, `🌸 Solicitud aceptada, Puedes Verla Aqui:\n> https://whatsapp.com/channel/0029Vb1kImN42Dcn99y1rW0E`);
+await conn.reply(sender, `☄ Solicitud aceptada, Puedes Verla Aqui:\n> https://whatsapp.com/channel/0029VasrQq2Gk1G1THOKwS2L`);
 delete suggestionQueue[suggestionId];
 }};
 handler.command = ['sug', 'sugerencia', 'enviarmensaje', 'solicitud', 'enviarsolicitud'];
