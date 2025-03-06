@@ -5,7 +5,7 @@ import path from 'path';
 
 let handler = async (m, { conn, usedPrefix }) => {
 if (!db.data.chats[m.chat].modohorny && m.isGroup) {
-    return m.reply(`${emoji} El contenido *NSFW* está desactivado en este grupo.\n> Un administrador puede activarlo con el comando » *#nsfw on*`);
+    return m.reply(`${emoji} El contenido *MODOHORNY* está desactivado en este grupo.\n> Un administrador puede activarlo con el comando » */on modohorny*`);
     }
 
     let who;
