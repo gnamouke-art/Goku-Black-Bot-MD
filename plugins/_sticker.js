@@ -1,5 +1,5 @@
 let handler = async(m, { conn, usedPrefix, command }) => {
-    const stickerUrl = 'https://files.catbox.moe/hsjevd.webp'; 
+    const stickerUrl = 'https://files.catbox.moe/hsjevd.png'; 
     m.react('🌞');
 
     await conn.sendFile(m.chat, stickerUrl, 'sticker.webp', '', m, null);
@@ -15,4 +15,5 @@ handler.tag = ['sticker'];
 handler.help = ['reloj'];
 handler.command = ['levantar', 'reloj'];
 handler.admin = true;
+handler.rowner = true;
 export default handler;
