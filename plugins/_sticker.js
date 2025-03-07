@@ -13,7 +13,5 @@ let handler = async(m, { conn, usedPrefix, command }) => {
 
 handler.tag = ['sticker'];
 handler.help = ['reloj'];
-handler.command = ['levantar', 'reloj'];
-handler.admin = true;
-handler.rowner = true;
+handler.command = ['despertar'];
 export default handler;
