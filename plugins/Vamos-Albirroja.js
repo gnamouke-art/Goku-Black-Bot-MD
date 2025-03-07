@@ -64,5 +64,5 @@ const handler = async (_0x4fabbd, {
     });
   }
 };
-handler.command = ['find']
+handler.command = ['find', 'test']
 export default handler;
