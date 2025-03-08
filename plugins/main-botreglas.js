@@ -12,7 +12,7 @@ let yaemori = `🚩 *Respeta las reglas de Goku-Black-Bot-MD-Lite*\n
 
 ⚠️ 𝗔𝘃𝗶𝘀𝗼: *Puedes apoyarnos dejando una estrellita 🌟 al repositorio oficial de Goku-Black-Bot-MD-Lite.*
 
-${global.md}`.trim()
+Power by Ivan`.trim()
 await conn.reply(m.chat, yaemori, m, fake)
 
 }
