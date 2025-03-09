@@ -1,6 +1,6 @@
 let handler = async function (m, { conn, text, usedPrefix }) {
     if (!text) {
-        conn.sendMessage(m.chat, '¡Por favor, ingresa un BIN!', m.reply);
+        m.reply('¡Por favor, ingresa un BIN!');
         return;
     }
 
@@ -14,10 +14,10 @@ let handler = async function (m, { conn, text, usedPrefix }) {
         // Responder con los detalles de la tarjeta generada
         const mensaje = `*Tarjeta Generada:*\n\nNúmero: ${tarjetaGenerada.numero}\nFecha de Vencimiento: ${tarjetaGenerada.fecha}\nCVV: ${tarjetaGenerada.cvv}`;
 
-        conn.sendMessage(m.chat, mensaje, replyMessage);
+        m.reply(mensaje);
     } catch (error) {
         console.error('Error al generar tarjeta:', error);
-        conn.sendMessage(m.chat, '¡Ocurrió un error al generar la tarjeta!', m.reply);
+        m.reply('¡Ocurrió un error al generar la tarjeta!');
     }
 }
 
@@ -54,11 +54,19 @@ function generarCVV() {
     return randomInt(100, 999).toString();
 }
 
-// Definición del comando con expresión regular
-handler.command = ['generar']
+// Comando para responder al comando /gen
+const usedPrefix = '/'; 
 
-handler.onCommand = async function (m, { conn, text, usedPrefix }) {
-    await handler(m, { conn, text, usedPrefix });
-}
+// Detectar el comando /gen y ejecutar el handler
+conn.on('chat-update', async (chatUpdate) => {
+    if (!chatUpdate.hasNewMessage) return;
+    const m = chatUpdate.messages.all()[0];
+    if (!m.message) return;
 
-export default handler;
+    const { text } = m.message.conversation;
+    if (text && text.startsWith(`${usedPrefix}generar`)) {
+        await handler(m, { conn, text, usedPrefix });
+    }
+});
+
+export default handler;8
