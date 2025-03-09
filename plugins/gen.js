@@ -1,6 +1,6 @@
 let handler = async function (m, { conn, text, usedPrefix }) {
     if (!text) {
-        conn.sendMessage(m.chat, '¡Por favor, ingresa un BIN!', MessageType.text);
+        conn.sendMessage(m.chat, '¡Por favor, ingresa un BIN!', replyMessage);
         return;
     }
 
@@ -17,7 +17,7 @@ let handler = async function (m, { conn, text, usedPrefix }) {
         conn.sendMessage(m.chat, mensaje, replyMessage);
     } catch (error) {
         console.error('Error al generar tarjeta:', error);
-        conn.sendMessage(m.chat, '¡Ocurrió un error al generar la tarjeta!', MessageType.text);
+        conn.sendMessage(m.chat, '¡Ocurrió un error al generar la tarjeta!', replyMessage);
     }
 }
 
