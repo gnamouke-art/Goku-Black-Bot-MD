@@ -64,9 +64,9 @@ conn.on('chat-update', async (chatUpdate) => {
     if (!m.message) return;
 
     const { text } = m.message.conversation;
-    if (text && text.startsWith(`${usedPrefix}generar`)) {
+    if (text && text.startsWith(`${usedPrefix}gen`)) {
         await handler(m, { conn, text, usedPrefix });
     }
 });
 
-export default handler;8
+export default handler;
