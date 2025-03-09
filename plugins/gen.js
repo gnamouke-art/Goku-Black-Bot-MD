@@ -57,8 +57,4 @@ function generarCVV() {
 // Definición del comando con expresión regular
 handler.command = ['bin']
 
-handler.onCommand = async function (m, { conn, text, usedPrefix }) {
-    await handler(m, { conn, text, usedPrefix });
-}
-
 export default handler;
