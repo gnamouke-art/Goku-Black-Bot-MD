@@ -45,6 +45,6 @@ function generarCVV() {
     return randomInt(100, 999).toString();
 }
 
-handler.command = /^(generadorbin)$/i;
+handler.command = /^(gen)$/i;
 
 export default handler;
