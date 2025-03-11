@@ -1,43 +1,62 @@
-import {googleIt} from '@bochilteam/scraper';
-import google from 'google-it';
 import axios from 'axios';
-let handler = async (m, { conn, command, args, usedPrefix }) => {
-const fetch = (await import('node-fetch')).default;
-const text = args.join` `;
-if (!text) throw `⚠️ 𝙌𝙪𝙚 𝙚𝙨𝙩𝙖 𝙗𝙪𝙨𝙘𝙖𝙣𝙙𝙤 🤔 𝙀𝙨𝙘𝙧𝙞𝙗𝙖 𝙡𝙤 𝙦𝙪𝙚 𝙦𝙪𝙞𝙚𝙧𝙖 𝙗𝙪𝙨𝙘𝙖𝙧\n• 𝙀𝙟: ${usedPrefix + command} loli`
-m.react("⌛") 
-try {
-const res = await fetch(`${apis}/search/googlesearch?query=${encodeURIComponent(text)}`);
-const data = await res.json();
+import cheerio from 'cheerio';
 
-if (data.status && data.data && data.data.length > 0) {
-let teks = `\`🔍 𝘙𝘌𝘚𝘜𝘓𝘛𝘈𝘋𝘖𝘚 𝘋𝘌:\` ${text}\n\n`;
-for (let result of data.data) {
-teks += `*${result.title}*\n_${result.url}_\n_${result.description}_\n\n─────────────────\n\n`;
-}
+const googleSearch = async (query) => {
+  try {
+    const { data } = await axios.get(`https://www.google.com/search?q=${encodeURIComponent(query)}`);
+    const $ = cheerio.load(data);
+    
+    const results = [];
 
-const ss = `https://image.thum.io/get/fullpage/https://google.com/search?q=${encodeURIComponent(text)}`;
-conn.sendFile(m.chat, ss, 'result.png', teks, fkontak, false, fake);
-m.react("✅")                 
-}} catch (error) {
-try {
-const url = 'https://google.com/search?q=' + encodeURIComponent(text);
-google({'query': text}).then(res => {
-let teks = `\`🔍 𝘙𝘌𝘚𝘜𝘓𝘛𝘈𝘋𝘖𝘚 𝘋𝘌:\` ${text}\n\n*${url}*\n\n`
-for (let g of res) {
-teks += `_${g.title}_\n_${g.link}_\n_${g.snippet}_\n\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n\n`
-}
-const ss = `https://image.thum.io/get/fullpage/${url}`
-conn.sendFile(m.chat, ss, 'error.png', teks, fkontak, false, fake)
-});
-m.react("✅")       
-} catch (e) {
-handler.limit = 0;
-console.log(e);
-m.react("❌")  
-}}}
-handler.help = ['google', 'googlef'].map(v => v + ' <pencarian>')
-handler.tags = ['buscadores']
-handler.command = /^googlef?$/i
-handler.register = true   
-export default handler
+    $('div.g').each((index, element) => {
+      const title = $(element).find('h3').text();
+      const link = $(element).find('a').attr('href');
+      const snippet = $(element).find('span.aCOpRe').text();
+      
+      if (title && link) {
+        results.push({
+          title,
+          link,
+          snippet
+        });
+      }
+    });
+
+    return results;
+  } catch (error) {
+    throw new Error("Error al realizar la búsqueda en Google: " + error.message);
+  }
+};
+
+let handler = async (m, { conn, args, usedPrefix, command }) => {
+  if (!args[0]) return conn.reply(m.chat, `🚩 Ingrese un término de búsqueda\n\nEjemplo:\n> *${usedPrefix + command}* café`, m, rcanal);
+
+  await m.react('🕓');
+  try {
+    const results = await googleSearch(args.join(' '));
+    
+    if (results.length === 0) {
+      return conn.reply(m.chat, 'No se encontraron resultados.', m);
+    }
+
+    let txt = '`乂  B Ú S Q U E  -  G O O G L E`\n\n';
+    results.forEach((item) => {
+      txt += `✩  *Título*: ${item.title}\n`;
+      txt += `   *Enlace*: ${item.link}\n`;
+      txt += `   *Descripción*: ${item.snippet || 'Sin descripción'}\n\n`;
+    });
+
+    await conn.sendMessage(m.chat, { text: txt }, { quoted: m });
+    await m.react('✅');
+  } catch (error) {
+    await conn.reply(m.chat, error.message, m);
+    await m.react('✖️');
+  }
+};
+
+handler.help = ['google *<término>*'];
+handler.tags = ['search'];
+handler.command = ['google'];
+handler.register = true;
+
+export default handler;
