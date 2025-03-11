@@ -25,14 +25,7 @@ const handler = async (m, { conn, text }) => {
             m.chat,
             { 
                 image: { url: imageUrl },
-                caption: `\t\t🚩 *${title}*\n ${global.dev}`,               
-                ],
-                viewOnce: true,
-                headerType: 4
-            },
-            { quoted: m }
-        );
-
+                caption: `\t\t🚩 *${title}*\n ${global.dev}`,                
         await m.react('✅');
     } catch (error) {
         await m.react('✖️');
