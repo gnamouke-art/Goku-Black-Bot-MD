@@ -80,14 +80,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
   const author = videoInfo.author;
   const formatoVistas = formatViews(views);
 
-  let infoMessage = '`乂  Y O U T U B E  -  P L A Y`\n\n' +
-                    `    ✩   *Título* : ${title}\n` +
-                    `    ✩   *Duración* : ${timestamp}\n` +
-                    `    ✩   *Vistas* : ${formatoVistas}\n` +
-                    `    ✩   *Canal* : ${author ? author.name : 'Desconocido'}\n` +
-                    `    ✩   *Publicado* : ${ago}\n` +
-                    `    ✩   *Enlace* : ${url}\n\n` +
-                    '> - ↻ Enviando su audio, espérese un momento...';
+  let infoMessage = '「✦」Descargando *<${title}>*\n\n> ✦ Canal » *${videoInfo.author.name || 'Desconocido'}*\n> ✰ Vistas » *${views}*\n> ⴵ Duración » *${timestamp}*\n> ✐ Publicación » *${ago}*\n> 🜸 Link » ${url}\n';
 
   const thumb = (await conn.getFile(thumbnail))?.data;
 
