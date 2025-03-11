@@ -1,44 +1,39 @@
-/*codigo creado por Rayo y José Elver
--@Rayo-ofc 
--@Joseelver
-*/
-import axios from 'axios';
+import fetch from 'node-fetch';
 
-let handler = async (m, { conn, args }) => {
-    m.react('🕓');
-    if (!args[0]) {
-        return conn.reply(m.chat, '🍟 Por favor, ingresa un enlace de YouTube válido.', m, rcanal);
-    }
+let handler = async (m, { conn, args, command }) => {
 
-    try {
-        const apiUrl = `https://api.agungny.my.id/api/youtube-video?url=${encodeURIComponent(args[0])}`;
-        const response = await axios.get(apiUrl);
+if (!args[0]) return m.reply(`>「✦」 Ingresa Un Link De YouTube.`);
 
-        if (response.data.status === "true") {
-            const { title, duration, resolution, downloadUrl } = response.data.result;
-            const message = `🎥 *Título:* ${title}\n🔥 *Duración:* ${duration}\n📺 *Resolución:* ${resolution}`;
+let black = await(await fetch(`https://delirius-apiofc.vercel.app/download/ytmp4?url=${args[0]}`)).json();
 
-            await conn.sendMessage(m.chat, {
-                document: { url: downloadUrl }, 
-                mimetype: 'video/mp4', 
-                fileName: `${title}.mp4`,
-                caption: message
-            }, { quoted: m });
+let texto = `\n`GOKU-BLACK-BOT-MD` 
+${black.data.title}\n\n✰ *Autor:* ${black.data.author}\n✰ *Duración:* ${black.data.duration}\n✰ *Comentarios:* ${black.data.comments}\n✰ *Vistas:* ${black.data.views}\n> ${dev}`
 
-            await m.react('✅');
-        } else {
-            await conn.reply(m.chat, `❌ No se pudo obtener el video. Asegúrate de que el enlace sea correcto.`, m);
-            await m.react('✖️');
-        }
-    } catch (error) {
-        console.error(error);
-        await conn.reply(m.chat, `❌ Ocurrió un error al intentar descargar el video. Inténtalo más tarde.`, m);
-        await m.react('✖️');
-    }
-};
+m.react('🍆')
+conn.sendMessage(m.chat, { image: { url: black.data.image }, caption: texto }, { quoted: m });
+m.react('✅');
 
-handler.help = ['ytmp4doc *<url>*', 'ytvdoc *<url>*', 'videoytdoc *<url>*', 'ytddoc *<url>*', 'ytviddoc *<url>*'];
-handler.command = ['ytmp4doc', 'ytvdoc', 'videoytdoc', 'ytddoc', 'ytviddoc'];
-handler.tags = ['dl'];
+if (command == 'ytmp3doc' || command == 'mp3doc' || command == 'ytadoc') {
+let api = await(await fetch(`https://dark-core-api.vercel.app/api/download/YTMP3?key=dk-vip&url=${args[0]}`)).json();
+
+if (!api?.download) return m.reply('No Se  Encontraron Resultados');
+
+await conn.sendMessage(m.chat, { document: { url: api.download }, mimetype: 'audio/mpeg', fileName: `${api.title}.mp3` }, { quoted: m });
+ }
+
+if (command == 'ytmp4doc' || command == 'mp4doc' || command == 'ytvdoc') {
+let video = await (await fetch(`https://api.fgmods.xyz/api/downloader/ytmp4?url=${args[0]}&quality=480p&apikey=elrebelde21`)).json();
+
+let link = video?.result.dl_url;
+
+if (!link) return m.reply('No Hubo Resultados');
+
+await conn.sendMessage(m.chat, { document: { url: link }, fileName: `${video.result.title}.mp4`, caption: `> ${wm}`, mimetype: 'video/mp4' }, { quoted: m })    
+   }
+}
+
+handler.help = ['ytmp3doc', 'ytmp4doc'];
+handler.tag = ['descargas'];
+handler.command = ['ytmp3doc', 'mp3doc', 'ytmp4doc', 'mp4doc', 'ytadoc', 'ytvdoc'];
 
 export default handler;
