@@ -32,8 +32,8 @@ await conn.sendMessage(m.chat, { document: { url: link }, fileName: `${video.res
    }
 }
 
-handler.help = ['ytmp3doc', 'ytmp4doc'];
+handler.help = ['ytmp4doc'];
 handler.tag = ['descargas'];
-handler.command = ['ytmp3doc', 'mp3doc', 'ytmp4doc', 'mp4doc', 'ytadoc', 'ytvdoc'];
+handler.command = ['ytmp3doc', 'ytmp4doc'];
 
 export default handler;
