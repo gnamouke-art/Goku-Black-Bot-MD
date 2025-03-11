@@ -8,9 +8,9 @@ let black = await(await fetch(`https://delirius-apiofc.vercel.app/download/ytmp4
 
 let texto = ` `GOKU-BLACK-BOT-MD` ${black.data.title}\n\n✦ *Autor:* ${black.data.author}\n✦ *Duración:* ${black.data.duration}\n✦ *Comentarios:* ${black.data.comments}\n✦ *Vistas:* ${black.data.views}\n> ${dev}`
 
-m.react(rwait)
-conn.sendMessage(m.chat, { image: { url: pene.data.image }, caption: texto }, { quoted: m });
-m.react(done);
+m.react('🍆')
+conn.sendMessage(m.chat, { image: { url: black.data.image }, caption: texto }, { quoted: m });
+m.react('🛑');
 
 if (command == 'ytmp3doc' || command == 'mp3doc' || command == 'ytadoc') {
 let api = await(await fetch(`https://dark-core-api.vercel.app/api/download/YTMP3?key=dk-vip&url=${args[0]}`)).json();
