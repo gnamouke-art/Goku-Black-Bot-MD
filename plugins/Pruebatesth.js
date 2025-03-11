@@ -12,7 +12,7 @@ const ddownr = {
 
     const configuracionDeLaSolicitud = {
       method: 'GET',
-      url: `https://dark-core-api.vercel.app/api/download/ytmp3?key=dk-vip&url=${args[0]}`,
+      url: `https://api.fgmods.xyz/api/downloader/ytmp3?url=${args[0]}&quality=480p&apikey=elrebelde21`,
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, como Gecko) Chrome/91.0.4472.124 Safari/537.36'
       }
