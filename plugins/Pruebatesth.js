@@ -2,11 +2,11 @@ import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, command }) => {
 
-if (!args[0]) return m.reply(`🍭 Ingresa Un Link De YouTube.`);
+if (!args[0]) return m.reply(`> Ingresa Un Link De YouTube.`);
 
 let pene = await(await fetch(`https://delirius-apiofc.vercel.app/download/ytmp4?url=${args[0]}`)).json();
 
-let texto = `「❖」𝗥𝗲𝘀𝘂𝗹𝘁𝗮𝗱𝗼 𝗗𝗲 ${pene.data.title}\n\n✦ *Autor:* ${pene.data.author}\n✦ *Duración:* ${pene.data.duration}\n✦ *Comentarios:* ${pene.data.comments}\n✦ *Vistas:* ${pene.data.views}\n> ${dev}`
+let texto = `「✦」Descargando *<${title}>*\n\n> ✦ Canal » *${videoInfo.author.name || 'Desconocido'}*\n> ✰ Vistas » *${views}*\n> ⴵ Duración » *${timestamp}*\n> ✐ Publicación » *${ago}*\n> 🜸 Link » ${url}\n`
 
 m.react(rwait)
 conn.sendMessage(m.chat, { image: { url: pene.data.image }, caption: texto }, { quoted: m });
