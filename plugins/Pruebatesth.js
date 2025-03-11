@@ -4,9 +4,9 @@ let handler = async (m, { conn, args, command }) => {
 
 if (!args[0]) return m.reply(`> Ingresa Un Link De YouTube.`);
 
-let pene = await(await fetch(`https://delirius-apiofc.vercel.app/download/ytmp4?url=${args[0]}`)).json();
+let black = await(await fetch(`https://delirius-apiofc.vercel.app/download/ytmp4?url=${args[0]}`)).json();
 
-let texto = `「✦」Descargando *<${title}>*\n\n> ✦ Canal » *${videoInfo.author.name || 'Desconocido'}*\n> ✰ Vistas » *${views}*\n> ⴵ Duración » *${timestamp}*\n> ✐ Publicación » *${ago}*\n> 🜸 Link » ${url}\n`
+let texto = ` `GOKU-BLACK-BOT-MD` ${black.data.title}\n\n✦ *Autor:* ${black.data.author}\n✦ *Duración:* ${black.data.duration}\n✦ *Comentarios:* ${black.data.comments}\n✦ *Vistas:* ${black.data.views}\n> ${dev}`
 
 m.react(rwait)
 conn.sendMessage(m.chat, { image: { url: pene.data.image }, caption: texto }, { quoted: m });
