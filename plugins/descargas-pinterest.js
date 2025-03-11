@@ -25,7 +25,20 @@ const handler = async (m, { conn, text }) => {
             m.chat,
             { 
                 image: { url: imageUrl },
-                caption: `\t\t🚩 *${title}*\n ${global.dev}`,                
+                caption: `\t\t🚩 *${title}*\n ${global.dev}`,
+                buttons: [
+                    { 
+                        buttonId: `.pinterest ${text}`, 
+                        buttonText: { displayText: 'Siguiente 🔍' },
+                        type: 1  
+                    }
+                ],
+                viewOnce: true,
+                headerType: 4
+            },
+            { quoted: m }
+        );
+
         await m.react('✅');
     } catch (error) {
         await m.react('✖️');
