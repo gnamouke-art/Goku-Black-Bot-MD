@@ -101,13 +101,13 @@ m.react('🐀')
     await conn.reply(m.chat, infoMessage, m, JT);
 
     if (command === 'play' || command === 'yta' || command === 'ytmp3') {
-      const api = await (await fetch(`https://dark-core-api.vercel.app/api/download/YTMP3?key=dk-vip&url=${args[0]}`)).json()
+      const api = await (await fetch(`https://api.neoxr.eu/api/youtube?url=${url}&type=audio&quality=128kbps&apikey=GataDios`)).json()
       const result = api.data.url
       await conn.sendMessage(m.chat, { audio: { url: result }, mimetype: "audio/mpeg" }, { quoted: m });
 
     } else if (command === 'play2' || command === 'ytv' || command === 'ytmp4') {
 
-      const response = await fetch(`https://api.fgmods.xyz/api/downloader/ytmp4?url=${args[0]}&quality=480p&apikey=elrebelde21`)
+      const response = await fetch(`https://api.neoxr.eu/api/youtube?url=${url}&type=video&quality=480p&apikey=GataDios`)
       const json = await response.json()
 
       try {
