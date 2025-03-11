@@ -6,7 +6,8 @@ if (!args[0]) return m.reply(`> Ingresa Un Link De YouTube.`);
 
 let black = await(await fetch(`https://delirius-apiofc.vercel.app/download/ytmp4?url=${args[0]}`)).json();
 
-let texto = ` `GOKU-BLACK-BOT-MD` ${black.data.title}\n\n✦ *Autor:* ${black.data.author}\n✦ *Duración:* ${black.data.duration}\n✦ *Comentarios:* ${black.data.comments}\n✦ *Vistas:* ${black.data.views}\n> ${dev}`
+let texto = `GOKU-BLACK-BOT-MD 
+${black.data.title}\n\n✦ *Autor:* ${black.data.author}\n✦ *Duración:* ${black.data.duration}\n✦ *Comentarios:* ${black.data.comments}\n✦ *Vistas:* ${black.data.views}\n> ${dev}`
 
 m.react('🍆')
 conn.sendMessage(m.chat, { image: { url: black.data.image }, caption: texto }, { quoted: m });
