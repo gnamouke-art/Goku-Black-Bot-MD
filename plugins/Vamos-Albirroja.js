@@ -8,7 +8,7 @@ const readMore = more.repeat(4001)
 let txt = `*EMPIEZA LA NUEVA MISION VAMOS ALBIRROJA QUERIDA 🇵🇾*`
 await conn.sendFile(m.chat, img, "Thumbnail.jpg", txt, m, null, rcanal)
 }
-m.react('🇵🇾')
+  await m.react('🇵🇾');
 handler.help = ['albirroja']
 handler.tags = ['albirroja']
 handler.command = ['albirroja', '🇵🇾']
