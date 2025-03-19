@@ -89,40 +89,7 @@ ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
 > npm start
 ```
 
-
-
- ### `—◉ 🌹DUDAS SOBRE EL BOT?,CONTACTA AL CREADOR🌹`
-<a href="http://wa.me/595972157130" target="blank"><img src="https://img.shields.io/badge/Ivan_CREADOR-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
-
-### `—◉📄✦CUSTOMER SUPPORT✦📄`
-<a href="http://wa.me/595972157130" target="blank"><img src="https://img.shields.io/badge/Ivan_SUPPORT-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
-
-
 ## `🌹PROPIETARIO DEL BOT🌹` 
 <a href="https://github.com/Ivanmods15"><img src="https://github.com/Ivanmods15.png" width="250" height="250" alt="Ivan"/></a>
   
-
-## `🌼COLABORADORES DEL BOT🌼` 
-<a href="[https://github.com/elias1524]"><img src="https://github.com/elias1524.png" width="100" height="100" alt="Elías"/></a>
-<a href="[https://github.com/Dioneibi]"><img src="https://github.com/Dioneibi.png" width="100" height="100" alt="Dioneibi"/></a>
-<td align="center"><a 
-<a href="[https://github.com/Jostin207]"><img src="https://github.com/Jostin207.png" width="100" height="100" alt="Jostin"/></a>
-  
 ## `Goku-Black-Bot-MD-Lite`
-## `Dueño:Ivan`
-
-____
-### **`Superiority Pro Hosting 🤖`**
-<a href="https://dash.superiority.pro/login"><img src="https://qu.ax/TiBm.jpg" height="125px"></a>
-
-<details>
- <summary><b>:paperclip: Enlaces Importantes</b></summary>
-
-- **Dashboard:** [`Aquí`](https://store.azuraultra-host.pro)
-- **Grupo - Soporte:** [`Aquí`](https://chat.whatsapp.com/LbjpDV0KmZ48iHFSy6n1Gz)
-- **Canal - Oficial:** [`Aquí`](https://whatsapp.com/channel/0029VaoRzN0KmCPMFNe3TD1b)
-
-</details>
-------------------
-
-© 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 𝐒𝐢𝐱𝐅𝐢𝐧 𝐓𝐞𝐚𝐦 ⚡︎
