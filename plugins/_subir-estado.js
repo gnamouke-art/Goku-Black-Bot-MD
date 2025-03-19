@@ -1,12 +1,8 @@
-import { sticker } from '../lib/sticker.js'
+import { sticker } from './lib/sticker.js'
 let handler = async(m, { conn }) => {
-//if (!db.data.chats[m.chat].stickers && m.isGroup) throw `OFF`
-if (!db.data.chats[m.chat].stickers && m.isGroup) throw 0
- 
 let nombre = 'GOKU-BLACK-BOT-MD'
 let nombre2 = 'Ivan'
- 
-const s = [
+ const s = [
 'https://media0.giphy.com/media/65ODCwM00NVmEyLsX3/giphy.gif?cid=ecf05e47p9z5h8ozpdu8cjem55qy6hc6mtjb1tjlyr9usjsy&rid=giphy.gif&ct=g',
 'https://media0.giphy.com/media/GpyS1lJXJYupG/giphy.gif?cid=ecf05e47qxzfl93t2e4q41fx6batypxo8sbhmqjjpc7t6lu2&rid=giphy.gif&ct=g',
 'https://i.pinimg.com/736x/fd/4e/61/fd4e614a5c0fb835e7858473286f3058.jpg',
@@ -32,8 +28,5 @@ let stiker = await sticker(null, s[Math.floor(Math.random() * s.length)], nombre
 await delay(5 * 5000)
 if (stiker) conn.sendFile(m.chat, stiker, 'sticker.webp', '',m, true, { contextInfo: { 'forwardingScore': 200, 'isForwarded': false, externalAdReply:{ showAdAttribution: false, title: wm, body: `h`, mediaType: 2, sourceUrl: nn, thumbnail: imagen1}}}, { quoted: m })
 }
-handler.customPrefix = /risa|xd|😂|🤣|🤪/i 
-handler.command = new RegExp
-handler.exp = 50
+handler.customPrefix = ['🤣', 'xd', '🤣']
 export default handler
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
