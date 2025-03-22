@@ -19,8 +19,8 @@ let mentionedJid = [who]
 bio = biografia[0].status || sinDefinir
 fechaBio = biografia[0].setAt ? new Date(biografia[0].setAt).toLocaleDateString("es-ES", { day: "2-digit", month: "2-digit", year: "numeric", }) : "Fecha no disponible"
 }
-  let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://telegra.ph/file/0bb7e9e7c8cb4e820f1fe.jpg')
-  let pp = await conn.profilePictureUrl(who, 'image').catch((_) => 'https://telegra.ph/file/0bb7e9e7c8cb4e820f1fe.jpg')
+  let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/Tpmzb.jpg')
+  let pp = await conn.profilePictureUrl(who, 'image').catch((_) => 'https://qu.ax/Tpmzb.jpg')
   let user = global.db.data.users[m.sender]
   let name2 = conn.getName(m.sender)
   if (user.registered === true) return m.reply(`✧ Ya estás registrado.\n\n*¿Quiere volver a registrarse?*\n\nUse este comando para eliminar su registro.\n*${usedPrefix}unreg*`)
@@ -51,6 +51,7 @@ regbot += `> • ⛁ *${moneda}* » 500\n`
 regbot += `> • ✩ *Experiencia* » 600\n`
 regbot += `> • ❀ *Tokens* » 50\n`
 regbot += `•┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄•\n`
+regbot += `${dev}\n❥⊱〰︎ *sigue el canal oficial* 〰︎⊱❥\nhttps://whatsapp.com/channel/0029Vagdmfv1SWt5nfdR4z3w`
 
 await m.react('📩')
 await conn.sendMessage(m.chat, {
