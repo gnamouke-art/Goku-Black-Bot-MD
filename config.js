@@ -81,10 +81,6 @@ global.hutaoJadibts = true
 
 global.ch = {
 ch1: '120363276986902836@newsletter',
-ch2: '120363276986902836@newsletter',
-ch3: '120363276986902836@newsletter',
-ch4: '120363276986902836@newsletter',
-ch5: '120363276986902836@newsletter',
 }
 
 //• ↳ ◜𝑭𝑨𝑲𝑬 𝑬𝑺𝑻𝑰𝑳𝑶◞ • 🪩
