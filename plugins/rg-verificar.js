@@ -10,7 +10,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let mentionedJid = [who]
  let bio = 0, fechaBio
-  let sinDefinir = '😔 Es privada'
+  let sinDefinir = '😿 Es privada'
   let biografia = await conn.fetchStatus(m.sender).catch(() => null)
   if (!biografia || !biografia[0] || biografia[0].status === null) {
    bio = sinDefinir
@@ -41,30 +41,23 @@ fechaBio = biografia[0].setAt ? new Date(biografia[0].setAt).toLocaleDateString(
   global.db.data.users[m.sender].exp += 600
   global.db.data.users[m.sender].joincount += 50
   let sn = createHash('md5').update(m.sender).digest('hex').slice(0, 20)
-  let regbot = `╭══• ೋ•✧๑♡๑✧•ೋ •══╮
-*¡𝚁𝙴𝙶𝙸𝚂𝚃𝚁𝙾 𝙲𝙾𝙼𝙿𝙻𝙴𝚃𝙾 𝙴𝚇𝙸𝚃𝙾𝚂𝙾!*
-╰══• ೋ•✧๑♡๑✧•ೋ •══╯
-║_-~-__-~-__-~-__-~-__-~-__-~-__-~-__-~-__-~-__-~-__
-║
-║ ֪ ׂ⛓️ ̶ ׁ ֪ 𝐍𝐨𝐦𝐛𝐫𝐞: ${name}
-║ ֪ ׁ🌫️  𝇌 𝐄𝐝𝐚𝐝: ${age} *Años*
-║
-║ *𝙶𝚛𝚊𝚌𝚒𝚜 𝚙𝚘𝚛 𝚛𝚎𝚐𝚒𝚜𝚝𝚛𝚊𝚛𝚝𝚎* 
-║📝 *𝚄𝚝𝚒𝚕𝚒𝚣𝚊* *.menu* *𝚙𝚊𝚛𝚊* *𝚟𝚎𝚛* *𝚎𝚕* *𝚖𝚎𝚗ú* *𝚍𝚎* *𝚌𝚘𝚖𝚊𝚗𝚍𝚘𝚜.*
-║
-║
-║ ✨ 𝗥𝗲𝗰𝗼𝗺𝗽𝗲𝗻𝘀𝗮𝘀:
-║• 15 Estrellas 🌟
-║• 5 BlackCoins 🪙
-║• 245 Experiencia 💸
-║• 12 Tokens 💰
-╚══✦「꧙꧙꧙꧙꧙꧙꧙꧙꧙꧙꧙꧙」`
+let regbot = `❀ 𝗥 𝗘 𝗚 𝗜 𝗦 𝗧 𝗥 𝗔 𝗗 𝗢 ❀\n`
+regbot += `•┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄•\n`
+regbot += `「✰」𝗡𝗼𝗺𝗯𝗿𝗲 » ${name}\n`
+regbot += `「✦」𝗘𝗱𝗮𝗱 » ${age} años\n`
+regbot += `•┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄•\n`
+regbot += `「𖣔」 𝗥𝗲𝗰𝗼𝗺𝗽𝗲𝗻𝘀𝗮𝘀:\n`
+regbot += `> • ⛁ *${moneda}* » 500\n`
+regbot += `> • ✩ *Experiencia* » 600\n`
+regbot += `> • ❀ *Tokens* » 50\n`
+regbot += `•┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄•\n`
+
 await m.react('📩')
 await conn.sendMessage(m.chat, {
         text: regbot,
         contextInfo: {
             externalAdReply: {
-                title: '✅ Usuario Verificado ✅',
+                title: '✧ Usuario Verificado ✧',
                 body: textbot,
                 thumbnailUrl: pp,
                 sourceUrl: channel,
