@@ -187,7 +187,7 @@ const displayName = nameOrNumber.replace(/\D/g, '') === baseName ? `+${baseName}
 console.log(chalk.bold.cyanBright(`\n${displayName} fué conectado correctamente.`))
 sock.isInit = true
 global.conns.push(sock)
-m?.chat? await conn.sendMessage(m.chat, { text: `SubBot conectado correctamente.`, mentions: [m.sender]}, { quoted: m }) : ''
+m?.chat? await conn.sendMessage(m.chat, { text: `@${m.sender.split('@')[0]}, genial ya eres parte de nuestra familia de Sub-Bots.`, mentions: [m.sender]}, { quoted: m }) : ''
 }
 }
 setInterval(async () => {
