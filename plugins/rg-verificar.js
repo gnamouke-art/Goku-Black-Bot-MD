@@ -54,7 +54,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
 ║• 12 Tokens 💰
 ╚══✦「꧙꧙꧙꧙꧙꧙꧙꧙꧙꧙꧙꧙」`
 
-/*  conn.sendMessage(m.chat, {
+    conn.sendMessage(m.chat, {
     text: regbot,
     contextInfo: {
       externalAdReply: {
@@ -68,7 +68,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
       }
     }
   }, { quoted: fkontak })
-}*/
+}
 let chtxt = `👤 *𝚄𝚜𝚎𝚛* » ${m.pushName || 'Anónimo'}
 🗂 *𝚅𝚎𝚛𝚒𝚏𝚒𝚌𝚊𝚌𝚒𝚘́𝚗* » ${user.name}
 🍨 *𝙴𝚍𝚊𝚍* » ${user.age} años
