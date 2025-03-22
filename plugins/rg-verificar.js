@@ -49,13 +49,13 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     regbot += `*「💫」𝐍𝐨𝐦𝐛𝐫𝐞:* ${name}\n`
     regbot += `*「💫」𝐄𝐝𝐚𝐝:* ${age} años\n`
     regbot += `•✩.･*:｡≻──── ⋆♡⋆ ────.•*:｡✩•\n`
-    regbot += `*「💥」𝐑𝐞𝐜𝐨𝐦𝐩𝐞𝐧𝐬𝐚𝐬:*\n> `
-    regbot += `• 15 Estrellas 🌟\n> `
-    regbot += `• 5 Blackcoins 🪙\n> `
-    regbot += `• 245 Experiencia 💸\n> `
+    regbot += `*「💥」𝐑𝐞𝐜𝐨𝐦𝐩𝐞𝐧𝐬𝐚𝐬:*\n `
+    regbot += `• 15 Estrellas 🌟\n `
+    regbot += `• 5 Blackcoins 🪙\n `
+    regbot += `• 245 Experiencia 💸\n `
     regbot += `• 12 Tokens 💰\n`
-    regbot += `꒷꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒷꒦꒷\n> `
-    regbot += `🍫 Usᥲ *#perfil* ⍴ᥲrᥲ ᥎ᥱr 𝗍ᥙ ⍴ᥱr𝖿іᥣ.`
+    regbot += `꒷꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒷꒦꒷\n `
+    regbot += `🍫 Usᥲ *#perfil* ⍴ᥲrᥲ ᥎ᥱr 𝗍ᥙ ⍴ᥱr𝖿іᥣ.\n`
     regbot += `*usa el comando .verreg para ver tu verificación*`
   await conn.sendMessage(m.chat, {
         text: regbot,
