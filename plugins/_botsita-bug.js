@@ -1,1 +1,7 @@
-//bug
+const handler = async (m, {conn}) => {
+  m.reply(global.verreg);
+};
+handler.command = ['verreg']
+export default handler;
+
+global.verreg = `> Mira aquí tu reg 👇`;
