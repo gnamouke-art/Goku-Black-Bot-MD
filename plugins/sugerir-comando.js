@@ -13,8 +13,8 @@ const idgroup = "120363400951168089@g.us";
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     let who = m.mentionedJid && m.mentionedJid.length > 0 ? m.mentionedJid[0] : (m.fromMe ? conn.user.jid : m.sender);
-    let pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
-    let pp2 = 'https://qu.ax/zdEhG.jpg'
+    let pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/0bb7e9e7c8cb4e820f1fe.jpg')
+    let pp2 = 'https://telegra.ph/file/0bb7e9e7c8cb4e820f1fe.jpg'
 
     if (!text && !m.quoted) {
         return m.reply(`*🌸 Por favor, escribe tu solicitud.*\n\n> *🌷 Elige una categoría:*\n\na). Sugerencia 💡\nb). Propuesta 📝\nc). Publicidad 📢\nd). Opinión 💬\ne). Pregunta 🚀\nf). Eventos 🎉\ng). Frases ✨\nh). Confesión anónima 🕵\n\n> 🌹 Ejemplo: ${usedPrefix + command} c Texto`);
