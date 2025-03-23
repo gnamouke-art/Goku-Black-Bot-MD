@@ -68,7 +68,7 @@ await conn.sendMessage(m.chat, {
     contextInfo: {
         externalAdReply: {
             title: '⊱『✅𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥✅』⊰',
-            body: '👉 Unete al canal de WhatsApp: [🔗 Canal Oficial](tu_link_del_canal_aqui)',
+            body: '👉 Unete al canal de WhatsApp: https://whatsapp.com/channel/0029VaYh3Zm4dTnQKQ3VLT0h',
             thumbnailUrl: 'https://telegra.ph/file/0bb7e9e7c8cb4e820f1fe.jpg',
             mediaType: 1,
             renderLargerThumbnail: true
