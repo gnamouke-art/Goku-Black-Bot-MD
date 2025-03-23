@@ -71,7 +71,7 @@ await conn.sendMessage(m.chat, {
             title: '⊱『✅𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥✅』⊰',
             thumbnailUrl: 'https://telegra.ph/file/0bb7e9e7c8cb4e820f1fe.jpg',
             mediaType: 1,
-            body: 'cada día más god🔥
+            body: 'cada día más god🔥'
             renderLargerThumbnail: true,
             sourceUrl: 'https://whatsapp.com/channel/0029VaYh3Zm4dTnQKQ3VLT0h' // Aquí puedes agregar el link de tu canal de WhatsApp
         }
