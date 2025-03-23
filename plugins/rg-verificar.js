@@ -41,7 +41,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
         who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender;
     }
 
-    let sn = createHash('md5').update(m.sender).digest('hex');
+let sn = createHash('md5').update(m.sender).digest('hex');
 let regbot = `
 ╔═̴̸᪳᷍═̷✩⃢̴═⃨⃜═̶⃕╡̴˚̸᪵✧̷⃘⃛᪻᪻᪻᷼᷍✧̵⃨˚̷᪵╞̶⃔══⃢̸⃨⃜✩̷══̸͜͞═̸̸̸᪳͟╗
 𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐎 𝐂𝐎𝐌𝐏𝐋𝐄𝐓𝐎 𝐄𝐗𝐈𝐓𝐎𝐒𝐎
@@ -50,12 +50,12 @@ let regbot = `
 ﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡
 *‧˚꒰🫧꒱༘‧: 𝐍𝐨𝐦𝐛𝐫𝐞:* ${name}
 *‧˚꒰🔍꒱༘‧: 𝐄𝐝𝐚𝐝:* ${age}
-꒰꛱ ͜ ꛱|꛱ ꛱͜ |꛱ ꛱͜ |꛱ ͜ ꛱|꛱ ͜ |୨🌔🏮୧꛱|꛱ ꛱͜ |꛱ ꛱͜ |꛱ ͜ ꛱|꛱ ꛱͜ |꛱ ͜ ꒱
+꒰꛱ ͜ ꛱|꛱ ꛱͜ |꛱ ꛱͜ |꛱ ͜ ꛱|꛱ ͜ |୨🌔🏮୧꛱|꛱ ꛱͜ |꛱ ͜ ꛱ |꛱ ͜ ꛱|꛱ ꛱͜ |꛱ ͜ ꒱
 *「💥」𝐑𝐞𝐜𝐨𝐦𝐩𝐞𝐧𝐬𝐚𝐬:*
-ᦷᩘᦷ     ݂   🍅 ፡ Estrellas 🌟
-ᦷᩘᦷ     ݂   🎴  ፡ 5 Blackcoins 🪙
-ᦷᩘᦷ     ݂   🍅 ፡ 245 Experiencia 💸
-ᦷᩘᦷ     ݂   🎴  ፡ 12 Tokens 💰
+ᦷᩘᦷ     ݂   🍅 ፡ Estrellas 🌟
+ᦷᩘᦷ     ݂   🎴  ፡ 5 Blackcoins 🪙
+ᦷᩘᦷ     ݂   🍅 ፡ 245 Experiencia 💸
+ᦷᩘᦷ     ݂   🎴  ፡ 12 Tokens 💰
 ﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡
 
  🍫 Usᥲ *#perfil* ⍴ᥲrᥲ ᥎ᥱr 𝗍ᥙ ⍴ᥱr𝖿іᥣ.
@@ -63,17 +63,19 @@ let regbot = `
 
 > (˶ᵔ ᵕ ᵔ˶) Recuerda seguír el canal de Goku black bot para estar al tanto de avisos y novedades del Bot 🔥
 `
-  await conn.sendMessage(m.chat, {
-        text: regbot,
-        contextInfo: {
-            externalAdReply: {
-                title: '⊱『✅𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥✅』⊰',
-                thumbnailUrl: 'https://telegra.ph/file/0bb7e9e7c8cb4e820f1fe.jpg',
-                mediaType: 1,
-                renderLargerThumbnail: true
-            }
+await conn.sendMessage(m.chat, {
+    text: regbot,
+    contextInfo: {
+        externalAdReply: {
+            title: '⊱『✅𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥✅』⊰',
+            body: '👉 Unete al canal de WhatsApp: [🔗 Canal Oficial](tu_link_del_canal_aqui)',
+            thumbnailUrl: 'https://telegra.ph/file/0bb7e9e7c8cb4e820f1fe.jpg',
+            mediaType: 1,
+            renderLargerThumbnail: true
         }
-    }, { quoted: m });
+    }
+}, { quoted: m });
+
 
 /*    await m.react('📪')
   await conn.sendMessage(m.chat, {
