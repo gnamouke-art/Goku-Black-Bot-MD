@@ -59,7 +59,7 @@ let regbot = `
 ﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡
 
  🍫 Usᥲ *#perfil* ⍴ᥲrᥲ ᥎ᥱr 𝗍ᥙ ⍴ᥱr𝖿іᥣ.
-*usa el comando .Help para ver el menú y .verreg para ver tu verificación*
+*usa el comando .menu para ver el menú y .verreg para ver tu verificación*
 
 > (˶ᵔ ᵕ ᵔ˶) Recuerda seguír el canal de Goku black bot para estar al tanto de avisos y novedades del Bot 🔥
 `
