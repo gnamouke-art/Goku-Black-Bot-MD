@@ -56,25 +56,28 @@ let regbot = `
 ᦷᩘᦷ     ݂   🎴  ፡ 5 Blackcoins 🪙
 ᦷᩘᦷ     ݂   🍅 ፡ 245 Experiencia 💸
 ᦷᩘᦷ     ݂   🎴  ፡ 12 Tokens 💰
-﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡
+﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡﹏͜͡
 
  🍫 Usᥲ *#perfil* ⍴ᥲrᥲ ᥎ᥱr 𝗍ᥙ ⍴ᥱr𝖿іᥣ.
 *usa el comando .Help para ver el menú y .verreg para ver tu verificación*
 
 > (˶ᵔ ᵕ ᵔ˶) Recuerda seguír el canal de Goku black bot para estar al tanto de avisos y novedades del Bot 🔥
 `
+
 await conn.sendMessage(m.chat, {
     text: regbot,
     contextInfo: {
         externalAdReply: {
             title: '⊱『✅𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥✅』⊰',
-            body: '👉 Unete al canal de WhatsApp: https://whatsapp.com/channel/0029VaYh3Zm4dTnQKQ3VLT0h',
             thumbnailUrl: 'https://telegra.ph/file/0bb7e9e7c8cb4e820f1fe.jpg',
             mediaType: 1,
-            renderLargerThumbnail: true
+            body: 'cada día más god🔥
+            renderLargerThumbnail: true,
+            sourceUrl: 'https://whatsapp.com/channel/0029VaYh3Zm4dTnQKQ3VLT0h' // Aquí puedes agregar el link de tu canal de WhatsApp
         }
     }
 }, { quoted: m });
+
 
 
 /*    await m.react('📪')
