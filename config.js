@@ -77,7 +77,7 @@ global.languaje = 'Español'
 global.nameqr = 'GokuBlack-Bot'
 global.sessions = 'Blacksesion'
 global.jadi = 'jadibots'
-global.hutaoJadibts = true
+global.blackJadibts = true
 
 global.ch = {
 ch1: '120363276986902836@newsletter',
