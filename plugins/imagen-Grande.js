@@ -1,1 +1,1 @@
-global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: 100, newsletterName: channelRD.name, }, forwardingScore: 9999, isForwarded: false, externalAdReply: { showAdAttribution: true, title: botname, body: textbot, mediaUrl: null, description: null, previewType: "PHOTO", thumbnailUrl: 'https://cdn.elxyzgpt.xyz/file/dgh0WII1x2.png', thumbnail: img, sourceUrl: canal, mediaType: 1, renderLargerThumbnail: true } } }
+//SIN ERRORES
