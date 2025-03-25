@@ -282,7 +282,7 @@ for (const gjbts of readRutaJadiBot) {
 const botPath = join(rutaJadiBot, gjbts)
 const readBotPath = readdirSync(botPath)
 if (readBotPath.includes(creds)) {
-hutaoJadiBot({pathHutaoJadiBot: botPath, m: null, conn, args: '', usedPrefix: '/', command: 'serbot'})
+blackJadiBot({pathBlackJadiBot: botPath, m: null, conn, args: '', usedPrefix: '/', command: 'serbot'})
 }
 }
 }
