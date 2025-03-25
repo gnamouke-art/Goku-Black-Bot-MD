@@ -66,7 +66,7 @@ handler.help = ['serbot', 'serbot code']
 handler.tags = ['socket']
 export default handler 
 
-export async function BlackJadiBot(options) {
+export async function blackJadiBot(options) {
 let { pathBlackJadiBot, m, conn, args, usedPrefix, command } = options
 const mcode = args[0] && /(--code|code)/.test(args[0].trim()) ? true : args[1] && /(--code|code)/.test(args[1].trim()) ? true : false
 let txtCode, codeBot, txtQR
