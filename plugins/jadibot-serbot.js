@@ -37,7 +37,7 @@ let drm2 = ""
 let rtx = `Goku-Black-Bot-MD\n\nↂ SUB BOT FUNCION֎\n\n* 𝐮𝐬𝐚 𝐨𝐭𝐫𝐨 𝐜𝐞𝐥 𝐨 𝐭𝐮 𝐩𝐜 𝐩𝐚𝐫𝐚 𝐩𝐨𝐝𝐞𝐫 𝐯𝐢𝐧𝐜𝐮𝐥𝐚𝐫 𝐞𝐥 𝐛𝐨𝐭 𝐞𝐧 𝐭𝐮 𝐝𝐢𝐬𝐩𝐨𝐬𝐢𝐭𝐢𝐯𝐨 𝐪𝐮𝐞 𝐬𝐞𝐫𝐚 𝐞𝐥 𝐛𝐨𝐭 *\n\n\`1\` » 𝐡𝐚𝐠𝐚 𝐜𝐥𝐢𝐜𝐤 𝐞𝐧 𝐥𝐨𝐬 3 𝐩𝐮𝐧𝐭𝐨𝐬 𝐝𝐞 𝐥𝐚 𝐩𝐚𝐫𝐭𝐞 𝐬𝐮𝐩𝐞𝐫𝐢𝐨𝐫 𝐝𝐞𝐫𝐞𝐜𝐡𝐚\n\n\`2\` » 𝐭𝐨𝐪𝐮𝐞 𝐞𝐧 𝐝𝐢𝐬𝐩𝐨𝐜𝐢𝐭𝐢𝐯𝐨𝐬 𝐯𝐢𝐧𝐜𝐮𝐥𝐚𝐝𝐨𝐬\n\n\`3\` » 𝐞𝐬𝐜𝐚𝐧𝐞𝐞 𝐞𝐥 𝐜𝐨𝐝𝐢𝐠𝐨 𝐐𝐑 𝐩𝐚𝐫𝐚 𝐢𝐧𝐢𝐜𝐢𝐚𝐫 𝐬𝐞𝐜𝐜𝐢𝐨𝐧 𝐜𝐨𝐧 𝐞𝐥 𝐛𝐨𝐭\n\n *¡Este código QR expira en 45 segundos!*\n\n*𝐉𝐀𝐃𝐈𝐁𝐎𝐓 𝐄𝐃𝐈𝐓𝐀𝐃𝐎 𝐏𝐎𝐑* *Ivan*\n\n${global.dev}`;
 let rtx2 =  `sᴜʙ ʙᴏᴛ-ᴍᴏᴅᴇ ᴄᴏᴅᴇ\n\n✰ Usa éste Código para convertirte en Sub-Bot Temporal.\n\n→ Tres Puntitos\n→ Dispositivos Vinculados\n→ Vincular Dispositivo\n→ Vincular con el número de teléfono.\n\n➤ *Importante:*\n» No es recomendable usar tu cuenta principal.\n» Si el Bot principal se reinicia, todos los Sub-Bots se desconectaran.\n\n${global.dev}`;
 
-const hutaoJBOptions = {}
+const blackJBOptions = {}
 if (global.conns instanceof Array) console.log()
 else global.conns = []
 let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
@@ -48,17 +48,17 @@ return m.reply('no hay espacio disponible para sub- bots.')
 }
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let id = `${who.split`@`[0]}`  //conn.getName(who)
-let pathHutaoJadiBot = path.join(`./${jadi}/`, id)
-if (!fs.existsSync(pathHutaoJadiBot)){
-fs.mkdirSync(pathHutaoJadiBot, { recursive: true })
+let pathBlackJadiBot = path.join(`./${jadi}/`, id)
+if (!fs.existsSync(pathBlackJadiBot)){
+fs.mkdirSync(pathBlackJadiBot, { recursive: true })
 }
-hutaoJBOptions.pathHutaoJadiBot = pathHutaoJadiBot
-hutaoJBOptions.m = m
-hutaoJBOptions.conn = conn
-hutaoJBOptions.args = args
-hutaoJBOptions.usedPrefix = usedPrefix
-hutaoJBOptions.command = command
-hutaoJadiBot(hutaoJBOptions)
+blackJBOptions.pathBlackJadiBot = pathBlackJadiBot
+blackJBOptions.m = m
+blackJBOptions.conn = conn
+blackJBOptions.args = args
+blacnJBOptions.usedPrefix = usedPrefix
+blackJBOptions.command = command
+blackJadiBot(blackJBOptions)
 global.db.data.users[m.sender].Subs = new Date * 1
 } 
 handler.command = ['jadibot', 'serbot']
@@ -66,8 +66,8 @@ handler.help = ['serbot', 'serbot code']
 handler.tags = ['socket']
 export default handler 
 
-export async function hutaoJadiBot(options) {
-let { pathHutaoJadiBot, m, conn, args, usedPrefix, command } = options
+export async function BlackJadiBot(options) {
+let { pathBlackJadiBot, m, conn, args, usedPrefix, command } = options
 const mcode = args[0] && /(--code|code)/.test(args[0].trim()) ? true : args[1] && /(--code|code)/.test(args[1].trim()) ? true : false
 let txtCode, codeBot, txtQR
 //let user = global.db.data.users[m.sender]
@@ -76,9 +76,9 @@ args[0] = args[0].replace(/^--code$|^code$/, "").trim()
 if (args[1]) args[1] = args[1].replace(/^--code$|^code$/, "").trim()
 if (args[0] == "") args[0] = undefined
 }
-const pathCreds = path.join(pathHutaoJadiBot, "creds.json")
-if (!fs.existsSync(pathHutaoJadiBot)){
-fs.mkdirSync(pathHutaoJadiBot, { recursive: true })}
+const pathCreds = path.join(pathBlackJadiBot, "creds.json")
+if (!fs.existsSync(pathBlackJadiBot)){
+fs.mkdirSync(pathBlackJadiBot, { recursive: true })}
 args[0] && args[0] != undefined ? fs.writeFileSync(pathCreds, JSON.stringify(JSON.parse(Buffer.from(args[0], "base64").toString("utf-8")), null, '\t')) : ""
 
 if (fs.existsSync(pathCreds)) {
@@ -95,7 +95,7 @@ const drmer = Buffer.from(drm1 + drm2, `base64`)
 let { version, isLatest } = await fetchLatestBaileysVersion()
 const msgRetry = (MessageRetryMap) => { }
 const msgRetryCache = new NodeCache()
-const { state, saveState, saveCreds } = await useMultiFileAuthState(pathHutaoJadiBot)
+const { state, saveState, saveCreds } = await useMultiFileAuthState(pathBlackJadiBot)
 
 const connectionOptions = {
 printQRInTerminal: false,
@@ -181,8 +181,8 @@ console.log( `\n💫 Razon de la desconexión desconocida: ${reason || ''} >> ${
 }}
 if (connection == `open`) {
 if (global.db.data == null) global.loadDatabase()
-const nameOrNumber = conn.getName(`${path.basename(pathHutaoJadiBot)}@s.whatsapp.net`)
-const baseName = path.basename(pathHutaoJadiBot)
+const nameOrNumber = conn.getName(`${path.basename(pathBlackJadiBot)}@s.whatsapp.net`)
+const baseName = path.basename(pathBlackJadiBot)
 const displayName = nameOrNumber.replace(/\D/g, '') === baseName ? `+${baseName}` : `${nameOrNumber} (${baseName})`
 console.log(chalk.bold.cyanBright(`\n${displayName} fué conectado correctamente.`))
 sock.isInit = true
