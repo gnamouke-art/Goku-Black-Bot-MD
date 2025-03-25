@@ -7,7 +7,7 @@
 
 
 
-### `✨Goku-Black-Bot-MD-Lite✨`
+### `✨ Goku-Black-Bot-MD ✨`
 
 <a href="https://api.whatsapp.com/send/?phone=595992809980&text=/estado&type=phone_number&app_absent=0" target="blank"><img src="https://img.shields.io/badge/BOT_OFICIAL_1-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
 
@@ -53,7 +53,7 @@ pkg install -y git nodejs ffmpeg imagemagick && pkg install yarn
 ```
 
 ```bash
-git clone https://github.com/Ivanmods15/Goku-Black-Bot-MD-Lite.git && cd Goku-Black-Bot-MD-Lite
+git clone https://github.com/Eliasivan/Goku-Black-Bot-MD.git && cd Goku-Black-Bot-MD
 ```
 
 ```bash
@@ -92,4 +92,4 @@ ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
 ## `🌹PROPIETARIO DEL BOT🌹` 
 <a href="https://github.com/Ivanmods15"><img src="https://github.com/Ivanmods15.png" width="250" height="250" alt="Ivan"/></a>
   
-## `Goku-Black-Bot-MD-Lite`
+## `Goku-Black-Bot-MD`
