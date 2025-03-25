@@ -56,7 +56,7 @@ blackJBOptions.pathBlackJadiBot = pathBlackJadiBot
 blackJBOptions.m = m
 blackJBOptions.conn = conn
 blackJBOptions.args = args
-blacnJBOptions.usedPrefix = usedPrefix
+blackJBOptions.usedPrefix = usedPrefix
 blackJBOptions.command = command
 blackJadiBot(blackJBOptions)
 global.db.data.users[m.sender].Subs = new Date * 1
