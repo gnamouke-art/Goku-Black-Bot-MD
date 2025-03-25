@@ -267,7 +267,7 @@ return true
  */
 global.rutaJadiBot = join(__dirname, `./${jadi}`)
 
-if (global.hutaoJadibts) {
+if (global.blackJadibts) {
 if (!existsSync(global.rutaJadiBot)) {
 mkdirSync(global.rutaJadiBot, { recursive: true }) 
 console.log(chalk.bold.cyan(`La carpeta: ${jadi} se creó correctamente.`))
