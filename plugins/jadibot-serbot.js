@@ -85,7 +85,7 @@ if (fs.existsSync(pathCreds)) {
 let creds = JSON.parse(fs.readFileSync(pathCreds))
 if (creds) {
 if (creds.registered = false) {
-fs.unlinkSync(pathHutaoJadiBot)
+fs.unlinkSync(pathBlackJadiBot)
 }}}
 
 const comb = Buffer.from(crm1 + crm2 + crm3 + crm4, "base64")
