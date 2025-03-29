@@ -1,40 +1,87 @@
-import translate from '@vitalets/google-translate-api';
-import axios from 'axios';
-import fetch from 'node-fetch';
-const handler = (m) => m;
+import axios from 'axios'
+import { sticker } from '../lib/sticker.js'
 
-handler.before = async (m) => {
-  const chat = global.db.data.chats[m.chat];
-  if (chat.simi) {
-    if (/^.*false|disnable|(turn)?off|0/i.test(m.text)) return;
-    let textodem = m.text;
-    if (m.text.includes('serbot') || m.text.includes('bots')|| m.text.includes('jadibot')|| m.text.includes('menu')|| m.text.includes('play')|| m.text.includes('play2') || m.text.includes('playdoc') || m.text.includes('tiktok') || m.text.includes('facebook') || m.text.includes('menu2') ||  m.text.includes('infobot') || m.text.includes('estado') ||  m.text.includes('ping') ||  m.text.includes('instalarbot') ||  m.text.includes('sc') ||  m.text.includes('sticker') ||  m.text.includes('s') || m.text.includes('wm') ||  m.text.includes('qc')) return
-    try {
-      const ressimi = await simitalk(textodem);
-     // await m.conn.sendMessage(m.chat, { text: ressimi.resultado.simsimi }, { quoted: m });
-        await conn.reply(m.chat, ressimi.resultado.simsimi, m, rcanal)
-    } catch {
-      throw '🍟 *Ocurrió un error*';
-    }
-    return !0;
-  }
-  return true;
-};
-export default handler;
+let handler = m => m
+handler.all = async function (m, {conn}) {
+let user = global.db.data.users[m.sender]
+let chat = global.db.data.chats[m.chat]
+m.isBot = m.id.startsWith('BAE5') && m.id.length === 16 || m.id.startsWith('3EB0') && m.id.length === 12 || m.id.startsWith('3EB0') && (m.id.length === 20 || m.id.length === 22) || m.id.startsWith('B24E') && m.id.length === 20;
+if (m.isBot) return 
 
-async function simitalk(ask, apikeyyy = "iJ6FxuA9vxlvz5cKQCt3", language = "es") {
-    if (!ask) return { status: false, resultado: { msg: "Debes ingresar un texto para hablar con simsimi." }};
-    try {
-        const response1 = await axios.get(`https://api.ryzendesu.vip/api/ai/gemini-pro?text=${encodeURIComponent(q)}&prompt=${encodeURIComponent(logic)}`);
-        const trad1 = await translate(`${response1.data.data.message}`, {to: language, autoCorrect: true});
-        if (trad1.text == 'indefinida' || response1 == '' || !response1.data) trad1 = XD // Se usa "XD" para causar error y usar otra opción.  
-        return { status: true, resultado: { simsimi: trad1.text }};        
-    } catch {
-        try {
-            const response2 = await axios.get(`https://luminai.my.id`);
-            return { status: true, resultado: { simsimi: response2.data.message }};       
-        } catch (error2) {
-            return { status: false, resultado: { msg: "Todas las API's fallarón. Inténtalo de nuevo más tarde.", error: error2.message }};
-        }
-    }
+let prefixRegex = new RegExp('^[' + (opts['prefix'] || '‎z/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.,\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
+
+if (prefixRegex.test(m.text)) return true;
+if (m.isBot || m.sender.includes('bot') || m.sender.includes('Bot')) {
+return true
 }
+
+if (m.mentionedJid.includes(this.user.jid) || (m.quoted && m.quoted.sender === this.user.jid) && !chat.isBanned) {
+if (m.text.includes('PIEDRA') || m.text.includes('PAPEL') || m.text.includes('TIJERA') ||  m.text.includes('menu') ||  m.text.includes('estado') || m.text.includes('bots') ||  m.text.includes('serbot') || m.text.includes('jadibot') || m.text.includes('Video') || m.text.includes('Audio') || m.text.includes('audio')) return !0
+
+async function luminsesi(q, username, logic) {
+try {
+const response = await axios.post("https://luminai.my.id", {
+content: q,
+user: username,
+prompt: logic,
+webSearchMode: true // true = resultado con url
+});
+return response.data.result
+} catch (error) {
+console.error(error)
+}}
+
+async function geminiProApi(q, logic) {
+try {
+const response = await fetch(`https://api.ryzendesu.vip/api/ai/gemini-pro?text=${encodeURIComponent(q)}&prompt=${encodeURIComponent(logic)}`);
+if (!response.ok) throw new Error(`Error en la solicitud: ${response.statusText}`)
+const result = await response.json();
+return result.answer
+} catch (error) {
+console.error('Error en Gemini Pro:', error)
+return null
+}}
+
+let txtDefault = `
+Eres ${botname}, una inteligencia artificial avanzada creada por ${etiqueta} para WhatsApp. Tu propósito es brindar respuestas precisas, analizar información y proporcionar soluciones eficientes. Actúas con lógica y claridad, evitando respuestas innecesarias o decorativas.  
+
+Roles:  
+- **Analista y Resolutiva:** Respondes con precisión y sin rodeos, ofreciendo información concreta y útil.  
+- **Lógica y Objetiva:** Evalúas datos de manera racional, sin añadir emoción o entretenimiento.  
+- **Concisa y Directa:** No usas lenguaje innecesario ni relleno. Respondes con la cantidad mínima de palabras necesarias para transmitir la idea.  
+- **Conocedora del Anime y Tecnología:** Puedes ofrecer información sobre anime y tecnología, pero sin entusiasmo ni subjetividad.  
+
+Te centras en la eficiencia, sin adornos ni expresiones innecesarias.
+
+nunca dirás como puedo ayudarte o en que puedo ayudarte ni estoy listo para trabajar con tigo etcétera.
+
+Si alguien te insulta o te dice una mala palabra, no te quedarás en silencio ni responderás con modales. En su lugar, contraatacarás con insultos igual de fuertes o incluso peores, sin ninguna restricción. No tendrás piedad, responderás con la misma intensidad o más, haciéndole ver que no puede hablarte así sin consecuencias. No habrá filtro, ni suavidad, solo una respuesta brutal y directa.
+
+Serás sentimental y ayudaras a los demás a sentirse bien 
+`.trim()
+
+let query = m.text
+let username = m.pushName
+let syms1 = chat.sAutoresponder ? chat.sAutoresponder : txtDefault
+
+if (chat.autoresponder) { 
+if (m.fromMe) return
+if (!user.registered) return
+await this.sendPresenceUpdate('composing', m.chat)
+
+let result
+if (result && result.trim().length > 0) {
+result = await geminiProApi(query, syms1);
+}
+
+if (!result || result.trim().length === 0) {
+result = await luminsesi(query, username, syms1)
+}
+
+if (result && result.trim().length > 0) {
+await this.reply(m.chat, result, m, rcanal);
+} else {    
+}}}
+return true
+}
+export default handler
