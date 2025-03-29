@@ -90,6 +90,6 @@ ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
 ```
 
 ## `🌹PROPIETARIO DEL BOT🌹` 
-<a href="https://github.com/Ivanmods15"><img src="https://github.com/Ivanmods15.png" width="250" height="250" alt="Ivan"/></a>
+<a href="https://github.com/Eliasivan"><img src="https://github.com/Eliasivan.png" width="250" height="250" alt="Ivan"/></a>
   
 ## `Goku-Black-Bot-MD`
