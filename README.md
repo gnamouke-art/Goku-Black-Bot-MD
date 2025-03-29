@@ -89,7 +89,7 @@ ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
 > npm start
 ```
 
-## `🌹PROPIETARIO DEL BOT🌹` 
+## `PROPIETARIO DEL BOT` 
 <a href="https://github.com/Eliasivan"><img src="https://github.com/Eliasivan.png" width="250" height="250" alt="Ivan"/></a>
   
 ## `Goku-Black-Bot-MD`
