@@ -1,16 +1,12 @@
-import { sticker } from '../lib/sticker.js'
-function pickRandom(array) {
-    return array[Math.floor(Math.random() * array.length)];
-}
-let handler = m => m
+const handler = async (m, { conn }) => {
+  await conn.sendMessage(m.chat, { 
+    text: ' ⚠ *Si estás conectado a otra sesión de sub-bot, por favor te recomiendo que te desconectes o no te conectes a este bot. Si estás conectado a dos, tu cuenta podría ser baneada de WhatsApp y además podrían surgir problemas en el sistema del bot.*\n\n*/serbot --code*\n> Vincula con código de 8 dígitos\n*/serbot*\n> vincula con código QR',
+    viewOnce: true,
+  }, { quoted: m });
+};
 
-handler.all = async function (m, {conn}) {
-let chat = global.db.data.chats[m.chat]
+handler.tags = ['tools'];
+handler.help = ['webinfo'];
+handler.command = ['code', 'Code'];
 
-if (m.mentionedJid.includes(this.user.jid) && m.isGroup && !chat.isBanned) {
-let stiker = await sticker(global.sickerque.getRandom(), false, global.packsticker, global.author)  
-this.sendFile(m.chat, stiker, 'sticker.webp', null, m, false, { 
-contextInfo: { externalAdReply: { title: '𝐆𝐎𝐊𝐔-𝐁𝐋𝐀𝐂𝐊-𝐁𝐎𝐓-𝐌𝐃-𝐋𝐈𝐓𝐄', body: '𝐐𝐮𝐞 𝐲𝐨 𝐪𝐮𝐞!?', sourceUrl: md, thumbnail: logo2}}})}
-
-return !0 }
-export default handler
+export default handler;
