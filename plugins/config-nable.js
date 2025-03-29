@@ -17,6 +17,7 @@ ${usedPrefix + command} antitoxic
 ${usedPrefix + command} audios
 ${usedPrefix + command} modoadmin
 ${usedPrefix + command} antifake
+${usedPrefix + command} autoresponder 
 
 💥 *OPCIONES PARA MI PROPIETARIO*
 
@@ -374,6 +375,19 @@ if (!(isAdmin || isOwner)) {
 global.dfail('admin', m, conn)
 throw false
 }}
+    case 'autoresponder':
+    case 'autorespond':
+      if (!m.isGroup) {
+        if (!isOwner) {
+          global.dfail('group', m, conn);
+          throw false;
+        }
+      } else if (!isAdmin) {
+        global.dfail('admin', m, conn);
+        throw false;
+      }
+      chat.autoresponder = isEnable;
+      break;
 chat.antiTraba = isEnable
 break
 case 'simi': case 'chatbot':
