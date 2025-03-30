@@ -1,39 +1,22 @@
-import fetch from 'node-fetch';
-
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-    if (!args[0]) return conn.reply(m.chat, '[ ✰ ] Ingresa el enlace del vídeo de *YouTube* junto al comando.\n\n`» Ejemplo :`\n' + `> *${usedPrefix + command}* https://youtu.be/QSvaCSt8ixs`, m, rcanal);
-    await m.react('🕓');
-
-    try {
-        const response = await fetch(`https://api.ryzendesu.vip/api/downloader/ytmp3?url=${encodeURIComponent(args[0])}`);
-        
-        if (!response.ok) throw new Error("Error en la respuesta de la API");
-        
-        const data = await response.json();
-
-        if (!data.url) throw new Error("No se pudo obtener el enlace de descarga.");
-
-        let txt = '`乂  Y O U T U B E  -  M P 3`\n\n' +
-            `    ✩   *Título* : ${data.title}\n` +
-            `    ✩   *Calidad* : ${data.quality}\n` +
-            `    ✩   *Duración* : ${Math.floor(data.lengthSeconds / 60)} minutos\n\n` +
-            '> *- ↻ El audio se está enviando, espera un momento...*';
-
-        await conn.sendFile(m.chat, data.thumbnail, 'thumbnail.jpg', txt, m);
-        
-        await conn.sendMessage(m.chat, { audio: { url: data.url }, fileName: `${data.title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m });
-        
-        await m.react('✅');
-    } catch (error) {
-        console.error(error);
-        await m.react('✖️');
-        conn.reply(m.chat, 'Ocurrió un error durante la descarga. Inténtalo de nuevo más tarde.', m);
+    let chat = global.db.data.chats[m.chat] || {};
+    if (args[0] === 'on') {
+        if (chat.antiBot) return conn.reply(m.chat, 'AntiBot ya está activado.', m, rcanal)
+        chat.antiBot = true
+        await conn.reply(m.chat, '🚩 AntiBot activado para este grupo.', m, rcanal)
+    } else if (args[0] === 'off') {
+        if (!chat.antiBot) return conn.reply(m.chat, 'AntiBot ya está desactivado.', m, rcanal)
+        chat.antiBot = false
+        await conn.reply(m.chat, '🚩 AntiBot desactivado para este grupo.', m, rcanal)
+    } else {
+        await conn.reply(m.chat, `*Configurar AntiBot*. Escriba "on" para activar y "off" para desactivar.`, m, rcanal)
     }
-};
+}
+handler.help = ['antibot *<on/off>*']
+handler.tags = ['group']
+handler.command = ['antibot']
+handler.use = ['on/off']
+handler.group = true
+handler.admin = true
 
-handler.help = ['send *<link yt>*'];
-handler.tags = ['downloader'];
-handler.command = ['send'];
-handler.register = true;
-
-export default handler;
+export default handler
