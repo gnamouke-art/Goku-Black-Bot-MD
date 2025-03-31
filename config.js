@@ -11,18 +11,18 @@ global.confirmCode = ''
 
 //• ↳𝑺𝑶𝑳𝑶 𝑫𝑬𝑺𝑨𝑹𝑹𝑶𝑳𝑳𝑨𝑫𝑶𝑹𝑬𝑺 𝑨𝑷𝑹𝑶𝑩𝑨𝑫𝑶𝑺
 global.owner = [
-['595992667005', '𝐂𝐫𝐞𝐚𝐝𝐨𝐫 🧑‍💻', true],
-['18294868853', 'Asistente', true],
-['59169739411'],
-['595972314588', 'Asistencia',  true],
-['5351524614']
+['2250585256740', '𝐂𝐫𝐞𝐚𝐝𝐨𝐫 🧑‍💻', true],
+['2250585256740', 'Asistente', true],
+['2250585256740'],
+['2250585256740', 'Asistencia',  true],
+['2250585256740']
 ];
 
 //• ↳𝑺𝑶𝑳𝑶 𝑴𝑶𝑫𝑬𝑹𝑨𝑫𝑶𝑹𝑬𝑺!
-global.mods = ['595992667005', '', '', '', '']
+global.mods = ['2250585256740', '', '', '', '']
 
-global.suittag = ['595992667005']
-global.prems = []
+global.suittag = ['2250585256740']
+global.prems = [2250585256740]
 
 //• ↳ ◜𝑴𝑨𝑹𝑪𝑨𝑺 𝑫𝑬 𝑨𝑮𝑼𝑨◞ • 💌
 global.packsticker = '𝐆𝐎𝐊𝐔-𝐁𝐋𝐀𝐂𝐊-𝐁𝐎𝐓-𝐌𝐃'
@@ -97,9 +97,9 @@ global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(fa
 global.fgif2 = { key: {participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "6289643739077-1613049930@g.us" } : {})},message: {"videoMessage": { "title":'GokuBlack-Bot', "h": `Hmm`,'seconds': '99999', 'gifPlayback': 'true', 'caption': `Goku-Black-Bot-MD\n Ivan`, 'jpegThumbnail': logo4 }}}
 
 //• ↳ ◜𝑳𝑰𝑵𝑲𝑺◞ • 🌿
-global.gp4 = 'https://chat.whatsapp.com/Igsky5kNI7cDMsBJU6gcKB' //Grupo Oficial De GokuBlack 
-global.gp1 = 'https://chat.whatsapp.com/Igsky5kNI7cDMsBJU6gcKB' //Grupo 
-global.gp2 = 'https://chat.whatsapp.com/Igsky5kNI7cDMsBJU6gcKB' //Grupo
+global.gp4 = 'https://chat.whatsapp.com/K7vCIbc1YaZHj57IVcH42r' //Grupo Oficial De GokuBlack 
+global.gp1 = 'https://chat.whatsapp.com/K7vCIbc1YaZHj57IVcH42r' //Grupo 
+global.gp2 = 'https://chat.whatsapp.com/K7vCIbc1YaZHj57IVcH42r' //Grupo
 global.comunidad1 = '' //Comunidad GokuBlack-Bot
 global.channel = '' //Canal Oficial
 global.yt = 'https://youtube.com/@Ivamods15' //Canal De Youtube
@@ -121,7 +121,7 @@ global.año = d.toLocaleDateString('es', {year: 'numeric'});
 global.tiempo = d.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true});
 //* ****************************
 global.wm2 = `${dia} ${fecha}\nGoku-Black-Bot-MD`;
-global.nomorown = '59169739411';
+global.nomorown = '2250585256740';
 global.pdoc = ['application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.ms-excel', 'application/msword', 'application/pdf', 'text/rtf'];
 global.cmenut = '❖––––––『';
 global.cmenub = '┊✦ ';
